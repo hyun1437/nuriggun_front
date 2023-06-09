@@ -23,7 +23,7 @@ async function handleSignUp() {
         })
         console.log(response)
         if (response.status == 201) {
-            alert("이메일로 인증링크가 발송되었습니다")
+            alert("이메일로 인증링크가 전송되었습니다")
         } else {
             alert(response.statusText)
         }
