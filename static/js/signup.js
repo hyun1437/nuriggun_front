@@ -4,26 +4,30 @@ window.onload = () => {
 
 async function handleSignUp() {
     const email = document.getElementById("email").value
-    const password1 = document.getElementById("password1").value
+    const nickname = document.getElementById("nickname").value
+    const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
 
-    console.log(email, password1, password2)
-
-    const response = await fetch(`${backend_base_url}/user/dj-rest-auth/registration/`, {
-        headers: {
-            'content-type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-            "email": email,
-            "password1": password1,
-            "password2": password2
+    console.log(email, password, password2)
+    if (password === password2) {
+        const response = await fetch(`${backend_base_url}/user/signup/`, {
+            headers: {
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                "email": email,
+                "nickname": nickname,
+                "password": password,
+            })
         })
-    })
-    console.log(response)
-    if (response.status == 201) {
-        alert("이메일로 인증링크가 발송되었습니다")
+        console.log(response)
+        if (response.status == 201) {
+            alert("이메일로 인증링크가 전송되었습니다")
+        } else {
+            alert(response.statusText)
+        }
     } else {
-        alert(response.statusText)
-    }
+        alert("비밀번호가 일치하지 않습니다")
+    } 
 }

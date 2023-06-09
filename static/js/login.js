@@ -6,7 +6,7 @@ async function handleLogin() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const response = await fetch(`${backend_base_url}/user/dj-rest-auth/login/`, {
+    const response = await fetch(`${backend_base_url}/user/login/`, {
         headers: {
             'content-type': 'application/json',
         },
@@ -17,7 +17,6 @@ async function handleLogin() {
         })
     })
     
-
     if (response.status == 200) {
         // access,refresh 토큰 데이터 json으로 받기
         const response_json = await response.json();
@@ -36,7 +35,7 @@ async function handleLogin() {
         localStorage.setItem("payload", jsonPayload);
 
         alert('로그인 되었습니다.')
-        window.location.replace(`${frontend_base_url}/base.html/index.html`);
+        window.location.replace(`${frontend_base_url}/user/index.html`);
     } else {
         alert("이메일 혹은 비밀번호가 틀렸습니다.")
     }
