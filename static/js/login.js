@@ -6,7 +6,7 @@ async function handleLogin() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const response = await fetch(`${backend_base_url}/user/dj-rest-auth/login/`, {
+    const response = await fetch(`${backend_base_url}/user/login/`, {
         headers: {
             'content-type': 'application/json',
         },
