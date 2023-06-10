@@ -68,13 +68,13 @@ window.onload = async function handleGoogleLogin() {
 };
 
 // 구글 로그인
-document.getElementById("google-login").onclick = function () {
+document.getElementById("naver-login").onclick = function () {
     // 회원가입 요청
-    window.location.href = `${backend_base_url}/accounts/google/login/`
+    window.location.href = `${backend_base_url}/accounts/naver/login/`
   };
 
   // 네이버 로그인버튼
-window.onload = async function handlenNverLogin() {
+window.onload = async function handleNaverLogin() {
     const response = await fetch(`${backend_base_url}/accounts/naver/login/`, {
     method: "GET",
 })
