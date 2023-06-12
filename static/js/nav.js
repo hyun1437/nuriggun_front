@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(() => {
   
-                // base-nav.html이 로드된 후에 intro 태그와 기타 작업을 수행
+                // nav.html이 로드된 후에 intro 태그와 기타 작업을 수행
                 const payload = localStorage.getItem("payload");
                 const payload_parse = JSON.parse(payload)
   
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span><img class="profile-img" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
                 ${payload_parse.nickname}</a>`
   
-                    let navbarRight = document.getElementById("navbar-right");
+                    let navbarRight = document.getElementById("navbar-up");
                     let newLi = document.createElement("li");
                     newLi.setAttribute("class", "nav-item");
   
@@ -48,10 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 let loginbtn = document.getElementById("login-btn");
                 let signupbtn = document.getElementById("signup-btn");
                 let createbtn = document.getElementById('create-article')
+                let createmotebtn = document.getElementById('create-note')
                 if (loginbtn) {
                     loginbtn.style.display = "none";
                     signupbtn.style.display = "none";
                     createbtn.style.display = "block";
+                    createmotebtn.style.display = "block";
                 }
   
   
