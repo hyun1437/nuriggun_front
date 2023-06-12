@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const payload = localStorage.getItem("payload");
                     const payload_parse = JSON.parse(payload);
                     intro.innerHTML = `
-                <a href="${frontend_base_url}/user/profile.html?user_id=${payload_parse.user_id}">
+                <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
                 <span><img class="profile-img" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
                 ${payload_parse.nickname}</a>`
   
