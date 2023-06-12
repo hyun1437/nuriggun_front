@@ -31,10 +31,10 @@
 <body>
   <!-- 상단 네비게이션바 -->
   <nav class="navbar">
-    <div class="container" style="background-color: rgb(144, 248, 115);">
+    <div class="container">
         
 
-        <ul id="navbar-up" class="navbar-nav mr-auto">
+        <ul id="navbar-right" class="navbar-nav mr-auto">
             <li><a href="/base/index.html"><img src="로고이미지를 넣을예정-현아님" alt=""></a></li>
             <a href="#" onclick="openPosting()">
                 <!-- 로그인 안되어 있을 시 글쓰기,쪽지가 안보이게 -->
@@ -54,6 +54,21 @@
                 <a id="intro" href="/"></a>
             </li>
         </ul>
+        <header class="main-header">
+            <nav class="nav-left">
+                <form class="d-flex">
+                    <a class="header-logo" href="index.html">
+                        <img src="/static/images/logo.png" alt="logo">
+                    </a>
+                    <div class="search">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search" id="feed-search">
+                    </div>
+                    <div class="search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="button"
+                            onclick="searchRedirect()">Search</button>
+                    </div>
+                </form>
+            </nav>
     
     <div class="main">
         <section>
@@ -61,7 +76,8 @@
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-6">
                         <h1 class="mt-5"></h1>
-                        <nav class="navbar navbar-expand-lg navbar-light" style="color: gray;" id="my-table">
+                        <nav class="navbar navbar-expand-lg navbar-light" style="width: 500px; color: gray;" id="my-table">
+
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item"><button class="nav-link btn me-2 btn_org" type=”button”
                                     onclick="window.location.href = '/'">모두보기</button>
