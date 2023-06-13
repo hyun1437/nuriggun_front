@@ -157,3 +157,28 @@ function toggleDeleteForm() {
         deleteForm.style.display = "none";
     }
 }
+
+
+// 구독 등록 및 취소
+async function postSubscribe() {
+    const button = document.getElementById("subscribeButton");
+    const response = await fetch(`${backend_base_url}/user/subscribe/${user_id}/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'POST',
+    })
+
+    if (response.status == 200) {
+        button.innerText = "구독 취소";
+        alert("구독 완료")
+        window.location.reload()
+    } else if (response.status == 205) {
+        button.innerText = "구독 등록";
+        alert("구독 취소")
+        window.location.reload()
+    } else if (response.status == 403) {
+        alert("자신을 구독 할 수 없습니다.")
+    }
+}
