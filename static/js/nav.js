@@ -1,3 +1,9 @@
+const frontend_base_url = "http://127.0.0.1:5500"
+
+
+
+
+
 // 상단 네비바, 푸터 가져오기
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -23,11 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     const payload = localStorage.getItem("payload");
                     const payload_parse = JSON.parse(payload);
                     intro.innerHTML = `
-                <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
-                <span><img class="profile-img" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
-                ${payload_parse.nickname}</a>`
+                <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}"></a>`
+                // <span><img class="profile-img" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
+                // ${payload_parse.nickname}
   
-                    let navbarRight = document.getElementById("navbar-up");
+                    let navbarRight = document.getElementById("navbar-right");
                     let newLi = document.createElement("li");
                     newLi.setAttribute("class", "nav-item");
   
@@ -77,4 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
     location.replace('/base/nav.html')
   }
   
+  function getKakaoCode() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');  // URL에서 code 파라미터를 가져옴
+    if (code !== null) {
+        KakaoLoginApi(code);  // 인증 코드가 있으면 API 호출
+    }
+}
   
