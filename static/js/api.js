@@ -1,6 +1,3 @@
-window.onload = () => {
-    console.log('api.js 연결 확인')
-}
 
 // 전체 적용 js 
 const frontend_base_url = "http://127.0.0.1:5500"
