@@ -35,5 +35,24 @@ async function Profile(user_id) {
                 profileImage.src = '../static/image/unknown.png'; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
             }
         }
+
+        // 프로필 정보
+        const userNickName = document.getElementById('user-nickname');
+        const userEmail = document.getElementById('user-email');
+        const userInterest = document.getElementById('user-interest');
+
+        if (userNickName !== null) {
+            userNickName.innerText = response_json.nickname
+        }
+
+        if (userEmail !== null) {
+            const emailElement = document.getElementById('user-email');
+            emailElement.innerText = `기자 이메일: ${response_json.email}`;
+        }
+
+        if (userInterest !== null) {
+            const interestElement = document.getElementById('user-interest');
+            interestElement.innerText = `관심 분야: ${response_json.interest}`;
+        }
     }
 }
