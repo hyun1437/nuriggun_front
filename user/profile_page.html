@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html lang="kr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로필 페이지</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nuriggun 프로필 페이지</title>
+
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
 </head>
+
 <body>
-    <!-- 쪽지 버튼, 글작성 버튼, 구독 버튼 -->
-    <div>
-      <button id="message-btn">쪽지</button>
-      <button id="write-btn">글 작성</button>
-      <button id="subscribe-btn">구독</button>
-    </div>
-  
-    <!-- 프로필 이미지 -->
-    <img src="프로필_이미지_주소" alt="프로필 이미지">
-  
-    <!-- 작성한 글들의 목록 -->
-    <ul>
-      <li><a href="글_링크">작성한 글</a></li>
-      <li><a href="글_링크">작성한 글</a></li>
-      <li><a href="글_링크">작성한 글</a></li>
-      
-    </ul>
-  
-   
-    <div>
-      <li><a href="글_링크">분야</a></li>
-      <li><a href="글_링크">구독자</a></li>
-      <p>기자 이메일: 이메일_주소</p>
-      
-      <li><a href="글_링크">제보하기</a></li>
-      <li><a href="글_링크">비밀번호 변경</a></li>
-      <li><a href="글_링크">회원탈퇴</a></li>
-    </div>
-  </body>
+
+  <!-- 구독 버튼 -->
+  <div>
+    <button id="subscribeButton" type="button" onclick="postSubscribe()">구독</button>
+  </div>
+
+
+  <!-- 프로필 이미지 -->
+  <img id="user-profile-image" alt="프로필 이미지">
+
+
+  <div>
+
+    <!-- 프로필 유저의 이메일 -->
+    <p id="user-email"><span id="user-email"></span></p>
+
+    <!-- 프로필 유저의 관심 분야 -->
+    <p id="user-interest"><span id="user-interest"></span></p>
+
+    <!-- 프로필 유저에게 제보하기 -->
+    <li><a href="../user/note.html">제보하기</a></li>
+
+    <!-- 프로필 유저가 구독한 기자 수 -->
+    <li><a id="user-subscribe" href="#"><span id="user-subscribe"></span></a></li>
+
+    <!-- 프로필 수정하기 -->
+    <li id="user-edit"><a id="user-edit" href="#" onclick="ProfileUpdate()">수정하기</a></li>
+
+    <!-- 프로필 비밀번호 변경 -->
+    <li id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></li>
+
+    <!-- 프로필 회원 탈퇴 -->
+    <li id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
+      <form id="delete-form" style="display:none" ;>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password">
+        <button type="button" onclick="DeleteUser()">탈퇴</button>
+      </form>
+    </li>
+
+  </div>
+
+
+  <!-- 작성한 글들의 목록 -->
+  <ul id="article-list"></ul>
+
+
+  <!-- JS -->
+  <script src="../static/js/api.js"></script>
+  <script src="../static/js/profile_page.js"></script>
+
+
+</body>
+
 </html>
