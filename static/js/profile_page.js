@@ -4,6 +4,7 @@ console.log('프로필 페이지 연결 확인')
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('user_id');
     Profile(urlParams);
+    loadArticles(urlParams);
 }
 
 
@@ -62,16 +63,42 @@ async function Profile(user_id) {
             userSubscribe.innerText = `구독자 수: ${response_json.subscribe_count}`;
             userSubscribe.href = `../user/subscribe_list.html?user_id=${user_id}`;
         }
+    }
+}
 
-        // 해당 프로필 페이지가 로그인 한 유저의 페이지일 때 보이게 하기 - 회원 탈퇴, 비밀번호 변경, 수정하기
-        if (user_id != logined_id) {
-            document.getElementById('user-edit').style.display = "none";
-            document.getElementById('user-password-reset').style.display = "none";
-            document.getElementById('user-delete').style.display = "none";
-        } else {
-            document.getElementById('user-edit').style.display = "block";
-            document.getElementById('user-password-reset').style.display = "block";
-            document.getElementById('user-delete').style.display = "block";
+
+// 프로필 페이지의 유저가 작성한 글 목록
+async function loadArticles(user_id) {
+    const response = await fetch(`${backend_base_url}/article/list/${user_id}`, {
+        method: 'GET',
+    });
+
+    if (response.status == 200) {
+        const response_json = await response.json();
+        // console.log(response_json);
+        // console.log(response_json[0].title);
+
+        // 작성한 게시글
+        const articleList = document.getElementById('article-list');
+
+        if (articleList !== null) {
+            for (let i = 0; i < response_json.length; i++) {
+                const article = response_json[i];
+                const listItem = document.createElement('li');
+                const articleContainer = document.createElement('div');
+
+                const link = document.createElement('a');
+                link.href = article.link;  // 글 링크
+                link.innerText = article.title;  // 글 제목
+
+                const createAt = document.createElement('span'); // 글 작성일
+                createAt.innerText = article.created_at;
+
+                articleContainer.appendChild(link);
+                articleContainer.appendChild(createAt);
+                listItem.appendChild(articleContainer);
+                articleList.appendChild(listItem);
+            }
         }
     }
 }
