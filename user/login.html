@@ -13,7 +13,7 @@
     
 </head>
 
-<body>
+<body onload="getKakaoCode()">
     
     <div class="login-container">
         <h1>NURIGGUN</h1>
@@ -25,14 +25,8 @@
             </div>
             <button type="button" class="button mt-5 login-button" onclick="handleLogin()">로그인</button>
             <div class="social-buttons-container">
-                <button id="kakao-login" type="button" class="button mt-5 login-button" onclick="handleKakaoLogin()">
+                <button id="kakao-login" type="button" class="button mt-5 login-button" onclick="kakaoLogin()">
                     <img src="/static/image/kakao_login_small.png" alt="">
-                </button>
-                <button id="google-login" type="button" class="button mt-5 login-button" onclick="handleGoogleLogin()">
-                    <img src="/static/image/btn_google_signin_light_normal_web.png" alt="">
-                </button>
-                <button id="naver-login" type="button" class="button mt-5 login-button" onclick="handleNaverLogin()">
-                    <img style="size: 50px;" src="/static/image/btnW_축약형.png" alt="">
                 </button>
             </div>
             </div>
