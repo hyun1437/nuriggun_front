@@ -4,6 +4,8 @@ window.onload = () => {
 const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 
+
+
 async function handleLogin() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -37,7 +39,7 @@ async function handleLogin() {
         localStorage.setItem("payload", jsonPayload);
 
         alert('로그인 되었습니다.')
-        window.location.replace(`${frontend_base_url}/user/index.html`);
+        window.location.replace(`${frontend_base_url}/base/index.html`);
     } else {
         alert("이메일 혹은 비밀번호가 틀렸습니다.")
     }
