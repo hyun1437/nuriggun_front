@@ -9,6 +9,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="/static/css/sidebar.css">
+  <link rel="stylesheet" href="/static/css/profile_page.css">
 
 
   <!-- jQuery CDN -->
@@ -22,50 +23,51 @@
   <!-- 상단 네비게이션 바 -->
   <div id="navbar"></div>
 
-  
+
   <!-- 사이드 바 -->
   <div id="left-sidebar"></div>
   <div id="right-sidebar"></div>
 
 
-  <!-- 구독 버튼 -->
-  <div>
-    <button id="subscribeButton" type="button" onclick="postSubscribe()">구독</button>
-  </div>
+  <!-- 프로필 페이지 부분 -->
+  <div class="profile-page-container">
 
+    <!-- 구독 버튼 -->
+    <div>
+      <button href="#" id="subscribeButton" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
+    </div>
 
-  <!-- 프로필 이미지 -->
-  <img id="user-profile-image" alt="프로필 이미지">
+    <!-- 프로필 이미지 -->
+    <img id="user-profile-image" alt="프로필 이미지">
 
+    <div>
+      <!-- 프로필 유저의 이메일 -->
+      <p id="user-email"><span id="user-email"></span></p>
 
-  <div>
+      <!-- 프로필 유저의 관심 분야 -->
+      <p id="user-interest"><span id="user-interest"></span></p>
 
-    <!-- 프로필 유저의 이메일 -->
-    <p id="user-email"><span id="user-email"></span></p>
+      <!-- 프로필 유저에게 제보하기 -->
+      <li><a href="../user/note.html">제보하기</a></li>
 
-    <!-- 프로필 유저의 관심 분야 -->
-    <p id="user-interest"><span id="user-interest"></span></p>
+      <!-- 프로필 유저가 구독한 기자 수 -->
+      <li><a id="user-subscribe" href="#"><span id="user-subscribe"></span></a></li>
 
-    <!-- 프로필 유저에게 제보하기 -->
-    <li><a href="../user/note.html">제보하기</a></li>
+      <!-- 프로필 수정하기 -->
+      <li id="user-edit"><a id="user-edit" href="#" onclick="ProfileUpdate()">수정하기</a></li>
 
-    <!-- 프로필 유저가 구독한 기자 수 -->
-    <li><a id="user-subscribe" href="#"><span id="user-subscribe"></span></a></li>
+      <!-- 프로필 비밀번호 변경 -->
+      <li id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></li>
 
-    <!-- 프로필 수정하기 -->
-    <li id="user-edit"><a id="user-edit" href="#" onclick="ProfileUpdate()">수정하기</a></li>
-
-    <!-- 프로필 비밀번호 변경 -->
-    <li id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></li>
-
-    <!-- 프로필 회원 탈퇴 -->
-    <li id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
-      <form id="delete-form" style="display:none" ;>
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password">
-        <button type="button" onclick="DeleteUser()">탈퇴</button>
-      </form>
-    </li>
+      <!-- 프로필 회원 탈퇴 -->
+      <li id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
+        <form id="delete-form" style="display:none" ;>
+          <label for="password">비밀번호:</label>
+          <input type="password" id="password" name="password">
+          <button type="button" onclick="DeleteUser()">탈퇴</button>
+        </form>
+      </li>
+    </div>
 
   </div>
 
