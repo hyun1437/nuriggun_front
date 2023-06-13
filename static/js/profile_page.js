@@ -54,5 +54,13 @@ async function Profile(user_id) {
             const interestElement = document.getElementById('user-interest');
             interestElement.innerText = `관심 분야: ${response_json.interest}`;
         }
+
+        // 구독자 수
+        const userSubscribe = document.getElementById('user-subscribe');
+
+        if (userSubscribe !== null) {
+            userSubscribe.innerText = `구독자 수: ${response_json.subscribe_count}`;
+            userSubscribe.href = `../user/subscribe_list.html?user_id=${user_id}`;
+        }
     }
 }
