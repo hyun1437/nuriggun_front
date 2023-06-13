@@ -62,5 +62,16 @@ async function Profile(user_id) {
             userSubscribe.innerText = `구독자 수: ${response_json.subscribe_count}`;
             userSubscribe.href = `../user/subscribe_list.html?user_id=${user_id}`;
         }
+
+        // 해당 프로필 페이지가 로그인 한 유저의 페이지일 때 보이게 하기 - 회원 탈퇴, 비밀번호 변경, 수정하기
+        if (user_id != logined_id) {
+            document.getElementById('user-edit').style.display = "none";
+            document.getElementById('user-password-reset').style.display = "none";
+            document.getElementById('user-delete').style.display = "none";
+        } else {
+            document.getElementById('user-edit').style.display = "block";
+            document.getElementById('user-password-reset').style.display = "block";
+            document.getElementById('user-delete').style.display = "block";
+        }
     }
 }
