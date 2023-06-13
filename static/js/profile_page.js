@@ -63,6 +63,17 @@ async function Profile(user_id) {
             userSubscribe.innerText = `구독자 수: ${response_json.subscribe_count}`;
             userSubscribe.href = `../user/subscribe_list.html?user_id=${user_id}`;
         }
+
+        // 해당 프로필 페이지가 로그인 한 유저의 페이지일 때 보이게 하기 - 회원 탈퇴, 비밀번호 변경, 수정하기
+        if (user_id != logined_id) {
+            document.getElementById('user-edit').style.display = "none";
+            document.getElementById('user-password-reset').style.display = "none";
+            document.getElementById('user-delete').style.display = "none";
+        } else {
+            document.getElementById('user-edit').style.display = "block";
+            document.getElementById('user-password-reset').style.display = "block";
+            document.getElementById('user-delete').style.display = "block";
+        }
     }
 }
 
@@ -100,5 +111,49 @@ async function loadArticles(user_id) {
                 articleList.appendChild(listItem);
             }
         }
+    }
+}
+
+
+// 회원 탈퇴
+async function DeleteUser() {
+    const delConfirm = confirm("정말 회원 탈퇴를 진행하시겠습니까?")
+    const token = localStorage.getItem("access")
+    const password = document.getElementById("password").value
+
+    if (delConfirm) {
+        const response = await fetch(`${backend_base_url}/user/profile/${user_id}`, {
+            method: 'DELETE',
+            headers: {
+                "Authorization": "Bearer " + token,
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                "password": password
+            })
+        });
+
+        if (response.status == 200) {
+            const data = await response.json();
+            alert("탈퇴 완료!")
+            location.assign('login.html')
+
+        } else if (response.status == 400) {
+            const data = await response.json();
+            alert("비밀번호를 확인해주세요.");
+
+        } else {
+            alert("탈퇴 실패!")
+        }
+    }
+}
+
+// 회원 탈퇴 폼
+function toggleDeleteForm() {
+    var deleteForm = document.getElementById("delete-form");
+    if (deleteForm.style.display == "none") {
+        deleteForm.style.display = "block";
+    } else {
+        deleteForm.style.display = "none";
     }
 }
