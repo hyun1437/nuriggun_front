@@ -5,9 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 페이지</title>
-</head>
+
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+
+
+
+
+    <!-- JS -->
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/left_sidebar.js"></script>
+    <script src="/static/js/right_sidebar.js"></script>
+    <script src="/static/js/search.js"></script>
+
+    
+    
+
+  </head>
 <body>
-    <!-- 쪽지 버튼, 글작성 버튼, 구독 버튼 -->
+
+
+    <!-- 상단 네비게이션 바 -->
+    <div id="navbar"></div>
+
+    <!-- 사이드 바 -->
+    <div id="left-sidebar"></div>
+    <div id="right-sidebar"></div>
+
+
+    <!-- 쪽지 버튼, 글작성 버튼, 구독 버튼 -->\
+    <div id="main-content">
     <div>
       <button id="message-btn">쪽지</button>
       <button id="write-btn">글 작성</button>
@@ -35,5 +64,8 @@
       <li><a href="글_링크">비밀번호 변경</a></li>
       <li><a href="글_링크">회원탈퇴</a></li>
     </div>
+
+  </div>
+
   </body>
 </html>
