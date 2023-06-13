@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nuriggun 글 상세 페이지</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/detail.css">
+    <!-- <link rel="stylesheet" href="/static/css/sidebar.css"> -->
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- 상단 네비게이션 바 -->
+    <div id="navbar"></div>
+
+
+    <!-- 사이드 바 -->
+    <div id="left-sidebar"></div>
+    <div id="right-sidebar"></div>
+
+
+    <div class="article-container">
+        <!-- 구독 / 스크랩 버튼 -->
+        <div>
+            <button id="subscribeButton" type="button">공유</button>
+            <button id="scrapButton" type="button">스크랩</button>
+        </div>
+
+
+        <!-- 게시글 내용 -->
+        <div class="article-section">
+            <div id="title">기사 제목</div>
+            <div id="title">출처 : </div>
+            <div id="content">기사 내용</div>
+
+            <!-- 게시글 반응 5종 -->
+            <div class="article-reaction">
+                <button><img src="" alt="good"></button>
+                <button><img src="" alt="great"></button>
+                <button><img src="" alt="sad"></button>
+                <button><img src="" alt="angry"></button>
+                <button><img src="" alt="subsequent"></button>
+            </div>
+        </div>
+
+
+        <!-- 프로필 유저의 이메일, 구독 버튼 -->
+        <div>
+            <p id="email">기자 이메일 :
+                <button id="subscribeButton" type="button">구독</button>
+            </p>
+        </div>
+
+
+        <!-- 댓글 내용 -->
+        <div class="comment-section">
+            <!-- 댓글 작성 -->
+            <div>
+                <textarea id="comment" placeholder="댓글 입력"></textarea>
+                <button type="button">등록</button>
+
+                <!-- 댓글 반응 2종 -->
+                <div class="comment-reaction">
+                    <button><img src="" alt="like"></button>
+                    <button><img src="" alt="hate"></button>
+                </div>
+            </div>
+
+            <!-- 댓글 목록 -->
+            <div id="comment-list"></div>
+        </div>
+    </div>
+
+
+
+    <!-- JS -->
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/detail.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/left_sidebar.js"></script>
+    <script src="/static/js/right_sidebar.js"></script>
+    <script src="/static/js/search.js"></script>
+
+
+</body>
+
+</html>
