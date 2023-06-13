@@ -53,7 +53,7 @@ input {
     padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: none;
+    /* border: none; */
 }
 
 #login-submit{
