@@ -1,0 +1,176 @@
+/* sidebar.css */
+
+/* 전체 요소의 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* 사이드바 */
+  #left-sidebar {
+    width: 170px;
+    height: 100vh;
+    background-color: white;
+    float: left;
+    position: fixed; /* 사이드바를 고정 위치로 설정 */
+    top: 0; /* 네브바 위로 위치하도록 설정 */
+    
+  }
+
+  #right-sidebar {
+    width: 170px;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0; /* 오른쪽 위치 설정 */
+  }
+  
+  
+  /* 가운데 컨텐츠 */
+  #main-content {
+    margin: 0 auto;
+    max-width: 750px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 60px;
+  }
+  
+  /* 사이드바가 없는 경우 */
+  #main-content {
+    margin: 0 auto; /* 컨텐츠를 가운데로 정렬 */
+    background-color: white;
+    padding: 20px;
+  }
+  
+  /* 버튼 스타일 */
+  .button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+   
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
+  /* 네비게이션 바 스타일 */
+  .navbar {
+   background-color: antiquewhite;
+    width: 750px;
+    margin: 0 auto;
+    justify-content: center; /* 가운데 정렬 */
+    position: fixed;
+     /* 네브바를 고정 위치로 설정 */
+  }
+  .navbar-nav {
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 수직 가운데 정렬 */
+    list-style: none;
+    padding: 0;
+}
+  
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-list li {
+    margin-right: 10px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+  }
+  .main {
+    max-width: 1000px; /* 원하는 최대 넓이로 조정해주세요 */
+    margin: 0 auto; /* 가운데 정렬을 위해 auto 마진을 설정합니다 */
+    padding: 20px; /* 내부 여백을 설정합니다 */
+  }
+  
+  .btn_org {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn_org:hover {
+    background-color: darkorange;
+}
+/* 프로필 영역 스타일 */
+/* 네비게이션 영역 스타일 */
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* 프로필 영역 스타일 */
+  #profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  #profile img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  /* 작성한 글 목록 스타일 */
+  #post-list {
+    margin-bottom: 20px;
+  }
+  
+  #post-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #post-list ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* 기타 링크 목록 스타일 */
+  #link-list {
+    margin-top: 20px;
+  }
+  
+  #link-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  #link-list ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* 기자 정보 스타일 */
+  #journalist-info {
+    margin-bottom: 20px;
+  }
+  
+  #journalist-info p {
+    margin-bottom: 10px;
+  }
+  
+  
