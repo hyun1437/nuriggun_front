@@ -1,0 +1,60 @@
+ /* 게시글 작성 폼 스타일 */
+ div {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="file"] {
+    width: 70%;
+    max-width: 400px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 0 auto;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  #author-info {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  #author-email {
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
+  p#author-info {
+    text-align: center;
+  }
