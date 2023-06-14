@@ -58,3 +58,15 @@
   p#author-info {
     text-align: center;
   }
+
+  .category-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .input-group-text {
+    margin-right: 10px;
+  }
+  

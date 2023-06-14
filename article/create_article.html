@@ -15,34 +15,50 @@
 
     <!-- JS -->
     <script src="/static/js/api.js"></script>
+    <script src="/static/js/create_article.js"></script>
+    
 
 
 </head>
 <body>
-    <div>
-        <h2>게시글 작성</h2>
+    
+        <div>
+          <h2>게시글 작성</h2>
+      
+          <div class="category-container">
+            <label for="category-select" class="input-group-text">카테고리</label>
+            <select id="category">
 
-        <p id="author-info">출처:기자이메일<span id="author-email"></span></p>
-        
-        <div>
-        <input type="text" id="title-input" placeholder="기사 제목" required>
+              <option selected>분야 선택</option>
+              <option value="it">IT/과학</option>
+              <option value="economy">경제</option>
+              <option value="culture">생활/문화</option>
+              <option value="sport">스포츠</option>
+              <option value="weather">날씨</option>
+              <option value="world">세계</option>
+            </select>
+          </div>
+      
+          <div>
+            <input type="text" id="title" placeholder="기사 제목" required>
+          </div>
+          
+          <div>
+            <textarea id="content" rows="5" placeholder="기사 내용" required></textarea>
+          </div>
+      
+          <div>
+            <input type="file" id="img-file">
+          </div>
+      
+          <div>
+            <button id="articlepost" onclick="ArticlePost()">등록</button>
+          </div>
         </div>
-        
-        <div>
-        <textarea id="content-input" rows="5" placeholder="기사 내용" required></textarea>
-        </div>
-
-        <div>
-        <input type="file" id="image-input">
-        </div>
-
-        <div>
-        <button onclick="submitPost()">작성</button>
-    </div>
-      </div>
       
 
+      </body>
 
 
-</body>
+
 </html>
