@@ -7,7 +7,10 @@ window.onload = () => {
     loadArticles(urlParams);
     isSubscribed()
 }
-
+//  수정 했음
+const payload = localStorage.getItem("payload")
+const payload_parse = JSON.parse(payload);
+const token = localStorage.getItem("access")
 
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
 console.log(user_id)

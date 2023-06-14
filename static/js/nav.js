@@ -1,9 +1,5 @@
 const frontend_base_url = "http://127.0.0.1:5500"
 
-
-
-
-
 // 상단 네비바, 푸터 가져오기
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -20,19 +16,34 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(() => {
   
-                // nav.html이 로드된 후에 intro 태그와 기타 작업을 수행
-                const payload = localStorage.getItem("payload");
+                // nav.html이 로드된 후에 profile_intro 태그와 기타 작업을 수행
+                
+                const payload = localStorage.getItem("payload")
                 const payload_parse = JSON.parse(payload)
-  
-                const intro = document.getElementById("intro");
-                if (intro) {
+                console.log(payload_parse)
+                const profile_intro = document.getElementById("profile_intro");
+                
+                if (profile_intro) {
                     const payload = localStorage.getItem("payload");
                     const payload_parse = JSON.parse(payload);
-                    intro.innerHTML = `
-                <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}"></a>`
-                // <span><img class="profile-img" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
-                // ${payload_parse.nickname}
-  
+                    const profileImage = payload_parse.profile_img ? `${backend_base_url}/media/${payload_parse.profile_img}` : "/static/image/unknown.png";
+                
+                    profile_intro.innerHTML = `
+                      <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
+                        <span><img class="user-profile-image" src="${profileImage}" alt="" style="width:40px;"></span>
+                        ${payload_parse.nickname}
+                      </a>`
+                
+                
+                // if (profile_intro) {
+                //     const payload = localStorage.getItem("payload");
+                //     const payload_parse = JSON.parse(payload);
+                //     profile_intro.innerHTML = `
+                //     <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
+                //     <span><img class="user-profile-image" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
+                //     ${payload_parse.nickname}</a>`
+
+
                     let navbarRight = document.getElementById("navbar-right");
                     let newLi = document.createElement("li");
                     newLi.setAttribute("class", "nav-item");
@@ -54,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 let loginbtn = document.getElementById("login-btn");
                 let signupbtn = document.getElementById("signup-btn");
                 let createbtn = document.getElementById('create-article')
-                let createmotebtn = document.getElementById('create-note')
+                let createnotebtn = document.getElementById('create-note')
                 if (loginbtn) {
                     loginbtn.style.display = "none";
                     signupbtn.style.display = "none";
                     createbtn.style.display = "block";
-                    createmotebtn.style.display = "block";
+                    createnotebtn.style.display = "block";
                 }
   
   
@@ -91,3 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 }
   
+// 글 작성열기
+function OpenArticle() {
+    window.location.href = "/article/create_article.html";
+}
+
+// 쪽지 보내기
+function OpenNote() {
+    window.location.href = "/user/note.html";
+}
