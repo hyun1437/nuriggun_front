@@ -1,10 +1,5 @@
-window.onload = () => {
-    console.log('로그인 페이지 로딩확인')
-}
-const frontend_base_url = "http://127.0.0.1:5500"
-const backend_base_url = "http://127.0.0.1:8000"
-
-
+let frontend_base_url = "http://127.0.0.1:5500"
+let backend_base_url = "http://127.0.0.1:8000"
 
 async function handleLogin() {
     const email = document.getElementById('email').value;
@@ -78,7 +73,7 @@ async function KakaoLoginApi(kakao_code) {
         const response_json = await response.json()  // 응답 본문을 JSON으로 파싱
         localStorage.setItem("access", response_json.access);   // 액세스 토큰을 로컬 저장소에 저장
         localStorage.setItem("refresh", response_json.refresh);  // 리프레시 토큰을 로컬 저장소에 저장
-
+        localStorage.setItem("nickname", response_json.nickname); // 닉네임을 로컬저장소에 저장
         // JWT 토큰에서 payload를 추출하여 로컬 저장소에 저장
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

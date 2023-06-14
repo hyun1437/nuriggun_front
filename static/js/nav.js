@@ -1,5 +1,4 @@
 // 상단 네비바, 푸터 가져오기
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // 네비바를 삽입할 위치
