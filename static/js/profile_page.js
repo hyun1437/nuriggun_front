@@ -5,8 +5,12 @@ window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('user_id');
     Profile(urlParams);
     loadArticles(urlParams);
+    isSubscribed()
 }
-
+//  수정 했음
+const payload = localStorage.getItem("payload")
+const payload_parse = JSON.parse(payload);
+const token = localStorage.getItem("access")
 
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
 console.log(user_id)
@@ -171,14 +175,38 @@ async function postSubscribe() {
     })
 
     if (response.status == 200) {
-        button.innerText = "구독 취소";
-        alert("구독 완료")
+        alert("구독을 하였습니다.")
         window.location.reload()
     } else if (response.status == 205) {
-        button.innerText = "구독 등록";
-        alert("구독 취소")
+        alert("구독을 취소하였습니다.")
         window.location.reload()
     } else if (response.status == 403) {
         alert("자신을 구독 할 수 없습니다.")
+    }
+}
+
+// 구독 여부 확인
+async function isSubscribed() {
+    const response = await fetch(`${backend_base_url}/user/subscribe/${logined_id}`, {
+        method: 'GET',
+    });
+
+    if (response.ok) {
+        const subscribes = await response.json();
+        // console.log(subscribes.subscribe[0].subscribe)
+        // console.log(subscribes.subscribe[0].subscribe[0].id)
+        const ids = subscribes.subscribe[0].subscribe.map(subscribe => parseInt(subscribe.id));
+        // console.log(ids)
+        const intsubscribe_id = parseInt(user_id)
+        // console.log(intsubscribe_id)
+        const isSubscribeExists = ids.includes(intsubscribe_id);
+        // console.log(isSubscribeExists)
+        if (isSubscribeExists) {
+            document.getElementById('subscribeButton').innerText = '구독 중'
+        } else {
+            document.getElementById('subscribeButton').innerText = '구독'
+        }
+    } else {
+        console.error('Failed to load subscribes:', response.status);
     }
 }

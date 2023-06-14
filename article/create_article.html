@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/create_article.css">
+
+    <!-- JS -->
+    <script src="/static/js/api.js"></script>
+
+
+</head>
+<body>
+    <div>
+        <h2>게시글 작성</h2>
+
+        <p id="author-info">출처:기자이메일<span id="author-email"></span></p>
+        
+        <div>
+        <input type="text" id="title-input" placeholder="기사 제목" required>
+        </div>
+        
+        <div>
+        <textarea id="content-input" rows="5" placeholder="기사 내용" required></textarea>
+        </div>
+
+        <div>
+        <input type="file" id="image-input">
+        </div>
+
+        <div>
+        <button onclick="submitPost()">작성</button>
+    </div>
+      </div>
+      
+
+
+
+</body>
+</html>
