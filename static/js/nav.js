@@ -1,5 +1,3 @@
-const frontend_base_url = "http://127.0.0.1:5500"
-
 // 상단 네비바, 푸터 가져오기
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -16,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(() => {
   
                 // nav.html이 로드된 후에 profile_intro 태그와 기타 작업을 수행
-                
                 const payload = localStorage.getItem("payload")
                 const payload_parse = JSON.parse(payload)
                 console.log(payload_parse)
@@ -90,16 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
+    localStorage.removeItem("nickname")
     location.replace('/base/nav.html')
   }
   
-  function getKakaoCode() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');  // URL에서 code 파라미터를 가져옴
-    if (code !== null) {
-        KakaoLoginApi(code);  // 인증 코드가 있으면 API 호출
-    }
-}
+//   function getKakaoCode() {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const code = urlParams.get('code');  // URL에서 code 파라미터를 가져옴
+//     if (code !== null) {
+//         KakaoLoginApi(code);  // 인증 코드가 있으면 API 호출
+//     }
+// }
   
 // 글 작성열기
 function OpenArticle() {

@@ -1,5 +1,3 @@
-const backend_base_url = "http://127.0.0.1:8000";
-
 function searchRedirect() {
     const searchKeyword = document.getElementById("feed-search").value;
     if (searchKeyword.trim() === '') {
