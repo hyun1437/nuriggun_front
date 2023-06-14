@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:5500"
+// const frontend_base_url = "http://127.0.0.1:5500"
 
 // 상단 네비바, 푸터 가져오기
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (profile_intro) {
                     const payload = localStorage.getItem("payload");
                     const payload_parse = JSON.parse(payload);
-                    const profileImage = payload_parse.profile_img ? `${backend_base_url}/media/${payload_parse.profile_img}` : "/static/image/unknown.png";
+                    const profileImage = payload_parse.profile_img ? `${backend_base_url}${payload_parse.profile_img}` : `${noProfileImage}`;
                 
                     profile_intro.innerHTML = `
                       <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
