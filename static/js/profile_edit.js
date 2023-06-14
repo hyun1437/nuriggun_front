@@ -1,49 +1,65 @@
 async function ProfileUpdate() {
-    const editButtun = document.getElementById("user-edit");
-    const image = document.getElementById("user-profile-image")
-    const nickname = document.getElementById("user-nickname")// 이 부분 확실치않음
-    
-    if (editButtun.innerText === '수정하기') {
-        // 수정 모드로 변경
-        editButtun.innerText = '저장';
-    
-        const imageInput = document.createElement('input');
-        imageInput.setAttribute('type', 'text');
-        imageInput.setAttribute('id', 'updated-image');
-        imageInput.setAttribute('placeholder', 'url을 입력해주세요 #임시#');
-        imageInput.value = image.innerText;
-        image.innerText = '';
-        image.appendChild(imageInput);
-    
-        const nicknameInput = document.createElement('input');
-        nicknameInput.setAttribute('id', 'updated-nickname');
-        nicknameInput.setAttribute('placeholder', '변경할 닉네임');
-        nicknameInput.value = nickname.innerText;
-        nickname.innerText = '';
-        nickname.appendChild(nicknameInput);
-    
-    } else {
-        // 저장 모드로 변경
-        const updatedimage = document.getElementById('updated-image').value;
-        const updatednickname = document.getElementById('updated-nickname').value;
+    const editButton = document.getElementById("user-edit");
+    const image = document.getElementById("user-profile-image");
+    const nickname = document.getElementById("user-nickname");
+  
+    if (editButton.innerText === "수정하기") {
+      // 수정 버튼을 누르면 인풋창이 나오면서 수정기모드로 변경됨
+      editButton.innerText = "저장";
+  
+      // 프사를 변경할 수 있는 입력창을 생성
+      const imageInput = document.createElement("input");
+      imageInput.setAttribute("type", "file");
+      imageInput.setAttribute("id", "updated-image");
+  
+      // 닉네임을 변경할 수 있는 입력창을 생성
+      const nicknameInput = document.createElement("input");
+      nicknameInput.setAttribute("id", "updated-nickname");
+      nicknameInput.setAttribute("placeholder", "변경할 닉네임");
+      nicknameInput.value = nickname.innerText;
+      nickname.innerText = "";
+      nickname.appendChild(nicknameInput);
 
-        const response = await fetch(`${backend_base_url}/user/profile/${user_id}/`, {
+      // 이미지 미리보기
+
+      // onload 이벤트가 발생하면 image 엘리먼트의 src 속성을 업데이트하여 미리보기 이미지를 표시합니다.
+      imageInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            image.setAttribute("src", e.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // 이미지 미리보기 입력 필드를 이미지 엘리먼트 바로 뒤에 추가합니다.
+      image.parentNode.insertBefore(imageInput, image.nextSibling);
+    } else {
+
+      const updatedImageInput = document.getElementById("updated-image");
+      const updatedImage = updatedImageInput.files[0];
+      const updatedNickname = document.getElementById("updated-nickname").value;
+  
+      const formData = new FormData();
+      if (updatedImage) {
+        formData.append("profile_img", updatedImage);
+      }
+      formData.append("nickname", updatedNickname);
+  
+      const response = await fetch(`${backend_base_url}/user/profile/${user_id}/`, {
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
-            'Content-Type': 'application/json',
+          Authorization: "Bearer " + localStorage.getItem("access"),
         },
-        method: 'PATCH',
-        body: JSON.stringify({
-            image: updatedimage,
-            nickname: updatednickname,
-        }),
-});
-
-    if (response.status === 200) {
-        // 수정된 내용을 받아와서 디테일 페이지를 다시 로드
-        window.location.href = `${frontend_base_url}/user/profile_page.html?id=${user_id}`;
-    } else {
-        alert('수정에 실패했습니다.');
-    }
+        method: "PATCH",
+        body: formData,
+      });
+  
+      if (response.status === 200) {
+        window.location.href = `${frontend_base_url}/user/profile_page.html?user_id=${user_id}`;
+      } else {
+        alert("수정에 실패했습니다.");
+      }
     }
 }

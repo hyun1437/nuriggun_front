@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 // const frontend_base_url = "http://127.0.0.1:5500"
 
->>>>>>> origin/dev
 // 상단 네비바, 푸터 가져오기
 document.addEventListener("DOMContentLoaded", function () {
 

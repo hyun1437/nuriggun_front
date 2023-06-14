@@ -82,6 +82,7 @@ async function KakaoLoginApi(kakao_code) {
         );
         localStorage.setItem("payload", jsonPayload);
         history.replaceState(null, null, window.location.pathname);  // URL에서 code 파라미터를 제거
+        window.location.replace(`${frontend_base_url}/base/index.html`);
     } else { 
         const error = await response.json()  // 응답 본문을 JSON으로 파싱
         alert(error['error'])  // 에러 메시지를 알림
