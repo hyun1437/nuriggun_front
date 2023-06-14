@@ -22,13 +22,24 @@ async function handleSignUp() {
                 "password": password,
             })
         })
-        console.log(response)
+        
         if (response.status == 201) {
             alert("이메일로 인증링크가 전송되었습니다")
         } else {
             const response_json = await response.json()
-            console.log(response_json)
-            alert(response.statusText)
+            let errorMessages = ''
+
+            if (response_json.email) {
+                errorMessages += response_json.email[0] + '\n'
+            }
+            if (response_json.password) {
+                errorMessages += response_json.password[0] + '\n'
+            }
+            if (response_json.nickname) {
+                errorMessages += response_json.nickname[0] + '\n'
+            }
+            alert(errorMessages)
+            console.log(response.statusText)       
         }
     } else {
         alert("비밀번호가 일치하지 않습니다")
