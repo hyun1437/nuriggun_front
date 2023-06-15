@@ -95,3 +95,107 @@ async function articleDelete() {
         }
     }
 }
+
+
+// 게시글 상세 페이지
+async function articleDetail() {
+    const response = await fetch(`${backend_base_url}/article/${article_id}`, {
+        method: 'GET',
+    });
+    console.log(response)
+
+    if (response.status == 200) {
+        const response_json = await response.json();
+        const article_user_id = response_json.user.pk;
+
+        const articleUpdateButton = document.getElementById('article-update-button');
+        const articleDeleteButton = document.getElementById('article-delete-button');
+        const articleSubscribeButton1 = document.getElementById('subscribeButton1');
+        isSubscribed(article_user_id);
+
+        // 게시글 작성자가 로그인한 유저일 경우 수정, 삭제 버튼 보이게 함.(+ 작성자 구독 버튼 안보이게 진행)
+        if (article_user_id === logined_id) {
+            articleUpdateButton.style.display = 'block';
+            articleDeleteButton.style.display = 'block';
+            articleSubscribeButton1.style.display = 'none';
+        } else {
+            articleUpdateButton.style.display = 'none';
+            articleDeleteButton.style.display = 'none';
+            articleSubscribeButton1.style.display = 'block';
+        }
+
+        const articleTitle = document.getElementById('article-title');
+        const articleImage = document.getElementById('article-image');
+        const articleContent = document.getElementById('article-content');
+        const articleUser = document.getElementById('article-user');
+
+        if (articleTitle !== null) {
+            articleTitle.innerText = response_json.title;
+        }
+        if (articleImage !== null) {
+            articleImage.src = `${backend_base_url}${response_json.image}`;
+        }
+        if (articleContent !== null) {
+            articleContent.innerText = response_json.content;
+        }
+        if (articleUser !== null) {
+            articleUser.innerText = response_json.user.nickname;
+        }
+
+        const reactionCounts = ['good', 'great', 'sad', 'angry', 'subsequent'];
+
+        reactionCounts.forEach(reaction => {
+            const count = response_json.reaction[reaction];
+            if (count !== null) {
+                const element = document.getElementById(`${reaction}-count`);
+                if (element) {
+                    element.innerText = count;
+                }
+            }
+        });
+    }
+}
+
+
+// 구독 등록 및 취소
+async function postSubscribe() {
+    const response = await fetch(`${backend_base_url}/user/subscribe/${article_id}/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'POST',
+    })
+
+    if (response.status == 200) {
+        alert("구독을 하였습니다.")
+        window.location.reload()
+    } else if (response.status == 205) {
+        alert("구독을 취소하였습니다.")
+        window.location.reload()
+    } else if (response.status == 403) {
+        alert("자신을 구독 할 수 없습니다.")
+    }
+}
+
+// 구독 여부 확인
+async function isSubscribed(article_user_id) {
+    const response = await fetch(`${backend_base_url}/user/subscribe/${logined_id}`, {
+        method: 'GET',
+    });
+    console.log(response)
+
+    if (response.ok) {
+        const subscribes = await response.json();
+        const ids = subscribes.subscribe[0].subscribe.map(subscribe => parseInt(subscribe.id));
+        const intsubscribe_id = parseInt(article_user_id)
+        const isSubscribeExists = ids.includes(intsubscribe_id);
+        if (isSubscribeExists) {
+            document.getElementById('subscribeButton1').innerText = '구독 중'
+        } else {
+            document.getElementById('subscribeButton1').innerText = '구독'
+        }
+    } else {
+        console.error('Failed to load subscribes:', response.status);
+    }
+}
