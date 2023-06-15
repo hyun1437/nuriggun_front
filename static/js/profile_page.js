@@ -100,7 +100,7 @@ async function loadArticles(user_id) {
                 const articleContainer = document.createElement('div');
 
                 const link = document.createElement('a');
-                link.href = article.link;  // 글 링크
+                link.href = `../article/detail.html?article_id=${article.id}`  // 글 링크             
                 link.innerText = article.title;  // 글 제목
 
                 const createAt = document.createElement('span'); // 글 작성일
