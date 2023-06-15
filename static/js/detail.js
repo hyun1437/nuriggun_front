@@ -318,6 +318,45 @@ async function loadComments() {
 }
 
 
+// 댓글 수정 폼
+function showEditForm(commentId) {
+    const commentEditContainer = document.getElementById('comment-comment');
+    console.log(commentEditContainer)
+
+    // 기존 댓글 내용 가져오기
+    const originalComment = commentEditContainer.innerText;
+    console.log(originalComment)
+
+    // 텍스트 박스 생성
+    const editTextarea = document.createElement('textarea');
+    // editTextarea.value = originalComment;
+    editTextarea.value = '수정할 내용을 입력하세요';
+    editTextarea.classList.add('edit-textarea');
+
+    // 댓글 수정 저장 버튼 생성
+    const commentEditSaveButton = document.createElement('button');
+    commentEditSaveButton.innerText = '저장';
+    commentEditSaveButton.classList.add('comment-save-button');
+    commentEditSaveButton.addEventListener('click', async () => {
+        const updatedContent = editTextarea.value;
+        await updateComment(commentId, { comment: updatedContent });
+    });
+
+    // 댓글 수정 취소 버튼 생성
+    const commentEditCancelButton = document.createElement('button');
+    commentEditCancelButton.innerText = '취소';
+    commentEditCancelButton.classList.add('comment-cancel-button');
+    commentEditCancelButton.addEventListener('click', () => {
+        commentEditContainer.innerText = originalComment;
+        location.reload();
+    });
+
+    commentEditContainer.innerText = '';
+    commentEditContainer.appendChild(editTextarea);
+    commentEditContainer.appendChild(commentEditSaveButton);
+    commentEditContainer.appendChild(commentEditCancelButton);
+}
+
 // 댓글 수정하기
 async function updateComment(comment_id, updatedComment) {
     const response = await fetch(`${backend_base_url}/article/comment/${comment_id}/`, {
