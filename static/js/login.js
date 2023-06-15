@@ -1,11 +1,3 @@
-window.onload = () => {
-    console.log('로그인 페이지 로딩확인')
-}
-const frontend_base_url = "http://127.0.0.1:5500"
-const backend_base_url = "http://127.0.0.1:8000"
-
-
-
 async function handleLogin() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -48,7 +40,7 @@ async function handleLogin() {
 // 카카오 버튼 클릭시 카카오 로그인 API를 호출하는 함수
 function kakaoLogin(){
     const kakao_api ='b4640364ec9206e20fd092f6967d430c'
-    const redirect_uri = "http://127.0.0.1:5500/user/index.html"  // 카카오에 등록된 리다이렉트 URI 배포때 변경해야됨
+    const redirect_uri = "http://127.0.0.1:5500/base/index.html"  // 카카오에 등록된 리다이렉트 URI 배포때 변경해야됨
     // 사용자를 카카오 인증 페이지로 리다이렉트
     window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${kakao_api}&redirect_uri=${redirect_uri}&response_type=code`
 }
@@ -78,7 +70,6 @@ async function KakaoLoginApi(kakao_code) {
         const response_json = await response.json()  // 응답 본문을 JSON으로 파싱
         localStorage.setItem("access", response_json.access);   // 액세스 토큰을 로컬 저장소에 저장
         localStorage.setItem("refresh", response_json.refresh);  // 리프레시 토큰을 로컬 저장소에 저장
-
         // JWT 토큰에서 payload를 추출하여 로컬 저장소에 저장
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -89,8 +80,9 @@ async function KakaoLoginApi(kakao_code) {
                 ).slice(-2);
             }).join('')
         );
-        localStorage.setItem("kakao", jsonPayload);
+        localStorage.setItem("payload", jsonPayload);
         history.replaceState(null, null, window.location.pathname);  // URL에서 code 파라미터를 제거
+        window.location.replace(`${frontend_base_url}/base/index.html`);
     } else { 
         const error = await response.json()  // 응답 본문을 JSON으로 파싱
         alert(error['error'])  // 에러 메시지를 알림

@@ -29,21 +29,8 @@
   <div id="right-sidebar"></div>
 
 
-
-  <!-- 구독 버튼 -->
-  <div>
-    <button id="subscribeButton" type="button" onclick="postSubscribe()">구독</button>
-  </div>
-
-
-  <!-- 프로필 이미지 -->
-  <div id="profile-info">
-  <div class="user-profile-image"><img id="profile_img" src="" class="card-img-top" alt="..."></div>
-  <!-- <img id="user-profile-image" alt=""> -->
-
   <!-- 프로필 페이지 부분 -->
   <div class="profile-page-container">
-
 
     <!-- 구독 버튼 -->
     <div>
@@ -56,6 +43,8 @@
     <div>
       <!-- 프로필 유저의 이메일 -->
       <p id="user-email"><span id="user-email"></span></p>
+      <!-- 프로필 유저의 닉네임 -->
+      <p id="user-nickname"><span id="user-nickname"></span></p>
 
       <!-- 프로필 유저의 관심 분야 -->
       <p id="user-interest"><span id="user-interest"></span></p>
@@ -67,7 +56,7 @@
       <li><a id="user-subscribe" href="#"><span id="user-subscribe"></span></a></li>
 
       <!-- 프로필 수정하기 -->
-      <li id="user-edit"><a id="user-edit" href="#" onclick="ProfileUpdate()">수정하기</a></li>
+      <li><button id="user-edit" type="button" onclick="ProfileUpdate()">수정하기</button></li>
 
       <!-- 프로필 비밀번호 변경 -->
       <li id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></li>
@@ -83,7 +72,6 @@
     </div>
 
   </div>
-  
 
 
   <!-- 작성한 글들의 목록 -->
@@ -91,14 +79,13 @@
 
 
   <!-- JS -->
-  
+  <script src="../static/js/api.js"></script>
   <script src="../static/js/profile_page.js"></script>
   <script src="/static/js/nav.js"></script>
   <script src="/static/js/left_sidebar.js"></script>
   <script src="/static/js/right_sidebar.js"></script>
   <script src="/static/js/search.js"></script>
-  
-
+  <script src="/static/js/profile_edit.js"></script>
 
 </body>
 
