@@ -52,3 +52,23 @@ async function articleScrap() {
         alert("스크랩을 진행할 수 없습니다.")
     }
 }
+
+
+// 게시글 수정하기
+async function articleUpdate() {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        body: JSON.stringify(updatedArticle),
+        method: 'PATCH',
+    });
+
+    if (response.status == 200) {
+        alert("게시글을 수정했습니다.")
+        window.location.reload()
+    } else {
+        alert("게시글 작성자만 수정할 수 있습니다.")
+    }
+}
