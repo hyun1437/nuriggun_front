@@ -397,3 +397,53 @@ async function deleteComment(comment_id) {
         }
     }
 }
+
+
+// 댓글 추천
+async function commentLike(comment_id) {
+    const response = await fetch(`${backend_base_url}/article/comment/${comment_id}/like/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'POST',
+    })
+
+    if (response.status == 200) {
+        alert("댓글 추천을 눌렀습니다.")
+        window.location.reload()
+    } else if (response.status == 202) {
+        alert("댓글 추천을 취소했습니다.")
+        window.location.reload()
+    } else if (response.status == 201) {
+        alert("댓글 비추천을 취고하고 댓글 추천을 눌렀습니다.")
+        window.location.reload()
+    } else {
+        alert("댓글 추천을 진행할 수 없습니다.")
+    }
+}
+
+
+// 댓글 비추천
+async function commentHate(comment_id) {
+    const response = await fetch(`${backend_base_url}/article/comment/${comment_id}/hate/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'POST',
+    })
+
+    if (response.status == 200) {
+        alert("댓글 비추천을 눌렀습니다.")
+        window.location.reload()
+    } else if (response.status == 202) {
+        alert("댓글 비추천을 취소했습니다.")
+        window.location.reload()
+    } else if (response.status == 201) {
+        alert("댓글 추천을 취고하고 댓글 비추천을 눌렀습니다.")
+        window.location.reload()
+    } else {
+        alert("댓글 비추천을 진행할 수 없습니다.")
+    }
+}
