@@ -1,7 +1,6 @@
-// const frontend_base_url = "http://127.0.0.1:5500"
+console.log("nav.js 연결 확인")
 
 // 상단 네비바, 푸터 가져오기
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // 네비바를 삽입할 위치
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 const payload = localStorage.getItem("payload")
                 const payload_parse = JSON.parse(payload)
-                console.log(payload_parse)
+                // console.log(payload_parse)
                 const profile_intro = document.getElementById("profile_intro");
                 
                 if (profile_intro) {
@@ -38,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // if (profile_intro) {
                 //     const payload = localStorage.getItem("payload");
                 //     const payload_parse = JSON.parse(payload);
+
                 //     profile_intro.innerHTML = `
                 //     <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
                 //     <span><img class="user-profile-image" src="${backend_base_url}/media/${payload_parse.profile_img}" alt="" style="width:40px;"></span>
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
-    location.replace('/base/nav.html')
+    location.replace('/base/index.html')
   }
   
   function getKakaoCode() {
