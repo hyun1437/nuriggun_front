@@ -30,3 +30,25 @@ function articleShare() {
             console.error('URL 복사에 실패했습니다.', error);
         });
 }
+
+
+// 게시글 스크랩(북마크)
+async function articleScrap() {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/scrap/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'POST',
+    })
+
+    if (response.status == 200) {
+        alert("스크랩을 했습니다.")
+        window.location.reload()
+    } else if (response.status == 202) {
+        alert("스크랩을 취소했습니다.")
+        window.location.reload()
+    } else {
+        alert("스크랩을 진행할 수 없습니다.")
+    }
+}
