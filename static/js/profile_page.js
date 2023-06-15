@@ -48,13 +48,11 @@ async function Profile(user_id) {
         }
 
         if (userEmail !== null) {
-            const emailElement = document.getElementById('user-email');
-            emailElement.innerText = `기자 이메일: ${response_json.email}`;
+            userEmail.innerText = response_json.email
         }
 
         if (userInterest !== null) {
-            const interestElement = document.getElementById('user-interest');
-            interestElement.innerText = `관심 분야: ${response_json.interest}`;
+            userInterest.innerText = response_json.interest
         }
 
         // 구독자 수
@@ -70,10 +68,12 @@ async function Profile(user_id) {
             document.getElementById('user-edit').style.display = "none";
             document.getElementById('user-password-reset').style.display = "none";
             document.getElementById('user-delete').style.display = "none";
+            document.getElementById('subscribeButton').style.display = "block";
         } else {
             document.getElementById('user-edit').style.display = "block";
             document.getElementById('user-password-reset').style.display = "block";
             document.getElementById('user-delete').style.display = "block";
+            document.getElementById('subscribeButton').style.display = "none";
         }
     }
 }
@@ -100,8 +100,8 @@ async function loadArticles(user_id) {
                 const articleContainer = document.createElement('div');
 
                 const link = document.createElement('a');
-                link.href = `../article/detail.html?article_id=${article.id}`  // 글 링크             
                 link.innerText = article.title;  // 글 제목
+                link.href = `../article/detail.html?article_id=${article.id}`  // 글 링크             
 
                 const createAt = document.createElement('span'); // 글 작성일
                 createAt.innerText = article.created_at;
