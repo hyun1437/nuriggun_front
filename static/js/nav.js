@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     localStorage.removeItem("nickname")
-    location.replace('/base/nav.html')
+    location.replace('/base/index.html')
   }
   
 //   function getKakaoCode() {
