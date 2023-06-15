@@ -239,3 +239,102 @@ reactionButtons.forEach(reaction => {
         handleArticleReaction(reaction);
     });
 });
+
+
+// 댓글 작성하기
+async function postComment() {
+    const comment = document.getElementById("comment").value
+
+    const response = await fetch(`${backend_base_url}/article/${article_id}/comment/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        body: JSON.stringify({
+            "comment": comment,
+        }),
+        method: 'POST',
+    });
+    console.log(response)
+
+    if (response.status == 201) {
+        alert("댓글을 등록하였습니다.")
+        window.location.reload()
+    } else if (comment == '') {
+        alert("댓글 내용을 입력해 주세요.")
+    }
+}
+
+
+// 댓글 불러오기
+async function loadComments() {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/comment`);
+    console.log(response)
+    const comments = await response.json();
+    console.log(comments)
+
+    comments.forEach((comment) => {
+        const commentList = document.getElementById('comment-list');
+
+        // 댓글 수정 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
+        const editbutton = logined_id === comment.user.pk // 조건
+            ? `<a href="#" id="editbutton" onclick="showEditForm(${comment.id})">수정</a>` // ? 조건이 참인 경우 실행
+            : ''; // : 조건이 거짓인 경우 실행
+
+        // 댓글 삭제 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
+        const deletebutton = logined_id === comment.user.pk
+            ? `<a href="#" id="deletebutton" onclick="deleteComment(${comment.id})">삭제</a>`
+            : '';
+
+        commentList.insertAdjacentHTML('beforeend', `
+            <div id="comment-container" class="comment-container">
+
+            <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
+            <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">    
+                <span class="profile-img" id="comment-user-profile-img">
+                    <img style="width:50px; height:50px; margin-right:5px;"
+                        src="${backend_base_url}/media/${comment.user.profile_img}" alt="No Image"
+                        onerror="this.onerror=null; this.src='../static/image/unknown.png'">
+                </span> <span>${comment.user.nickname}</span>
+            </a>
+
+            <!-- 댓글 내용 -->
+            <a id="comment-comment">${comment.comment}</a>
+
+            <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
+            <div id="comment-info">
+                <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
+                <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
+                ${editbutton} ${deletebutton}
+
+            <!-- 날자 / 작성일, 최종일 -->
+            <p>작성 날짜: ${comment.comment_created_at} | 업데이트 날짜: ${comment.comment_updated_at}</p>
+
+            </div>
+        </div>
+        </div>
+            `);
+    });
+}
+
+
+// 댓글 삭제하기
+async function deleteComment(comment_id) {
+    if (confirm("정말 댓글을 삭제하시겠습니까?")) {
+        const response = await fetch(`${backend_base_url}/article/comment/${comment_id}`, {
+            headers: {
+                'content-type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem("access")
+            },
+            method: 'DELETE',
+        });
+        console.log(response)
+
+        if (response.status == 200) {
+            alert("댓글을 삭제하였습니다.")
+            window.location.reload()
+        } else {
+            alert("댓글 작성자만 삭제할 수 있습니다.")
+        }
+    }
+}
