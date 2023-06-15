@@ -15,10 +15,13 @@ async function handlePasswordReset() {
         })
     })
 
+    const response_json = await response.json()
+
     if (response.status == 200) {
         alert('이메일로 비밀번호 재설정 링크가 전송되었습니다.')
         // window.location.replace(`${frontend_base_url}/user/login.html`);
     } else {
-        alert("잘못된 이메일입니다.")
+        console.log(response_json)
+        alert("잘못된 이메일입니다. 다시 입력해주세요.")
     }
 }
