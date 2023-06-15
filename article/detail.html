@@ -9,7 +9,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/detail.css">
-    <!-- <link rel="stylesheet" href="/static/css/sidebar.css"> -->
+    <link rel="stylesheet" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/index.css">
 
@@ -31,51 +31,70 @@
     <div id="right-sidebar"></div>
 
 
-    <div class="article-container">
-        <!-- 구독 / 스크랩 버튼 -->
-        <div>
-            <button id="subscribeButton" type="button">공유</button>
-            <button id="scrapButton" type="button">스크랩</button>
-        </div>
+    <!-- 게시글 상세페이지 부분 -->
+    <div class="article-Detail-container">
 
+        <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩 -->
+        <div class="article-button">
+            <button id="article-share-button" onclick="articleShare()" type="button">URL 복사</button>
+            <button id="article-scrap-button" onclick="articleScrap()" type="button">스크랩</button>
+            <button id="article-update-button" onclick="showArticleEditForm()" type="button">수정</button>
+            <button id="article-delete-button" onclick="articleDelete()" type="button">삭제</button>
+        </div>
 
         <!-- 게시글 내용 -->
-        <div class="article-section">
-            <div id="title">기사 제목</div>
-            <div id="title">출처 : </div>
-            <div id="content">기사 내용</div>
+        <div id="article-section" class="article-section">
+            <!-- 기자 제목, 사진, 내용 -->
+            <p>기사 제목: <span id="article-title"></span></p>
+            <img id="article-image"><p>기사 사진</p>
+            <p>기사 내용: <span id="article-content"></span></p>
+
+            <!-- 프로필 유저의 닉네임, 구독 버튼 -->
+            <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+                <p>기자 이름: <span id="article-user"></span></p>
+                <button href="#" id="subscribeButton1" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
+            </div>
 
             <!-- 게시글 반응 5종 -->
-            <div class="article-reaction">
-                <button><img src="" alt="good"></button>
-                <button><img src="" alt="great"></button>
-                <button><img src="" alt="sad"></button>
-                <button><img src="" alt="angry"></button>
-                <button><img src="" alt="subsequent"></button>
+            <div class="article-reaction" id="article-reaction">
+                <div>
+                    <button id="reaction-good-button" onclick="handleArticleReaction()" class="good"><img
+                            src="../static/image/good.png" style="width:50px;" alt="good"></button>
+                    <p id="good-count"></p>
+                </div>
+
+                <div>
+                    <button id="reaction-great-button" onclick="handleArticleReaction()" class="great"><img
+                            src="../static/image/great.png" style="width:50px;" alt="great"></button>
+                    <p id="great-count"></p>
+                </div>
+
+                <div>
+                    <button id="reaction-sad-button" onclick="handleArticleReaction()" class="sad"><img
+                            src="../static/image/sad.png" style="width:50px;" alt="sad"></button>
+                    <p id="sad-count"></p>
+                </div>
+
+                <div>
+                    <button id="reaction-angry-button" onclick="handleArticleReaction()" class="angry"><img
+                            src="../static/image/angry.png" style="width:50px;" alt="angry"> </button>
+                    <p id="angry-count"></p>
+                </div>
+
+                <div>
+                    <button id="reaction-subsequent-button" onclick="handleArticleReaction()" class="subsequent"><img
+                            src="../static/image/subsequent.png" style="width:50px;" alt="subsequent"></button>
+                    <p id="subsequent-count"></p>
+                </div>
             </div>
         </div>
-
-
-        <!-- 프로필 유저의 이메일, 구독 버튼 -->
-        <div>
-            <p id="email">기자 이메일 :
-                <button id="subscribeButton" type="button">구독</button>
-            </p>
-        </div>
-
 
         <!-- 댓글 내용 -->
         <div class="comment-section">
             <!-- 댓글 작성 -->
             <div>
                 <textarea id="comment" placeholder="댓글 입력"></textarea>
-                <button type="button">등록</button>
-
-                <!-- 댓글 반응 2종 -->
-                <div class="comment-reaction">
-                    <button><img src="" alt="like"></button>
-                    <button><img src="" alt="hate"></button>
-                </div>
+                <button id="commentButton" onclick="postComment()">등록</button>
             </div>
 
             <!-- 댓글 목록 -->
@@ -84,14 +103,14 @@
     </div>
 
 
-
     <!-- JS -->
     <script src="../static/js/api.js"></script>
-    <script src="../static/js/detail.js"></script>
     <script src="/static/js/nav.js"></script>
     <script src="/static/js/left_sidebar.js"></script>
     <script src="/static/js/right_sidebar.js"></script>
     <script src="/static/js/search.js"></script>
+    <script src="../static/js/detail.js"></script>
+    <script src="../static/js/detail_edit.js"></script>
 
 
 </body>
