@@ -72,3 +72,26 @@ async function articleUpdate() {
         alert("게시글 작성자만 수정할 수 있습니다.")
     }
 }
+
+
+// 게시글 삭제하기
+async function articleDelete() {
+    if (confirm("정말 게시글을 삭제하시겠습니까?")) {
+        const response = await fetch(`${backend_base_url}/article/${article_id}/`, {
+            headers: {
+                'content-type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem("access")
+            },
+            method: 'DELETE',
+        });
+        console.log(response)
+        console.log(article_id)
+
+        if (response.status == 204) {
+            alert("게시글을 삭제하였습니다.")
+            window.location.replace(`${frontend_base_url}/base/index.html`);
+        } else {
+            alert("게시글 작성자만 삭제할 수 있습니다.")
+        }
+    }
+}
