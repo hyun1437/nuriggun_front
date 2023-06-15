@@ -199,3 +199,43 @@ async function isSubscribed(article_user_id) {
         console.error('Failed to load subscribes:', response.status);
     }
 }
+
+
+// 게시글 반응 5종
+async function handleArticleReaction(reactionType) {
+    const selectreaction = document.getElementById(`reaction-${reactionType}-button`).getAttribute('class');
+    console.log(selectreaction)
+
+    const data = { "reaction": selectreaction };
+    console.log(data)
+
+    const response = await fetch(`${backend_base_url}/article/${article_id}/reaction/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        body: JSON.stringify(data),
+        method: 'POST',
+    })
+    console.log(response)
+
+    if (response.status == 200) {
+        alert(`${reactionType} 반응을 취소했습니다.`)
+
+        window.location.reload()
+    } else if (response.status == 201) {
+        alert(`${reactionType} 반응을 눌렀습니다.`)
+
+        window.location.reload()
+    } else {
+        alert("다시 눌러보라구요 아시겠어요?!!?!.")
+    }
+}
+
+const reactionButtons = ['great', 'sad', 'angry', 'good', 'subsequent'];
+
+reactionButtons.forEach(reaction => {
+    document.getElementById(`reaction-${reaction}-button`).addEventListener('click', () => {
+        handleArticleReaction(reaction);
+    });
+});
