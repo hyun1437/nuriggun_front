@@ -318,6 +318,26 @@ async function loadComments() {
 }
 
 
+// 댓글 수정하기
+async function updateComment(comment_id, updatedComment) {
+    const response = await fetch(`${backend_base_url}/article/comment/${comment_id}/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        body: JSON.stringify(updatedComment),
+        method: 'PUT',
+    });
+
+    if (response.status == 200) {
+        alert("댓글을 수정했습니다.")
+        window.location.reload()
+    } else {
+        alert("댓글 작성자만 수정할 수 있습니다.")
+    }
+}
+
+
 // 댓글 삭제하기
 async function deleteComment(comment_id) {
     if (confirm("정말 댓글을 삭제하시겠습니까?")) {
