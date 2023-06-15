@@ -43,6 +43,7 @@
     <div>
       <!-- 프로필 유저의 이메일 -->
       <p id="user-email"><span id="user-email"></span></p>
+
       <!-- 프로필 유저의 닉네임 -->
       <p id="user-nickname"><span id="user-nickname"></span></p>
 
@@ -50,32 +51,33 @@
       <p id="user-interest"><span id="user-interest"></span></p>
 
       <!-- 프로필 유저에게 제보하기 -->
-      <li><a href="../user/note.html">제보하기</a></li>
+      <p><a href="../user/note.html">제보하기</a></p>
 
       <!-- 프로필 유저가 구독한 기자 수 -->
-      <li><a id="user-subscribe" href="#"><span id="user-subscribe"></span></a></li>
+      <p><a id="user-subscribe" href="#"><span id="user-subscribe"></span></a></p>
 
       <!-- 프로필 수정하기 -->
-      <li><button id="user-edit" type="button" onclick="ProfileUpdate()">수정하기</button></li>
+      <p><a id="user-edit" href="#" onclick="ProfileUpdate()">수정하기</a></p>
 
       <!-- 프로필 비밀번호 변경 -->
-      <li id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></li>
+      <p id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></p>
 
       <!-- 프로필 회원 탈퇴 -->
-      <li id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
+      <p id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
         <form id="delete-form" style="display:none" ;>
           <label for="password">비밀번호:</label>
           <input type="password" id="password" name="password">
           <button type="button" onclick="DeleteUser()">탈퇴</button>
         </form>
-      </li>
+      </p>
+    </div>
+
+    <!-- 작성한 글들의 목록 -->
+    <div class="my-article-list"> 내가 작성한 글 보기
+      <ul id="article-list"></ul>
     </div>
 
   </div>
-
-
-  <!-- 작성한 글들의 목록 -->
-  <ul id="article-list"></ul>
 
 
   <!-- JS -->
