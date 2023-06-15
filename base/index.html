@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/sidebar.css">
@@ -24,7 +24,9 @@
     <script src="/static/js/right_sidebar.js"></script>
     <script src="/static/js/search.js"></script>
     <script src="/static/js/api.js"></script>
-    <script src="/static/js/login.js"></script>
+    <script src="/static/js/index.js"></script>
+
+
 
     
 
@@ -34,7 +36,7 @@
 
 
 
-<body onload="getKakaoCode()">
+<body>
  <!-- 상단 네비게이션 바 -->
  <div id="navbar"></div>
 
@@ -43,24 +45,24 @@
  <div id="right-sidebar"></div>
  
 <!-- 메인,서브 기사 -->
+<div>
+  <h5 id="today"></h5>
+</div>
 
 <div class="articles-container">
-    <div class="main-article">
+    <div class="main-article" id="main-article">
       <div class="article">
-        <h3>메인기사</h3>
-        <p>메인기사 내용..</p>
-        <p>메인기사 내용..</p>
+        <h3>메인기사(댓글 많은 순)</h3>
       </div>
     </div>
     
-    <div class="sub-articles">
+    <div class="sub-article" id="sub-article">
       <div class="article">
-        <h3>서브기사</h3>
-        <p>서브기사 내용</p>
-        <p>서브기사 내용</p>
+        <h3>서브기사(최신 순)</h3>
       </div>
     </div>
-  </div>
+</div>
+
   
   
 </body>
