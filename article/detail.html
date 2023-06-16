@@ -32,21 +32,26 @@
 
 
     <!-- 게시글 상세페이지 부분 -->
-    <div class="article-Detail-container">
+    <div class="article-detail-container">
 
         <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩 -->
         <div class="article-button">
+            <button id="article-print-button" onclick="window.print()" type="button" style="border: none; background-color: transparent;">🖨️</button>
             <button id="article-share-button" onclick="articleShare()" type="button">URL 복사</button>
             <button id="article-scrap-button" onclick="articleScrap()" type="button">스크랩</button>
-            <button id="article-update-button" onclick="showArticleEditForm()" type="button">수정</button>
+            <button id="article-update-button"
+                onclick="location.href=`../article/detail_update.html?article_id=${article_id}`"
+                type="button">수정</button>
             <button id="article-delete-button" onclick="articleDelete()" type="button">삭제</button>
         </div>
 
         <!-- 게시글 내용 -->
         <div id="article-section" class="article-section">
-            <!-- 기자 제목, 사진, 내용 -->
+            <!-- 기자 제목, 카테고리, 사진, 내용 -->
             <p>기사 제목: <span id="article-title"></span></p>
-            <img id="article-image"><p>기사 사진</p>
+            <p>기사 카테고리: <span id="article-categories"></span></p>
+            <img id="article-image">
+            <p>기사 사진</p>
             <p>기사 내용: <span id="article-content"></span></p>
 
             <!-- 프로필 유저의 닉네임, 구독 버튼 -->
@@ -110,7 +115,6 @@
     <script src="/static/js/right_sidebar.js"></script>
     <script src="/static/js/search.js"></script>
     <script src="../static/js/detail.js"></script>
-    <script src="../static/js/detail_edit.js"></script>
 
 
 </body>
