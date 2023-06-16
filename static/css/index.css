@@ -9,7 +9,7 @@
     margin-right: 20px;
   }
   
-  .sub-articles {
+  .sub-article {
     flex: 1;
     width: 20%;
   }
@@ -20,4 +20,4 @@
     border: 1px solid #ccc;
     text-align: center;
   }
-  
+

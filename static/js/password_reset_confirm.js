@@ -25,13 +25,26 @@ async function handlePasswordResetConfirm() {
         })
     })
 
+    const response_json = await response.json()
+
     if (response.status == 200) {
         alert('비밀번호 재설정이 완료되었습니다.')
         window.location.replace(`${frontend_base_url}/user/login.html`);
     } else if (response.status == 401) {
         alert("유효하지 않은 링크입니다.")
-
     } else {
-        alert("존재하지 않는 회원입니다.")
+        let errorMessages = ''
+        if (response_json.password) {
+            errorMessages += response_json.password[0] + '\n'
+        }
+        if (response_json.password2) {
+            errorMessages += response_json.password2[0] + '\n'
+        }
+        if (response_json.non_field_errors
+            ) {
+            errorMessages += response_json.non_field_errors
+            [0] + '\n'
+        }
+        alert(errorMessages)
     }
 }
