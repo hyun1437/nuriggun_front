@@ -21,3 +21,44 @@
     text-align: center;
   }
 
+  .article {
+    display: flex;
+    align-items: center;
+  }
+  
+  .article .sub-img {
+    width: 200px;
+    height: auto;
+    margin-right: 10px; 
+  }
+  
+  .article .sub-title {
+    margin-right: 10px; 
+  }
+
+/* top버튼 시작  */
+
+/* .back_to_top {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #f5f5f5;
+  color: #444;
+  cursor: pointer;
+  border-radius: 2px;
+  display: none;
+}
+
+.back_to_top:hover {
+  background: #e9ebec;
+}
+
+.back_to_top-show {
+  display: block;
+} */
+/* top 버튼 끝  */
