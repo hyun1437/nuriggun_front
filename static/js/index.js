@@ -3,33 +3,7 @@ console.log("index.js 연결 확인")
 window.onload = () => {
     loadMainArticles();
     loadSubArticles();
-    loadToday()
-
-    // top 버튼 시작
-    // function trackScroll() {
-    //     var scrolled = window.pageYOffset;
-    //     var coords = document.documentElement.clientHeight;
-    
-    //     if (scrolled > coords) {
-    //       goTopBtn.classList.add('back_to_top-show');
-    //     }
-    //     if (scrolled < coords) {
-    //       goTopBtn.classList.remove('back_to_top-show');
-    //     }
-    //   }
-    
-    //   function backToTop() {
-    //     if (window.pageYOffset > 0) {
-    //       window.scrollBy(0, -80);
-    //       setTimeout(backToTop, 0);
-    //     }
-    //   }
-    
-    //   var goTopBtn = document.querySelector('.back_to_top');
-    
-    //   window.addEventListener('scroll', trackScroll);
-    //   goTopBtn.addEventListener('click', backToTop);
-    // top 버튼 끝
+    loadToday();
 }
 
 
@@ -39,6 +13,7 @@ async function getArticles(order) {
     })
     if (response.status == 200) {
         const response_json = await response.json()
+        console.log(response_json)
         return response_json
     } else {
         alert('게시글 로딩 실패')
@@ -150,33 +125,48 @@ async function loadToday() {
     todayElement.innerText = formattedDate
 }
 
-// // top 버튼 시작
+// back to top 버튼
+let debounceTimeout;
+let body = document.querySelector('body');
+let scrollingElement = document.scrollingElement;
 
-// document.addEventListener('DOMContentLoaded', function() {
-  
-//     function trackScroll() {
-//       var scrolled = window.pageYOffset;
-//       var coords = document.documentElement.clientHeight;
-  
-//       if (scrolled > coords) {
-//         goTopBtn.classList.add('back_to_top-show');
-//       }
-//       if (scrolled < coords) {
-//         goTopBtn.classList.remove('back_to_top-show');
-//       }
-//     }
-  
-//     function backToTop() {
-//       if (window.pageYOffset > 0) {
-//         window.scrollBy(0, -80);
-//         setTimeout(backToTop, 0);
-//       }
-//     }
-  
-//     var goTopBtn = document.querySelector('.back_to_top');
-  
-//     window.addEventListener('scroll', trackScroll);
-//     goTopBtn.addEventListener('click', backToTop);
-//   })();
+setScrollClass();
 
-// // top 버튼 끝
+window.addEventListener('scroll', setScrollClass);
+window.addEventListener('resize', setScrollClass);
+
+function setScrollClass() {
+  if (debounceTimeout) {
+    window.cancelAnimationFrame(debounceTimeout);
+  }
+
+  debounceTimeout = window.requestAnimationFrame(function () {
+    let scrollTop = scrollingElement.scrollTop;
+    let scrollHeight = scrollingElement.scrollHeight;
+    let innerHeight = window.innerHeight;
+    let scrollBottom = scrollHeight - innerHeight - scrollTop;
+
+    body.classList.toggle('at-top', scrollTop < 48);
+    body.classList.toggle('at-bottom', scrollBottom < 48);
+  });
+}
+
+// async function getWeather() {
+//     try {
+//       const response = await fetch(' ', {
+//         headers: {
+//             Authorization: " "
+//           }
+//       });
+      
+//       if (response.ok) {
+//         const data = await response.json();
+//         // 날씨 데이터를 처리하는 로직 작성
+//         console.log(data);
+//       } else {
+//         console.error('날씨 API 요청에 실패했습니다.');
+//       }
+//     } catch (error) {
+//       console.error('날씨 API 요청 중 오류가 발생했습니다.', error);
+//     }
+//   }
