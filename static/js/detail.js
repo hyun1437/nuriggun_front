@@ -54,26 +54,6 @@ async function articleScrap() {
 }
 
 
-// 게시글 수정하기
-async function articleUpdate() {
-    const response = await fetch(`${backend_base_url}/article/${article_id}/`, {
-        headers: {
-            'content-type': 'application/json',
-            "Authorization": "Bearer " + localStorage.getItem("access")
-        },
-        body: JSON.stringify(updatedArticle),
-        method: 'PATCH',
-    });
-
-    if (response.status == 200) {
-        alert("게시글을 수정했습니다.")
-        window.location.reload()
-    } else {
-        alert("게시글 작성자만 수정할 수 있습니다.")
-    }
-}
-
-
 // 게시글 삭제하기
 async function articleDelete() {
     if (confirm("정말 게시글을 삭제하시겠습니까?")) {
@@ -153,6 +133,15 @@ async function articleDetail() {
                 }
             }
         });
+
+        // 게시글 수정 진행 시 기존 값 가져오기 위한 설정
+        const originalTitle = response_json.title;
+        const originalImage = `${backend_base_url}${response_json.image}`;
+        const originalContent = response_json.content;
+        
+        sessionStorage.setItem('article-title', originalTitle);
+        sessionStorage.setItem('article-image', originalImage);
+        sessionStorage.setItem('article-content', originalContent);
     }
 }
 
