@@ -274,7 +274,7 @@ async function loadComments() {
 
         // 댓글 수정 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
         const editbutton = logined_id === comment.user.pk // 조건
-            ? `<a href="#" id="editbutton" onclick="showEditForm(${comment.id})">수정</a>` // ? 조건이 참인 경우 실행
+            ? `<a href="#" id="editbutton" onclick="showEditForm(${comment.id}); event.preventDefault();">수정</a>` // ? 조건이 참인 경우 실행
             : ''; // : 조건이 거짓인 경우 실행
 
         // 댓글 삭제 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
@@ -283,7 +283,7 @@ async function loadComments() {
             : '';
 
         commentList.insertAdjacentHTML('beforeend', `
-            <div id="comment-container" class="comment-container">
+            <div id="comment-container-${comment.id}" class="comment-container">
 
             <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
             <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">    
@@ -315,18 +315,22 @@ async function loadComments() {
 
 
 // 댓글 수정 폼
-function showEditForm(commentId) {
-    const commentEditContainer = document.getElementById('comment-comment');
+async function showEditForm(comment_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/comment/`);
+    const comments = await response.json();
+
+    const index = comments.findIndex(comment => comment.id === comment_id);
+
+    const commentEditContainer = document.getElementById(`comment-container-${comment_id}`);
     console.log(commentEditContainer)
 
     // 기존 댓글 내용 가져오기
-    const originalComment = commentEditContainer.innerText;
+    const originalComment = comments[index].comment;
     console.log(originalComment)
 
     // 텍스트 박스 생성
     const editTextarea = document.createElement('textarea');
-    // editTextarea.value = originalComment;
-    editTextarea.value = '수정할 내용을 입력하세요';
+    editTextarea.value = originalComment;
     editTextarea.classList.add('edit-textarea');
 
     // 댓글 수정 저장 버튼 생성
@@ -335,7 +339,7 @@ function showEditForm(commentId) {
     commentEditSaveButton.classList.add('comment-save-button');
     commentEditSaveButton.addEventListener('click', async () => {
         const updatedContent = editTextarea.value;
-        await updateComment(commentId, { comment: updatedContent });
+        await updateComment(comment_id, { comment: updatedContent });
     });
 
     // 댓글 수정 취소 버튼 생성
