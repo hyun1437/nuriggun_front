@@ -1,0 +1,20 @@
+.container {
+  padding-top: 40px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.table th {
+  text-align: center;
+  font-weight: bold;
+}
+
+.table td {
+  text-align: center;
+}
+
+.table td:nth-child(3) {
+  white-space: nowrap;
+}
