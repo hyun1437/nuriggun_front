@@ -86,6 +86,7 @@ async function articleDetail() {
 
     if (response.status == 200) {
         const response_json = await response.json();
+        console.log(response_json)
         const article_user_id = response_json.user.pk;
 
         const articleUpdateButton = document.getElementById('article-update-button');
@@ -105,12 +106,16 @@ async function articleDetail() {
         }
 
         const articleTitle = document.getElementById('article-title');
+        const articleCategory = document.getElementById('article-category');
         const articleImage = document.getElementById('article-image');
         const articleContent = document.getElementById('article-content');
         const articleUser = document.getElementById('article-user');
 
         if (articleTitle !== null) {
             articleTitle.innerText = response_json.title;
+        }
+        if (articleCategory !== null) {
+            articleCategory.innerText = response_json.category;
         }
         if (articleImage !== null) {
             articleImage.src = `${backend_base_url}${response_json.image}`;
@@ -136,10 +141,12 @@ async function articleDetail() {
 
         // 게시글 수정 진행 시 기존 값 가져오기 위한 설정
         const originalTitle = response_json.title;
+        const originalCategory = response_json.category;
         const originalImage = `${backend_base_url}${response_json.image}`;
         const originalContent = response_json.content;
-        
+
         sessionStorage.setItem('article-title', originalTitle);
+        sessionStorage.setItem('article-category', originalCategory);
         sessionStorage.setItem('article-image', originalImage);
         sessionStorage.setItem('article-content', originalContent);
     }
