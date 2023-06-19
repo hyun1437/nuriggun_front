@@ -102,3 +102,5 @@ async function loadToday() {
     const todayElement = document.getElementById("today")
     todayElement.innerText = formattedDate
 }
+
+
