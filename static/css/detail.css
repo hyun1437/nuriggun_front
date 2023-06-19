@@ -1,4 +1,4 @@
-.article-Detail-container {
+.article-detail-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,3 +68,36 @@
   transform: rotate(15deg);
 }
 
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.article-update-button button {
+  margin-left: 10px;
+}
+
+.pagination-container {
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.pagination-container a {
+  color: rgb(150, 209, 255);
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.pagination-container a.active {
+  background-color: rgb(150, 209, 255);
+  color: rgb(29, 44, 255);
+}

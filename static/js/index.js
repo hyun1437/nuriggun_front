@@ -3,8 +3,9 @@ console.log("index.js 연결 확인")
 window.onload = () => {
     loadMainArticles();
     loadSubArticles();
-    loadToday()
+    loadToday();
 }
+
 
 // 게시글 불러오기 
 async function getArticles(order) {
@@ -12,6 +13,7 @@ async function getArticles(order) {
     })
     if (response.status == 200) {
         const response_json = await response.json()
+        console.log(response_json)
         return response_json
     } else {
         alert('게시글 로딩 실패')
@@ -22,38 +24,53 @@ async function getArticles(order) {
 // 게시글 불러와서 메인에 표시하기
 // 페이지네이션 - 4개까지
 async function loadMainArticles() {
-    
-    articles = await getArticles("main");
-    
-    console.log(articles.results)
-    
-    const main_article = document.getElementById("main-article")
-    
-    articles.results.results.forEach(article => {
-        const newArticle = document.createElement("div");
-        newArticle.setAttribute("class", "article")
+    try {
+        articles = await getArticles("main");
+        const sliderContainer = document.querySelector(".my-slider");
         
-        const articleImage = document.createElement("img")
-        articleImage.setAttribute("class", "card-img-top")
-        articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
-        articleImage.style.width = "200px";  
-        articleImage.style.height = "auto";
+        console.log(articles.results)
+        
+        articles.results.results.forEach(article => {
+            const newSlide = document.createElement("div");
+            newSlide.classList.add("slide");
+            
+            const articleImage = document.createElement("img")
+            articleImage.setAttribute("class", "main-img")
+            articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
+            articleImage.style.width = "200px";  
+            articleImage.style.height = "auto";
 
-        const newTitle = document.createElement("h5")
-        newTitle.setAttribute("class", "title")
-        newTitle.innerText = article.title
+            const newTitle = document.createElement("h5")
+            newTitle.setAttribute("class", "main-title")
+            newTitle.innerText = article.title
 
-        const newContent = document.createElement("p")
-        newContent.setAttribute("class", "content")
-        newContent.innerText = article.content
+            newSlide.appendChild(articleImage)
+            newSlide.appendChild(newTitle)
 
-        newArticle.appendChild(articleImage)
-        newArticle.appendChild(newTitle)
-        newArticle.appendChild(newContent)
+            sliderContainer.appendChild(newSlide)
 
-        main_article.appendChild(newArticle)
-})
+            // 게시글 클릭시 
+            newSlide.addEventListener('click', () => {
+                window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+            });
+        });
+        // 슬라이더 초기화
+        var slider = tns({
+            container: ".my-slider",
+            items: 1,
+            slideBy: 'page',
+            mouseDrag: true,
+            autoplay: true,
+            autoplayText: ["▶", "❚❚"],
+            controlsText: ["◀", "▶"]
+
+        });
+    } catch (error) {
+      console.error("메인기사 로딩 실패", error);
+    }   
+
 }
+
 
 // 게시글 불러와서 서브구역에 표시하기
 async function loadSubArticles() {
@@ -69,17 +86,17 @@ async function loadSubArticles() {
         newArticle.setAttribute("class", "article")
         
         const articleImage = document.createElement("img")
-        articleImage.setAttribute("class", "card-img-top")
+        articleImage.setAttribute("class", "sub-img")
         articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
         articleImage.style.width = "200px";  
         articleImage.style.height = "auto";
 
         const newTitle = document.createElement("h5")
-        newTitle.setAttribute("class", "title")
+        newTitle.setAttribute("class", "sub-title")
         newTitle.innerText = article.title
 
         const newContent = document.createElement("p")
-        newContent.setAttribute("class", "content")
+        newContent.setAttribute("class", "sub-content")
         newContent.innerText = article.content
 
         newArticle.appendChild(articleImage)
@@ -87,6 +104,11 @@ async function loadSubArticles() {
         newArticle.appendChild(newContent)
 
         sub_article.appendChild(newArticle)
+
+        // 게시글 클릭시 
+        newArticle.addEventListener('click', () => {
+            window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+        });
 })
 }
 
@@ -104,3 +126,48 @@ async function loadToday() {
 }
 
 
+// back to top 버튼
+let debounceTimeout;
+let body = document.querySelector('body');
+let scrollingElement = document.scrollingElement;
+
+setScrollClass();
+
+window.addEventListener('scroll', setScrollClass);
+window.addEventListener('resize', setScrollClass);
+
+function setScrollClass() {
+  if (debounceTimeout) {
+    window.cancelAnimationFrame(debounceTimeout);
+  }
+
+  debounceTimeout = window.requestAnimationFrame(function () {
+    let scrollTop = scrollingElement.scrollTop;
+    let scrollHeight = scrollingElement.scrollHeight;
+    let innerHeight = window.innerHeight;
+    let scrollBottom = scrollHeight - innerHeight - scrollTop;
+
+    body.classList.toggle('at-top', scrollTop < 48);
+    body.classList.toggle('at-bottom', scrollBottom < 48);
+  });
+}
+
+// async function getWeather() {
+//     try {
+//       const response = await fetch(' ', {
+//         headers: {
+//             Authorization: " "
+//           }
+//       });
+      
+//       if (response.ok) {
+//         const data = await response.json();
+//         // 날씨 데이터를 처리하는 로직 작성
+//         console.log(data);
+//       } else {
+//         console.error('날씨 API 요청에 실패했습니다.');
+//       }
+//     } catch (error) {
+//       console.error('날씨 API 요청 중 오류가 발생했습니다.', error);
+//     }
+//   }

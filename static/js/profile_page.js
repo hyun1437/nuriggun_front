@@ -6,6 +6,7 @@ window.onload = () => {
     Profile(urlParams);
     loadArticles(urlParams);
     isSubscribed()
+    loadScraps()
 }
 
 
@@ -65,11 +66,13 @@ async function Profile(user_id) {
 
         // 해당 프로필 페이지가 로그인 한 유저의 페이지일 때 보이게 하기 - 회원 탈퇴, 비밀번호 변경, 수정하기
         if (user_id != logined_id) {
+            document.getElementById('my-scrap-article-list').style.display = "none";
             document.getElementById('user-edit').style.display = "none";
             document.getElementById('user-password-reset').style.display = "none";
             document.getElementById('user-delete').style.display = "none";
             document.getElementById('subscribeButton').style.display = "block";
         } else {
+            document.getElementById('my-scrap-article-list').style.display = "block";
             document.getElementById('user-edit').style.display = "block";
             document.getElementById('user-password-reset').style.display = "block";
             document.getElementById('user-delete').style.display = "block";
@@ -110,6 +113,52 @@ async function loadArticles(user_id) {
                 articleContainer.appendChild(createAt);
                 listItem.appendChild(articleContainer);
                 articleList.appendChild(listItem);
+            }
+        }
+    }
+}
+
+
+// 프로필 페이지의 유저가 스크랩한 글 목록
+async function loadScraps() {
+    const response = await fetch(`${backend_base_url}/article/scrap/`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+    });
+    // const response_json = await response.json();
+
+    console.log(response)
+    // console.log(response_json);
+
+
+    if (response.status == 200) {
+        const response_json = await response.json();
+        console.log(response_json);
+        // console.log(response_json[0].title);
+
+        // 스크랩한 게시글
+        const ScrapList = document.getElementById('scrap-article-list');
+
+        if (ScrapList !== null) {
+            for (let i = 0; i < response_json.length; i++) {
+                const article = response_json[i];
+                const listItem = document.createElement('li');
+                const scrapArticleContainer = document.createElement('div');
+
+                const link = document.createElement('a');
+                link.innerText = article.title;  // 글 제목
+                link.href = `../article/detail.html?article_id=${article.id}`  // 글 링크             
+
+                const createAt = document.createElement('span'); // 글 작성일
+                createAt.innerText = article.created_at;
+
+                scrapArticleContainer.appendChild(link);
+                scrapArticleContainer.appendChild(createAt);
+                listItem.appendChild(scrapArticleContainer);
+                ScrapList.appendChild(listItem);
             }
         }
     }

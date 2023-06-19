@@ -10,13 +10,11 @@
     <link rel="stylesheet" href="/static/css/nav.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/index.css">
-
+    <link rel="stylesheet" href="/static/css/main_slide.css">
 
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
-
 
     <!-- JS -->
     <script src="/static/js/nav.js"></script>
@@ -25,10 +23,10 @@
     <script src="/static/js/login.js"></script>
     <script src="/static/js/category.js"></script>
     <script src="/static/js/index.js"></script>
+    <script src="/static/js/main_slide.js"></script>
+
     
     
-
-
 
 </head>
 
@@ -49,10 +47,12 @@
 
 <div class="articles-container">
   <div class="main-article" id="main-article">
-      <div class="article">
-        <h3>메인기사(댓글 많은 순)</h3>
+    <div class="slider-wrapper">
+      <h3>메인기사(댓글 많은 순)</h3>
+      <div class="my-slider">
       </div>
     </div>
+  </div>
     
     <div class="sub-article" id="sub-article">
       <div class="article">
@@ -60,6 +60,9 @@
       </div>
     </div>
 </div>
+
+<a class="back-to-top" href="#">Back to top</a>
+
  <!-- 푸터 -->
  <footer id="footer">
     <div class="container">
@@ -81,8 +84,6 @@
       </div>
     </div>
   </footer>
-  
-  
 </body>
 
 </html>
