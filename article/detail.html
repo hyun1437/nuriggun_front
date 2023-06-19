@@ -9,9 +9,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/detail.css">
-    <link rel="stylesheet" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/nav.css">
 
 
     <!-- jQuery CDN -->
@@ -24,11 +24,8 @@
 
     <!-- 상단 네비게이션 바 -->
     <div id="navbar"></div>
+    <div id = "feed-article">
 
-
-    <!-- 사이드 바 -->
-    <div id="left-sidebar"></div>
-    <div id="right-sidebar"></div>
 
 
     <!-- 게시글 상세페이지 부분 -->
@@ -59,6 +56,7 @@
                 <p>기자 이름: <span id="article-user"></span></p>
                 <button href="#" id="subscribeButton1" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
             </div>
+            
 
             <!-- 게시글 반응 5종 -->
             <div class="article-reaction" id="article-reaction">
@@ -93,6 +91,7 @@
                 </div>
             </div>
         </div>
+    
 
         <!-- 댓글 내용 -->
         <div class="comment-section">
@@ -107,13 +106,18 @@
             <div id="pagination" class="pagination-container"></div>
         </div>
     </div>
+</div>
 
+    <script>
+        function searchRedirect() {
+            const searchKeyword = document.getElementById("article-search").value;
+            window.location.href = `base/index.html?search=${encodeURIComponent(searchKeyword)}`;
+        }
+    </script>
 
     <!-- JS -->
     <script src="../static/js/api.js"></script>
     <script src="/static/js/nav.js"></script>
-    <script src="/static/js/left_sidebar.js"></script>
-    <script src="/static/js/right_sidebar.js"></script>
     <script src="/static/js/search.js"></script>
     <script src="../static/js/detail.js"></script>
 

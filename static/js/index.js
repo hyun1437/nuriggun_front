@@ -125,6 +125,7 @@ async function loadToday() {
     todayElement.innerText = formattedDate
 }
 
+
 // back to top 버튼
 let debounceTimeout;
 let body = document.querySelector('body');
