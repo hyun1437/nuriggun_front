@@ -9,9 +9,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/detail.css">
-    <link rel="stylesheet" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/nav.css">
 
 
     <!-- jQuery CDN -->
@@ -25,10 +25,6 @@
     <!-- 상단 네비게이션 바 -->
     <div id="navbar"></div>
 
-
-    <!-- 사이드 바 -->
-    <div id="left-sidebar"></div>
-    <div id="right-sidebar"></div>
 
 
     <!-- 게시글 상세페이지 부분 -->
@@ -108,12 +104,16 @@
         </div>
     </div>
 
+    <script>
+        function searchRedirect() {
+            const searchKeyword = document.getElementById("article-search").value;
+            window.location.href = `base/index.html?search=${encodeURIComponent(searchKeyword)}`;
+        }
+    </script>
 
     <!-- JS -->
     <script src="../static/js/api.js"></script>
     <script src="/static/js/nav.js"></script>
-    <script src="/static/js/left_sidebar.js"></script>
-    <script src="/static/js/right_sidebar.js"></script>
     <script src="/static/js/search.js"></script>
     <script src="../static/js/detail.js"></script>
 
