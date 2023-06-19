@@ -109,5 +109,5 @@ function OpenArticle() {
 
 // 쪽지 보내기
 function OpenNote() {
-    window.location.href = "/user/note.html";
+    window.location.href = "/user/message.html";
 }

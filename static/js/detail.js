@@ -86,6 +86,7 @@ async function articleDetail() {
 
     if (response.status == 200) {
         const response_json = await response.json();
+        console.log(response_json)
         const article_user_id = response_json.user.pk;
 
         const articleUpdateButton = document.getElementById('article-update-button');
@@ -105,12 +106,16 @@ async function articleDetail() {
         }
 
         const articleTitle = document.getElementById('article-title');
+        const articleCategory = document.getElementById('article-category');
         const articleImage = document.getElementById('article-image');
         const articleContent = document.getElementById('article-content');
         const articleUser = document.getElementById('article-user');
 
         if (articleTitle !== null) {
             articleTitle.innerText = response_json.title;
+        }
+        if (articleCategory !== null) {
+            articleCategory.innerText = response_json.category;
         }
         if (articleImage !== null) {
             articleImage.src = `${backend_base_url}${response_json.image}`;
@@ -136,10 +141,12 @@ async function articleDetail() {
 
         // 게시글 수정 진행 시 기존 값 가져오기 위한 설정
         const originalTitle = response_json.title;
+        const originalCategory = response_json.category;
         const originalImage = `${backend_base_url}${response_json.image}`;
         const originalContent = response_json.content;
-        
+
         sessionStorage.setItem('article-title', originalTitle);
+        sessionStorage.setItem('article-category', originalCategory);
         sessionStorage.setItem('article-image', originalImage);
         sessionStorage.setItem('article-content', originalContent);
     }
@@ -262,12 +269,20 @@ async function loadComments() {
     const comments = await response.json();
     console.log(comments)
 
-    comments.forEach((comment) => {
-        const commentList = document.getElementById('comment-list');
+    const commentList = document.getElementById('comment-list');
+    // commentList.innerHTML = ''; // 기존 댓글 목록 초기화
+
+    const startIndex = (currentPage - 1) * commentsPerPage;
+    const endIndex = startIndex + commentsPerPage;
+    const currentComments = comments.slice(startIndex, endIndex);
+
+
+    currentComments.forEach((comment) => {
+        // const commentList = document.getElementById('comment-list');
 
         // 댓글 수정 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
         const editbutton = logined_id === comment.user.pk // 조건
-            ? `<a href="#" id="editbutton" onclick="showEditForm(${comment.id})">수정</a>` // ? 조건이 참인 경우 실행
+            ? `<a href="#" id="editbutton" onclick="showEditForm(${comment.id}); event.preventDefault();">수정</a>` // ? 조건이 참인 경우 실행
             : ''; // : 조건이 거짓인 경우 실행
 
         // 댓글 삭제 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
@@ -276,7 +291,7 @@ async function loadComments() {
             : '';
 
         commentList.insertAdjacentHTML('beforeend', `
-            <div id="comment-container" class="comment-container">
+            <div id="comment-container-${comment.id}" class="comment-container">
 
             <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
             <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">    
@@ -304,22 +319,64 @@ async function loadComments() {
         </div>
             `);
     });
+
+    // 페이지네이션 생성
+    renderPagination(comments.length);
+}
+
+
+// 댓글 페이지 네이션
+let currentPage = 1; // 현재 페이지
+const commentsPerPage = 5; // 페이지당 댓글 수
+
+
+// 페이지네이션 생성 함수
+function renderPagination(totalComments) {
+    const totalPages = Math.ceil(totalComments / commentsPerPage);
+
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+
+    const paginationContainer = document.createElement('div');
+    paginationContainer.classList.add('pagination-container');
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.textContent = i;
+
+        if (i === currentPage) {
+            pageLink.classList.add('active');
+        } else {
+            pageLink.addEventListener('click', () => {
+                currentPage = i;
+                loadComments();
+            });
+        }
+
+        pagination.appendChild(pageLink);
+    }
+    pagination.appendChild(paginationContainer);
 }
 
 
 // 댓글 수정 폼
-function showEditForm(commentId) {
-    const commentEditContainer = document.getElementById('comment-comment');
+async function showEditForm(comment_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/comment/`);
+    const comments = await response.json();
+
+    const index = comments.findIndex(comment => comment.id === comment_id);
+
+    const commentEditContainer = document.getElementById(`comment-container-${comment_id}`);
     console.log(commentEditContainer)
 
     // 기존 댓글 내용 가져오기
-    const originalComment = commentEditContainer.innerText;
+    const originalComment = comments[index].comment;
     console.log(originalComment)
 
     // 텍스트 박스 생성
     const editTextarea = document.createElement('textarea');
-    // editTextarea.value = originalComment;
-    editTextarea.value = '수정할 내용을 입력하세요';
+    editTextarea.value = originalComment;
     editTextarea.classList.add('edit-textarea');
 
     // 댓글 수정 저장 버튼 생성
@@ -328,7 +385,7 @@ function showEditForm(commentId) {
     commentEditSaveButton.classList.add('comment-save-button');
     commentEditSaveButton.addEventListener('click', async () => {
         const updatedContent = editTextarea.value;
-        await updateComment(commentId, { comment: updatedContent });
+        await updateComment(comment_id, { comment: updatedContent });
     });
 
     // 댓글 수정 취소 버튼 생성

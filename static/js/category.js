@@ -1,4 +1,4 @@
-window.onload = async function() {
+window.addEventListener('load',async function()  {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     if (category) {
@@ -7,7 +7,7 @@ window.onload = async function() {
         // 만약 category가 없다면 전체 게시글을 보여줍니다.
         viewCategory("");
     }
-}
+})
 
 async function getCategory(category) {
     let url;
