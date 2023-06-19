@@ -6,6 +6,9 @@ window.onload = () => {
     const originalTitle = sessionStorage.getItem('article-title');
     document.getElementById('article-update-title').value = originalTitle;
 
+    const originalCategory = sessionStorage.getItem('article-category');
+    document.getElementById('article-update-category').value = originalCategory;
+
     const originalImage = sessionStorage.getItem('article-image');
     document.getElementById('article-update-image').src = originalImage;
 
@@ -16,6 +19,7 @@ window.onload = () => {
 // 게시글 수정하기
 function articleUpdate() {
     const updateTitle = $('#article-update-title').val();
+    const updateCategory = $('#article-update-category').val();
     const updateContent = $('#article-update-content').val();
     const updateImage = $('#article-update-image').val();
 
@@ -29,6 +33,7 @@ function articleUpdate() {
     const formData = new FormData();
 
     formData.append("title", updateTitle);
+    formData.append("category", updateCategory);
     formData.append("content", updateContent);
 
     // 이미지 데이터를 File 객체로 변환하여 추가
