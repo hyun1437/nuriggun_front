@@ -269,8 +269,16 @@ async function loadComments() {
     const comments = await response.json();
     console.log(comments)
 
-    comments.forEach((comment) => {
-        const commentList = document.getElementById('comment-list');
+    const commentList = document.getElementById('comment-list');
+    // commentList.innerHTML = ''; // 기존 댓글 목록 초기화
+
+    const startIndex = (currentPage - 1) * commentsPerPage;
+    const endIndex = startIndex + commentsPerPage;
+    const currentComments = comments.slice(startIndex, endIndex);
+
+
+    currentComments.forEach((comment) => {
+        // const commentList = document.getElementById('comment-list');
 
         // 댓글 수정 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
         const editbutton = logined_id === comment.user.pk // 조건
@@ -311,6 +319,44 @@ async function loadComments() {
         </div>
             `);
     });
+
+    // 페이지네이션 생성
+    renderPagination(comments.length);
+}
+
+
+// 댓글 페이지 네이션
+let currentPage = 1; // 현재 페이지
+const commentsPerPage = 5; // 페이지당 댓글 수
+
+
+// 페이지네이션 생성 함수
+function renderPagination(totalComments) {
+    const totalPages = Math.ceil(totalComments / commentsPerPage);
+
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+
+    const paginationContainer = document.createElement('div');
+    paginationContainer.classList.add('pagination-container');
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.textContent = i;
+
+        if (i === currentPage) {
+            pageLink.classList.add('active');
+        } else {
+            pageLink.addEventListener('click', () => {
+                currentPage = i;
+                loadComments();
+            });
+        }
+
+        pagination.appendChild(pageLink);
+    }
+    pagination.appendChild(paginationContainer);
 }
 
 
