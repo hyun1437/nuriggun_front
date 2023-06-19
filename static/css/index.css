@@ -21,3 +21,40 @@
     text-align: center;
   }
 
+  .article {
+    display: flex;
+    align-items: center;
+  }
+  
+  .article .sub-img {
+    width: 200px;
+    height: auto;
+    margin-right: 10px; 
+  }
+  
+  .article .sub-title {
+    margin-right: 10px; 
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .back-to-top {
+    bottom: 1em;
+    opacity: 0.9;
+    position: fixed;
+    right: 1em;
+    transition: opacity 200ms ease;
+    z-index: 1;
+  }
+  
+  .back-to-top:hover {
+    opacity: 1;
+  }
+  
+  .at-top .back-to-top,
+  .at-bottom .back-to-top {
+    opacity: 0;
+    pointer-events: none;
+  }
