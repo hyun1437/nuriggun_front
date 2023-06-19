@@ -1,0 +1,55 @@
+/* message_detail.css */
+
+.container {
+    border: 2px double #ccc;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    font-size: 30px;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.sender-container {
+    margin-bottom: 20px;
+}
+
+.sender-summary {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.receiver {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.timestamp {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.image {
+    margin-bottom: 20px;
+}
+
+.content {
+    font-size: 20px;
+    margin-bottom: 100px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    margin-left: 5px;
+}
+
+#delete_button {
+    margin-right: 10px;
+}
