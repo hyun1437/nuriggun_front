@@ -6,6 +6,7 @@
 	border: none;
     height: 40px;
     
+    
    
 }
 
@@ -65,15 +66,11 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    
+    border-radius: 5px;
     margin-top: 5px;
     border: 1px solid gray;
     /* border: none; */
 }
-
-/* #login-submit{
-    color: white;
-}  */
 
 
 /* 소셜로그인 이미지 */
@@ -82,17 +79,16 @@
     height: 25px;
     margin-top: -2px;
     position: relative;
-    right:90px;
-    
-   
+    right:90px; 
 }
 
 .social-buttons-container {
    width: 324px;
    margin: auto;
-   border: 1px solid #050505;
+   border: 1px solid gray;
    margin-top: 65px;
    text-align: center;
+   border-radius: 5px;
   
 }
 
@@ -102,6 +98,8 @@
     height: auto;
     cursor: pointer;
     transition: all .15s linear;
+    border-radius: 5px;
+    
 }
 
 .social-login-button#kakao-login:hover{
