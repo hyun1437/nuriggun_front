@@ -39,8 +39,6 @@ async function loadMainArticles() {
             const articleImage = document.createElement("img")
             articleImage.setAttribute("class", "main-img")
             articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
-            articleImage.style.width = "200px";  
-            articleImage.style.height = "auto";
 
             const newTitle = document.createElement("h5")
             newTitle.setAttribute("class", "main-title")
@@ -56,7 +54,7 @@ async function loadMainArticles() {
                 window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
             });
         });
-        // 슬라이더 초기화
+        //슬라이더 초기화
         var slider = tns({
             container: ".my-slider",
             items: 1,
@@ -64,8 +62,10 @@ async function loadMainArticles() {
             mouseDrag: true,
             autoplay: true,
             autoplayText: ["▶", "❚❚"],
-            controlsText: ["◀", "▶"]
-
+            controlsText: ["◀", "▶"],
+            nav: true,
+            autoplayTimeout: 2000,
+            
         });
     } catch (error) {
       console.error("메인기사 로딩 실패", error);
@@ -106,6 +106,7 @@ async function loadSubArticles() {
         articleImage.addEventListener('click', () => {
             window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });
+        // 어디 클릭해서 이동할지 다수결
 })
 }
 

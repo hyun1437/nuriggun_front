@@ -18,6 +18,12 @@
 
 .main-img {
   cursor: pointer;
+  /* max-height:max-content;
+  object-fit: cover; */
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
 }
 
 /* sub 기사 */
@@ -91,7 +97,7 @@ html {
 }
 
 .user-list {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -114,7 +120,7 @@ html {
   object-fit: cover;
   object-position: center;
   border-radius: 100%;
-  border: 1px solid #c1c1c1;
+  border: none;
   margin-bottom: 5px;
   cursor: pointer;
 }
@@ -124,7 +130,7 @@ html {
   top: 0;
   right: 0;
   transform: translate(50%, -50%);
-  background-color:cadetblue;
+  background-color: rgb(177, 177, 177);
   padding: 5px 10px;
   font-size: 12px;
   width: auto;
@@ -132,12 +138,12 @@ html {
   overflow: hidden;
   white-space: nowrap;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: none;
   cursor: pointer;
 }
 
 .subscribe-button.subscribed {
-  background-color: blueviolet;
+  background-color: #45a2fa;
 }
 
 .subscribe-button span {
