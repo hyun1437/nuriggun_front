@@ -52,6 +52,7 @@ div {
     border-radius: 5px;
     margin-top: 10px;
     transition: background-color 0.3s, color 0.3s;
+    transition: all .15s linear;
   }
 
   .button:hover {
