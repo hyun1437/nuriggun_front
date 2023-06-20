@@ -12,7 +12,7 @@ padding: 0 !important;
 display: none !important;
 }
 
-.tns-outer [aria-controls],
+/* .tns-outer [aria-controls],
 .tns-outer [data-action] {
 cursor: pointer;
 background-color: #000080;
@@ -24,7 +24,7 @@ display: flex;
 justify-content: center; 
 align-items: center; 
 
-}
+} */
 
 
 
