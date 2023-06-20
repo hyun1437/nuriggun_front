@@ -5,6 +5,7 @@
   margin: auto;
   height: 150px;
   background: #ffffff;
+ 
   
 }
 
@@ -196,3 +197,10 @@
   margin-top: 7%;
   
 }
+
+/* today */
+/* .today-article{
+  width: 70px;
+  vertical-align: top;
+  transform: translate(10%);
+  } */

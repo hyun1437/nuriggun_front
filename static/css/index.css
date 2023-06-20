@@ -1,30 +1,187 @@
 
+/* main 기사 */
+
 
 .articles-container {
   
- margin-right: 60%;
+ margin:auto;
  position: relative;
  display: flex;
-justify-content: center; 
+ justify-content: center; 
+
 }
 
 .main-article{
   border-bottom: 1px solid #eeeeee;
-  height: 250px;
-  margin: 0px 445px;
-  width: 600px;
+  height: 370px;
+  right: 0.5%;
+  width: 550px;
   top: 20%;
   position: relative;
-  left: 60%;
+  
   /* eeeeee */
 }
 
 .sub-article{
-  border-bottom: 1px solid black;
-  width: 390px;
-  left:3%;
+  border-bottom: 1px solid #eeeeee;
+  width: 420px;
+  left:0%;
   position: relative;
 
+}
+  
+
+.main-img {
+  cursor: pointer;
+  width: 200px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+/* sub 기사 */
+
+
+
+.article {
+ background-color: #ffffff;
+  margin: 0;
+  padding: 10px 0 10px 10px;
+  border-top: 1px solid #eeeeee;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.article .sub-title {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  
+  
+
+}
+
+.article .sub-img {
+  width: 17%;
+  height: 70px;
+ transform: translate(80%);
+  
+  object-fit: cover;
+  /* object-position: center; */
+  cursor: pointer;
+}
+
+
+/* top 버튼 */
+html {
+  scroll-behavior: smooth;
+}
+
+.back-to-top {
+  bottom: 1em;
+  opacity: 0.9;
+  position: fixed;
+  right: 1em;
+  transition: opacity 200ms ease;
+  z-index: 1;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+.at-top .back-to-top,
+.at-bottom .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+
+/* 기자리스트 부분 */
+.user-list-container {
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  /* background-color: aquamarine; */
+
+ justify-content: center; 
+ margin:auto;
+ text-align: center;
+ 
+
+}
+
+.user-list-container h3{
+  right: -165px;
+  position: relative;
+}
+
+.user-list {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #eeeeee;
+  margin: auto;
+  width: 400px;
+  transform: translate(60%);
+  background-color: #ffffff;
+  
+  
+}
+
+.user-card{
+  margin: 20px 0px 10px 32px;
+  
+  position: relative;
+  display: inline-block;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  border: 1px solid #eeeeee;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.subscribe-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background-color:#7CABF2;
+  padding: 5px 10px;
+  font-size: 12px;
+  width: auto;
+  height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 10px;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+}
+
+.subscribe-button.subscribed {
+  background-color: darkblue;
+}
+
+.subscribe-button span {
+  display: block;
+  text-align: center;
+  line-height: normal;
+  color: white;
+}
+
+.user-name {
+  text-align: center;
+  width: 50px;
 }
 
 html {
@@ -49,3 +206,5 @@ html {
   opacity: 0;
   pointer-events: none;
 }
+
+
