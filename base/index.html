@@ -21,16 +21,10 @@
     <script src="/static/js/search.js"></script>
     <script src="/static/js/api.js"></script>
     <script src="/static/js/login.js"></script>
-    <script src="/static/js/category.js"></script>
     <script src="/static/js/index.js"></script>
     <script src="/static/js/main_slide.js"></script>
 
-    
-    
-
 </head>
-
-
 
 <body>
  <!-- 상단 네비게이션 바 -->
@@ -40,12 +34,15 @@
  <!-- <div id="left-sidebar"></div>
  <div id="right-sidebar"></div> -->
  
-<!-- 메인,서브 기사 -->
-<div>
+<!-- 날짜 -->
+<!-- <div class="today-container">
   <h5 id="today"></h5>
-</div>
+</div> -->
+
+<!-- 검색용 id-->
 <div id="feed-article">
 
+<!-- 메인, 서브기사 -->
 <div class="articles-container">
   <div class="main-article" id="main-article">
     <div class="slider-wrapper">
@@ -55,12 +52,21 @@
     </div>
   </div>
     
-    <div class="sub-article" id="sub-article">
-      <div class="article">
-        <h3>서브기사(최신 순)</h3>
-      </div>
+  <div class="sub-article" id="sub-article">
+    <div class="article">
+      <h3>서브기사(최신 순)</h3>
     </div>
+  </div>
 </div>
+
+<!-- 기자리스트 -->
+
+<div class="user-list-container">
+  <h3>기자를 구독해보세요.</h3>
+  <div class="user-list" id="user-list">
+  </div>
+</div>
+
 
 <a class="back-to-top" href="#">Back to top</a>
 
