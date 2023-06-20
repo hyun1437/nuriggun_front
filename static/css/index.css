@@ -1,60 +1,153 @@
+/* 날짜 */
+.today-container {
+  text-align: center;
+}
+/* main 기사 */
 .articles-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .main-article {
-    flex: 1;
-    width: 40%;
-    margin-right: 20px;
-  }
-  
-  .sub-article {
-    flex: 1;
-    width: 20%;
-  }
-  
-  .article {
-    margin: 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
+  /* background-color: #ccc; */
+  display: flex;
+  justify-content: center;
+}
 
-  .article {
-    display: flex;
-    align-items: center;
-  }
-  
-  .article .sub-img {
-    width: 200px;
-    height: auto;
-    margin-right: 10px; 
-  }
-  
-  .article .sub-title {
-    margin-right: 10px; 
-  }
+.main-article {
+  background-color: antiquewhite;
+  /* flex: 1; */
+  width: 450px;
+  margin-right: 20px;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  .back-to-top {
-    bottom: 1em;
-    opacity: 0.9;
-    position: fixed;
-    right: 1em;
-    transition: opacity 200ms ease;
-    z-index: 1;
-  }
-  
-  .back-to-top:hover {
-    opacity: 1;
-  }
-  
-  .at-top .back-to-top,
-  .at-bottom .back-to-top {
-    opacity: 0;
-    pointer-events: none;
-  }
+.main-img {
+  cursor: pointer;
+}
+
+/* sub 기사 */
+
+.sub-article {
+  /* flex: 1; */
+  width: 450px;
+}
+
+.article {
+  background-color: antiquewhite;
+  margin: 0;
+  padding: 10px 0 10px 10px;
+  border: 1px solid #c1c1c1;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.article .sub-title {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article .sub-img {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+
+/* top 버튼 */
+html {
+  scroll-behavior: smooth;
+}
+
+.back-to-top {
+  bottom: 1em;
+  opacity: 0.9;
+  position: fixed;
+  right: 1em;
+  transition: opacity 200ms ease;
+  z-index: 1;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+.at-top .back-to-top,
+.at-bottom .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* 기자리스트 부분 */
+.user-list-container {
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  /* background-color: aquamarine; */
+  text-align: center;
+}
+
+.user-list {
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: 1px solid #c1c1c1;
+  margin: auto;
+  width: 450px;
+}
+
+.user-card{
+  margin: 20px 0px 10px 32px;
+  /* background-color: antiquewhite; */
+  position: relative;
+  display: inline-block;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  border: 1px solid #c1c1c1;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.subscribe-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background-color:cadetblue;
+  padding: 5px 10px;
+  font-size: 12px;
+  width: auto;
+  height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 10px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.subscribe-button.subscribed {
+  background-color: blueviolet;
+}
+
+.subscribe-button span {
+  display: block;
+  text-align: center;
+  line-height: normal;
+  color: white;
+}
+
+.user-name {
+  text-align: center;
+  width: 50px;
+}

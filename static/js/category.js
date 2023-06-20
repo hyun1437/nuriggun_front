@@ -54,7 +54,7 @@ async function viewCategory(category) {
     
         // 게시글 클릭시 
         articleElement.addEventListener('click', () => {
-            window.location.href = `${front_base_url}/article/detail.html?article_id=${article.id}`;
+            window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });
     
         articlesContainer.prepend(articleElement);
