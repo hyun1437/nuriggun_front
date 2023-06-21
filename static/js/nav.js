@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
                 profile_intro.innerHTML = `
                     <a href="${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}">
-                    <span><img class="user-profile-image" src="${profileImage}" alt="" style="width:30px; height:20px;"></span>
+                    <span><img class="user-profile-image" src="${profileImage}" alt="" style="width:30px; height:30px;"></span>
                     ${payload_parse.nickname}님
                     </a>`
 
