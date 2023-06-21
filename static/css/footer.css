@@ -4,13 +4,13 @@
 
 #footer {
     background-color: #f8f8f8;
-    
     display: flex;
     border-top: 1px solid #ddd;
+    padding-top: 10px!important;
     width: 1000px;
     margin: auto;
     position: relative;
-    
+   
 
 }
   
@@ -18,18 +18,23 @@
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+ 
+
   
 }
 
 #footer .row-footer {
   display: flex;
   flex-wrap: wrap;
+  height: 100px;
   
 }
 
 #footer .col-middel-2 {
   flex-basis: 20%;
   padding: 10px;
+  position: relative;
+  bottom:70px;
   
 
 }
@@ -69,9 +74,21 @@
 .logonuri-container{
   margin: auto;
   position: relative;
-  padding-top: 15px;
+  padding-top: 30px;
   margin: auto;
+  
 }
+
+
+.logonuri-container p{
+  position: relative;
+  bottom:70px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'NEXON Lv2 Gothic', sans-serif;
+  left: 170px;
+}
+
 
 
 .footer-links {
@@ -83,4 +100,12 @@
 
 .footer-links:hover{
   color: #2136f4;
+}
+
+
+@font-face {
+  font-family: 'NEXON Lv2 Gothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
