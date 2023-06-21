@@ -5,6 +5,7 @@ window.addEventListener('load', function() {
     loadSubArticles();
     loadToday();
     loadUserList();
+    loadBestArticles()
   });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -25,6 +26,51 @@ async function getArticles(order) {
     }
 }
 
+async function loadBestArticles() {
+    
+    articles = await getArticles("best");
+    article = articles.results[0]
+    
+    const bestArticle = document.getElementById("best-article")
+        
+    const newBestImage = document.createElement("img")
+    newBestImage.setAttribute("class", "best-img")
+    if (article.image) {
+        newBestImage.setAttribute("src", `${backend_base_url}${article.image}`)
+    } else {
+        newBestImage.setAttribute("src", "../static/image/nuri꾼logo2.png")
+    }
+
+    const newBestTextBox = document.createElement("div")
+    newBestTextBox.setAttribute("class", "best-textbox")
+
+
+    const newBestTitle = document.createElement("h5")
+    newBestTitle.setAttribute("class", "best-title")
+    newBestTitle.innerText = article.title
+
+    const newBestContent = document.createElement("p")
+    newBestContent.setAttribute("class", "best-content")
+    if (article.content.length > 150) {
+        newBestContent.innerText = article.content.substring(0, 150) + " ...더보기"
+    } else {
+        newBestContent.innerText = article.content
+    }
+
+    newBestTextBox.appendChild(newBestTitle)
+    newBestTextBox.appendChild(newBestContent)
+
+    bestArticle.appendChild(newBestImage)
+    bestArticle.appendChild(newBestTextBox)
+
+    // 게시글 클릭시 
+    bestArticle.addEventListener('click', () => {
+        window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+    });
+}
+
+
+
 // 게시글 불러와서 메인에 표시하기
 // 페이지네이션 - 4개까지
 async function loadMainArticles() {
@@ -32,7 +78,7 @@ async function loadMainArticles() {
         articles = await getArticles("main");
         const sliderContainer = document.querySelector(".my-slider");
         
-        articles.results.results.forEach(article => {
+        articles.results.forEach(article => {
             const newSlide = document.createElement("div");
             newSlide.classList.add("slide");
             
@@ -84,7 +130,8 @@ async function loadSubArticles() {
     
     const sub_article = document.getElementById("sub-article")
     
-    articles.results.results.forEach(article => {
+    articles.results.forEach(article => {
+        console.log(article.image)
         const newArticle = document.createElement("div");
         newArticle.setAttribute("class", "article")
         
@@ -93,7 +140,7 @@ async function loadSubArticles() {
         if (article.image) {
             articleImage.setAttribute("src", `${backend_base_url}${article.image}`)
         } else {
-            articleImage.setAttribute("src", "static/image/nuri꾼logo2.png")
+            articleImage.setAttribute("src", "../static/image/nuri꾼logo2.png")
         }
 
         const newTitle = document.createElement("h5")
@@ -109,7 +156,9 @@ async function loadSubArticles() {
         articleImage.addEventListener('click', () => {
             window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });
-        // 어디 클릭해서 이동할지 다수결
+        newTitle.addEventListener('click', () => {
+            window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+        });
 })
 }
 
@@ -227,40 +276,45 @@ async function postSubscribe(user_id) {
         method: 'POST',
     })
 
-    if (response.status == 200) {
-        alert("구독을 하였습니다.")
-        window.location.reload()
-    } else if (response.status == 205) {
-        alert("구독을 취소하였습니다.")
-        window.location.reload()
-    } else if (response.status == 403) {
-        alert("자신을 구독 할 수 없습니다.")
+    if (payload) {
+        if (response.status == 200) {
+            alert("구독을 하였습니다.")
+            window.location.reload()
+        } else if (response.status == 205) {
+            alert("구독을 취소하였습니다.")
+            window.location.reload()
+        } else if (response.status == 403) {
+            alert("자신을 구독 할 수 없습니다.")
+        }
+    } else {
+        alert("로그인이 필요합니다.")
     }
 }
 
 // 구독 체크해서 다르게 표시
 async function subscribeCheck() {
-    const logined_id = parseInt(payload_parse.user_id)
-    const response = await fetch(`${backend_base_url}/user/subscribe/${logined_id}`, {
-    })
-    const response_json = await response.json()
-    const subscribedUsers = response_json.subscribe[0].subscribe
-    const subscribedUserIds = subscribedUsers.map(user => String(user.id))
-    const subscribeButtons = document.querySelectorAll(".subscribe-button")
-    console.log(subscribeButtons)
+    if (payload) {
+        const logined_id = parseInt(payload_parse.user_id)
+        const response = await fetch(`${backend_base_url}/user/subscribe/${logined_id}`, {
+        })
+        const response_json = await response.json()
+        const subscribedUsers = response_json.subscribe[0].subscribe
+        const subscribedUserIds = subscribedUsers.map(user => String(user.id))
+        const subscribeButtons = document.querySelectorAll(".subscribe-button")
 
-    subscribeButtons.forEach(subscribeButton => {
-        const buttonId = subscribeButton.getAttribute("id")
-        const buttonText = subscribeButton.querySelector("span")
+        subscribeButtons.forEach(subscribeButton => {
+            const buttonId = subscribeButton.getAttribute("id")
+            const buttonText = subscribeButton.querySelector("span")
 
-        if (subscribedUserIds.includes(buttonId)) {
-            buttonText.innerText = "구독중"
-            subscribeButton.classList.add("subscribed")
-        } else {
-            buttonText.innerText = "구독"
-            subscribeButton.classList.remove("subscribed")
-        }
-    })
+            if (subscribedUserIds.includes(buttonId)) {
+                buttonText.innerText = "구독중"
+                subscribeButton.classList.add("subscribed")
+            } else {
+                buttonText.innerText = "구독"
+                subscribeButton.classList.remove("subscribed")
+            }
+        })
+    } else { }
 }
 
 
