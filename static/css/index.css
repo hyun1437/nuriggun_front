@@ -2,12 +2,10 @@
 /* main 기사 */
 
 .articles-container {
-  
- margin:auto;
- position: relative;
- display: flex;
- justify-content: center; 
-
+  margin:auto;
+  position: relative;
+  display: flex;
+  justify-content: center; */
 }
 
 .main-article{
@@ -28,7 +26,6 @@
   position: relative;
 
 }
-  
 
 .main-img {
   cursor: pointer;
@@ -240,3 +237,4 @@ html {
   opacity: 0;
   pointer-events: none;
 }
+
