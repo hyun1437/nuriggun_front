@@ -3,13 +3,12 @@
 }
 
 #footer {
-    background-color: #f8f8f8;
+    background-color: #e8e8e8;
     display: flex;
-    border-top: 1px solid #ddd;
-    padding-top: 10px!important;
     width: 1000px;
     margin: auto;
     position: relative;
+    border: 1px solid #eeeeee;
    
 
 }
@@ -26,7 +25,7 @@
 #footer .row-footer {
   display: flex;
   flex-wrap: wrap;
-  height: 100px;
+  height: 70px;
   
 }
 
@@ -49,7 +48,7 @@
 } */ 
 
 .col-middel-2 h1{
-    font-size: 18px;
+    font-size: 13px;
     margin-bottom: 8px;
     
 }
@@ -64,9 +63,9 @@
 
 
 .col-middel-2 li {
-    font-size: 18px;
+    font-size: 12px;
     margin-bottom: 5px;
-    margin-right: 50px;
+    margin-right: 80px;
    
 }
 
@@ -83,7 +82,7 @@
 .logonuri-container p{
   position: relative;
   bottom:70px;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
   font-family: 'NEXON Lv2 Gothic', sans-serif;
   left: 170px;
