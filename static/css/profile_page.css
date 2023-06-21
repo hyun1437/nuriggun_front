@@ -1,11 +1,190 @@
-.profile-page-container {
+.profile-page {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
 }
 
-.my-article-list{
-    margin-top: 20px;
+.profile-page-container,
+.p {
+    /* text-align: center; */
+    font-size: 1rem;
+}
+
+.profile-page-container {
+    width: 30%;
+    /* padding-right: 20px; */
+}
+
+#user-profile-image {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    display: block;
+    justify-content: center;
+
+    /* 이미지 원으로 표시 */
+    /* border-radius: 50%; */
+}
+
+.my-article-list-container {
+    width: 70%;
+    margin: 0 0 0 5%;
+}
+
+.my-article-list,
+.my-scrap-article-list {
+    height: 47%;
+    margin-bottom: 20px;
+    border: 1px solid rgb(212, 216, 255);
+    border-radius: 10px;
+}
+
+.category {
+    width: 10%;
+    font-weight: bold;
+    color: gray;
+    font-size: 14px;
+    /* text-align: center; */
+    float: left;
+    /* margin-right: 5%; */
+    margin-left: 2%;
+    text-decoration: none;
+}
+
+.category:hover {
+    text-decoration: underline;
+}
+
+.articleId {
+    width: 5%;
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.title {
+    width: 40%;
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.reaction {
+    font-size: 14px;
+    margin-right: 10%;
+    float: right;
+}
+
+.author {
+    font-size: 14px;
+    margin-right: 10%;
+    float: right;
+    font-weight: bold;
+}
+
+.author:hover {
+    text-decoration: underline;
+}
+
+.createdAt {
+    font-weight: bold;
+    color: blue;
+    font-size: 14px;
+    float: right;
+    margin-right: 5%;
+}
+
+.h3color {
+    text-align: center;
+}
+
+#user-edit {
+    border: none;
+    /* background-color: rgb(223, 226, 255); */
+    border-radius: 30px;
+    font-size: 15px;
+
+    float: right;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+}
+
+#user-edit:hover {
+    background-color: rgb(223, 226, 255);
+}
+
+#subscribeButton {
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    float: right;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+#subscribeButton:hover {
+    background-color: rgb(223, 226, 255);
+}
+
+.profile-page-button,
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#user-message:hover {
+    background-color: rgb(212, 216, 255);
+    padding: 10px 10% 10px 5px;
+    border-radius: 10px;
+}
+
+#user-subscribe:hover {
+    background-color: rgb(212, 216, 255);
+    padding: 10px 10% 10px 5px;
+    border-radius: 10px;
+}
+
+#user-password-reset :hover {
+    background-color: rgb(212, 216, 255);
+    padding: 10px 10% 10px 5px;
+    border-radius: 10px;
+}
+
+#user-delete :hover {
+    background-color: rgb(212, 216, 255);
+    padding: 10px 10% 10px 5px;
+    border-radius: 10px;
+}
+
+#article-pagination,
+#scrap-pagination {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#article-pagination a,
+#scrap-pagination a {
+    color: rgb(212, 216, 255);
+    padding: 2px 8px;
+    text-decoration: none;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+#article-pagination a.active,
+#scrap-pagination a.scrap-active {
+    background-color: rgb(212, 216, 255);
+    color: rgb(29, 44, 255);
 }

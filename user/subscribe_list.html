@@ -12,22 +12,35 @@
 
 
     <!-- css -->
-    <link href="../static/css/subscribe_list.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+
+    <link rel="stylesheet" href="../static/css/subscribe_list.css">
 
 
 </head>
 
 <body>
 
-    <!-- 구독자 목록 -->
-    <div class="subscriber_title">구독자 목록</div>
-    <div class="subscriber_list" id="subscriber_list">
-        <ul id="subscribe-list"></ul>
+    <!-- 상단 네비게이션 바 -->
+    <div id="navbar"></div>
+    <div id="feed-article">
+
+        <!-- 구독자 목록 -->
+        <div class="subscriber_title">구독자 목록</div>
+        <div class="subscriber_list" id="subscriber_list">
+            <ul id="subscribe-list"></ul>
+        </div>
     </div>
 
+    <!-- 푸터 -->
+    <div id="footer"></div>
 
     <!-- JS -->
     <script src="../static/js/api.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/search.js"></script>
+
     <script src="../static/js/subscribe_list.js"></script>
 
 
