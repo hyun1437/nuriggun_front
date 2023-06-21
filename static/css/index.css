@@ -1,7 +1,6 @@
 
 /* main 기사 */
 
-
 .articles-container {
   
  margin:auto;
@@ -47,9 +46,6 @@
 }
 
 /* sub 기사 */
-
-
-
 .article {
  background-color: #ffffff;
   margin: 0;
@@ -67,77 +63,80 @@
   width: 60%;
   height: 50px;
   display: flex;
-  
-  
-
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .article .sub-img {
   width: 30%;
   height: 70px;
- transform: translate(40%);
+  transform: translate(40%);
   
   object-fit: cover;
   /* object-position: center; */
   cursor: pointer;
 }
 
-
-/* top 버튼 */
-html {
-  scroll-behavior: smooth;
+/* 오늘의 베스트기사 부분 */
+.today-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.back-to-top {
-  bottom: 1em;
-  opacity: 0.9;
-  position: fixed;
-  right: 1em;
-  transition: opacity 200ms ease;
-  z-index: 1;
-}
-
-.back-to-top:hover {
-  opacity: 1;
-}
-
-.at-top .back-to-top,
-.at-bottom .back-to-top {
-  opacity: 0;
-  pointer-events: none;
+.second-container {
+  display: flex;
+  justify-content: center; 
+  gap: 80px;
+  margin-top: 20px;
+  /* height: 400px; */
 }
 
 
+.best-article-container {
+  /* background-color: #45a2fa; */
+  width: 450px;
+  /* border: 1px solid #eeeeee;
+  border-radius: 3%; */
+}
 
+.best-article {
+  /* background-color: #45a2fa; */
+  height: 400px;
+  border: 1px solid #eeeeee;
+  border-radius: 3%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.best-img{
+  width: 450px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 
 /* 기자리스트 부분 */
 .user-list-container {
-  /* display: grid;
-  grid-template-columns: repeat(2, 1fr); */
-  /* background-color: aquamarine; */
-
- justify-content: center; 
- margin:auto;
- text-align: center;
- 
-
+  justify-content: center; 
+  text-align: center;
 }
 
 .user-list-container h3{
-  right: -165px;
+  /* right: -165px; */
   position: relative;
 }
 
 .user-list {
   /* background-color: antiquewhite; */
-
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
   border: 1px solid #eeeeee;
   margin: auto;
   width: 400px;
-  transform: translate(60%);
+  /* transform: translate(60%); */
   background-color: #ffffff;
 }
 
@@ -216,3 +215,28 @@ html {
 }
 
 
+/* top 버튼 */
+html {
+  scroll-behavior: smooth;
+}
+
+.back-to-top {
+  bottom: 1em;
+  opacity: 0.9;
+  position: fixed;
+  right: 1em;
+  transition: opacity 200ms ease;
+  z-index: 1;
+  text-decoration: none;
+  font-size: 24px;
+  color: rgb(54, 92, 188);
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+.at-top .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+}
