@@ -1,56 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
 #footer {
     background-color: #f8f8f8;
-    padding: 12px 0;
-    padding: 20px 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     border-top: 1px solid #ddd;
-    margin-top: 20px;
+    padding-top: 10px!important;
+    width: 1000px;
+    margin: auto;
+    position: relative;
+   
+
 }
   
-  
-  #footer .container {
-    max-width: 700px;
-  }
-  
-  #footer .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  #footer .col-md-4 {
-    width: 33.33%;
-    padding: 0 15px;
-  }
+#footer .container {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+ 
 
-  #footer h3,
-  #footer p,
-  #footer ul li {
-  margin-bottom: 10px;
+  
 }
-  
-  #footer h4 {
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  #footer p,
-  #footer ul {
-    color: #777;
-    font-size: 10px;
-  }
-  
-  #footer ul li {
-    color: #555;
-    margin-bottom: 10px;
-  }
 
-  #footer ul li:last-child {
-    margin-bottom: 0;
-  }
+#footer .row-footer {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  
+}
+
+#footer .col-middel-2 {
+  flex-basis: 20%;
+  padding: 10px;
+  position: relative;
+  bottom:70px;
   
 
+}
+
+
+/* .col-md-5 {
+  width: calc(50% - 10px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex: 1;
+} */ 
+
+.col-middel-2 h1{
+    font-size: 18px;
+    margin-bottom: 8px;
+    
+}
+
+.col-middel-2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+
+
+.col-middel-2 li {
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-right: 50px;
+   
+}
+
+
+.logonuri-container{
+  margin: auto;
+  position: relative;
+  padding-top: 30px;
+  margin: auto;
+  
+}
+
+
+.logonuri-container p{
+  position: relative;
+  bottom:70px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'NEXON Lv2 Gothic', sans-serif;
+  left: 170px;
+}
+
+
+
+.footer-links {
+  text-decoration: none;
+  border-bottom: none;
+  color:black;
+  
+}
+
+.footer-links:hover{
+  color: #2136f4;
+}
+
+
+@font-face {
+  font-family: 'NEXON Lv2 Gothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

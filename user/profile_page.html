@@ -8,7 +8,9 @@
   <title>nuriggun 프로필 페이지</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/static/css/sidebar.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
+  <link rel="stylesheet" href="/static/css/footer.css">
+
   <link rel="stylesheet" href="/static/css/profile_page.css">
 
 
@@ -19,79 +21,100 @@
 </head>
 
 <body>
-  
+
   <!-- 상단 네비게이션 바 -->
   <div id="navbar"></div>
-  <div id = "feed-article">
+  <div id="feed-article">
 
 
- <!-- 프로필 페이지 부분 -->
-  
-  <div class="profile-page-container">
+    <!-- 프로필 페이지 부분 -->
+    <div class="profile-page">
 
-    <!-- 구독 버튼 -->
-    <div>
-      <button href="#" id="subscribeButton" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
+      <!-- 프로필 정보 -->
+      <div class="profile-page-container">
+
+        <!-- 구독 버튼 -->
+        <div>
+          <button href="#" id="subscribeButton" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
+        </div>
+
+        <!-- 프로필 수정하기 -->
+        <button id="user-edit" href="#" onclick="ProfileUpdate()">✏️ 편집</button>
+
+        <!-- 프로필 이미지 -->
+        <img id="user-profile-image" alt="프로필 이미지">
+
+        <div>
+          <!-- 프로필 유저의 이메일 -->
+          <p>기자 이메일: <span id="user-email"></span></p>
+
+          <!-- 프로필 유저의 닉네임 -->
+          <p>기자 이름: <span id="user-nickname" class="user-nickname"></span></p>
+
+          <!-- 프로필 유저의 관심 분야 -->
+          <p>관심 분야: <span id="user-interest"></span></p>
+          <hr>
+
+          <div class="profile-page-button">
+            <!-- 프로필 유저에게 제보하기 -->
+            <p><a id="user-message" href="../user/message.html">제보하기</a></p>
+
+            <!-- 프로필 유저가 구독한 기자 수 -->
+            <p><a id="user-subscribe" href="#"></a></p>
+
+            <!-- 프로필 비밀번호 변경 -->
+            <p id="user-password-reset"><a id="user-password-reset" href="../user/password_change.html">비밀번호 변경</a></p>
+
+            <!-- 프로필 회원 탈퇴 -->
+            <p id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
+            <form id="delete-form" style="display:none" ;>
+              <label for="password">비밀번호:</label>
+              <input type="password" id="password" name="password">
+              <button type="button" onclick="DeleteUser()">탈퇴</button>
+              <button type="button" onclick="toggleDeleteForm()">취소</button>
+            </form>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 작성글/스크랩 목록 -->
+      <div class="my-article-list-container">
+
+        <!-- 작성한 글들의 목록 -->
+        <div class="my-article-list">
+          <h3 class="h3color"><span class="user-nickname"></span> 기자의 게시글 목록<span id="article-list-count"></span></h3>
+          <hr style="border-color: rgba(212, 216, 255, 0.404);">
+          <div id="article-pagination" class="article-pagination"></div>
+          <a id="article-list"></a>
+
+        </div>
+
+        <!-- 스크랩한 글들의 목록 -->
+        <div class="my-scrap-article-list" id="my-scrap-article-list">
+          <h3 class="h3color">게시글 스크랩 목록<span id="article-scrap-list-count"></span></h3>
+          <hr style="border-color: rgba(212, 216, 255, 0.404);">
+          <div id="scrap-pagination" class="scrap-pagination"></div>
+          <a id="scrap-article-list"></a>
+        </div>
+      </div>
     </div>
-
-    <!-- 프로필 이미지 -->
-    <img id="user-profile-image" alt="프로필 이미지">
-
-    <div>
-      <!-- 프로필 유저의 이메일 -->
-      <p>기자 이메일: <span id="user-email"></span></p>
-
-      <!-- 프로필 유저의 닉네임 -->
-      <p>기자 이름: <span id="user-nickname"></span></p>
-
-      <!-- 프로필 유저의 관심 분야 -->
-      <p>관심 분야: <span id="user-interest"></span></p>
-
-      <!-- 프로필 유저에게 제보하기 -->
-      <p><a href="../user/note.html">제보하기</a></p>
-
-      <!-- 프로필 유저가 구독한 기자 수 -->
-      <p><a id="user-subscribe" href="#"></a></p>
-
-      <!-- 프로필 수정하기 -->
-      <p><a id="user-edit" href="#" onclick="ProfileUpdate()">수정하기</a></p>
-
-      <!-- 프로필 비밀번호 변경 -->
-      <p id="user-password-reset"><a id="user-password-reset" href="../user/password_reset.html">비밀번호 변경</a></p>
-
-      <!-- 프로필 회원 탈퇴 -->
-      <p id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
-      <form id="delete-form" style="display:none" ;>
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password">
-        <button type="button" onclick="DeleteUser()">탈퇴</button>
-      </form>
-      </p>
-    </div>
-
-    <!-- 작성한 글들의 목록 -->
-    <div class="my-article-list"> 내가 작성한 글
-      <ul id="article-list"></ul>
-    </div>
-
-    <!-- 스크랩한 글들의 목록 -->
-    <div class="my-scrap-article-list" id="my-scrap-article-list"> 내가 스크랩한 글
-      <ul id="scrap-article-list"></ul>
-    </div>
-
   </div>
-</div>
 
+
+  <!-- 푸터 -->
+  <div id="footer"></div>
 
 
   <!-- JS -->
   <script src="../static/js/api.js"></script>
-  <script src="../static/js/profile_page.js"></script>
   <script src="/static/js/nav.js"></script>
-  <script src="/static/js/left_sidebar.js"></script>
-  <script src="/static/js/right_sidebar.js"></script>
   <script src="/static/js/search.js"></script>
-  <script src="/static/js/profile_edit.js"></script>
+
+  <script src="../static/js/profile_page.js"></script>
+  <script src="../static/js/profile_edit.js"></script>
+  <script src="/static/js/pagination.js"></script>
+
 
 </body>
 

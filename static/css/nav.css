@@ -5,6 +5,7 @@
   margin: auto;
   height: 150px;
   background: #ffffff;
+ 
   
 }
 
@@ -49,7 +50,7 @@
 #login-btn,
 #signup-btn {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 10px;
  
 }
 
@@ -73,69 +74,79 @@
   color: #a0a0a0;
   font-weight: bold;
   margin-left: auto;
-  margin-top: -6.3px;
-  margin-right: 3px;
+  margin-top: -17px;
+  margin-right: 10px;
   transition: background-color 0.3s, border 0.3s, color 0.3s;
+  
 }
+
 
 /* 글쓰기 간격 */
 #create-article {
-  margin-right: 3px; /* 글쓰기 버튼의 오른쪽 여백 설정 */
+  margin-right: 10px; /* 글쓰기 버튼의 오른쪽 여백 설정 */
 }
 
+/* 쪽지 */
+#create-note {
+  margin-right: 10px;
+}
 
 .navbar .nav-link.btn:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
+  /* background-color: limegreen;
+  border: 1px solid limegreen; */
+  color: #2136f4;
 }
 
 /* 글쓰기 버튼 호버 시 스타일 */
 #create-article:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
+  /* background-color: limegreen;
+  border: 1px solid limegreen; */
+  color: #2136f4;
 }
 
 /* 쪽지 버튼 호버 시 스타일 */
 #create-note:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
+  /* background-color: limegreen;
+  border: 1px solid limegreen; */
+  color: #2136f4;
 }
 
 /* 로그아웃 버튼 호버 시 스타일 */
 #logout-btn:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
+  /* background-color: limegreen;
+  border: 1px solid limegreen; */
+  color: #2136f4;
 }
 
 /* 로그인 버튼 호버 시 스타일 */
 #login-btn:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
+  /* background-color: limegreen;
+  border: 1px solid limegreen; */
+  color: #2136f4;
   content: "l";
 }
 
 /* 회원가입 버튼 호버 시 스타일 */
 #signup-btn:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
+  /* background-color: limegreen;
+  border: 1px solid limegreen; */
+  color: #2136f4;
 }
 
 #profile_intro:hover {
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white!important;
+  background-color: #eeeeee;
+  /* border: 1px solid limegreen; */
+  transition: all .15s linear;
+  
   
 }
 
 #profile_intro img {
  /* 로그인시 프로필 이미지 위치 조정 */
   transform: translateY(20%); 
+  border-radius: 100%;
+  
+ 
 }
 
 
@@ -151,7 +162,7 @@
 .navbar-category{
   border: 1px solid #eeeeee; /* 테두리 설정 */
   margin: 0 4px; /* 좌우 여백 조정 */
-  width: 970px;
+  width: 1000px;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -196,3 +207,10 @@
   margin-top: 7%;
   
 }
+
+/* today */
+/* .today-article{
+  width: 70px;
+  vertical-align: top;
+  transform: translate(10%);
+  } */

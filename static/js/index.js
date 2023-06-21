@@ -1,11 +1,17 @@
 console.log("index.js 연결 확인")
 
-window.onload = () => {
+window.addEventListener('load', function() {
     loadMainArticles();
     loadSubArticles();
     loadToday();
-}
+    loadUserList();
+    loadBestArticles()
+  });
 
+document.addEventListener('DOMContentLoaded', function() {
+    backToTop();
+    setTimeout(subscribeCheck, 200);
+});
 
 // 게시글 불러오기 
 async function getArticles(order) {
@@ -13,13 +19,57 @@ async function getArticles(order) {
     })
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
         return response_json
     } else {
         alert('게시글 로딩 실패')
         console.log(response_json)
     }
 }
+
+async function loadBestArticles() {
+    
+    articles = await getArticles("best");
+    article = articles.results[0]
+    
+    const bestArticle = document.getElementById("best-article")
+        
+    const newBestImage = document.createElement("img")
+    newBestImage.setAttribute("class", "best-img")
+    if (article.image) {
+        newBestImage.setAttribute("src", `${backend_base_url}${article.image}`)
+    } else {
+        newBestImage.setAttribute("src", "../static/image/nuri꾼logo2.png")
+    }
+
+    const newBestTextBox = document.createElement("div")
+    newBestTextBox.setAttribute("class", "best-textbox")
+
+
+    const newBestTitle = document.createElement("h5")
+    newBestTitle.setAttribute("class", "best-title")
+    newBestTitle.innerText = article.title
+
+    const newBestContent = document.createElement("p")
+    newBestContent.setAttribute("class", "best-content")
+    if (article.content.length > 150) {
+        newBestContent.innerText = article.content.substring(0, 150) + " ...더보기"
+    } else {
+        newBestContent.innerText = article.content
+    }
+
+    newBestTextBox.appendChild(newBestTitle)
+    newBestTextBox.appendChild(newBestContent)
+
+    bestArticle.appendChild(newBestImage)
+    bestArticle.appendChild(newBestTextBox)
+
+    // 게시글 클릭시 
+    bestArticle.addEventListener('click', () => {
+        window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+    });
+}
+
+
 
 // 게시글 불러와서 메인에 표시하기
 // 페이지네이션 - 4개까지
@@ -28,33 +78,32 @@ async function loadMainArticles() {
         articles = await getArticles("main");
         const sliderContainer = document.querySelector(".my-slider");
         
-        console.log(articles.results)
-        
-        articles.results.results.forEach(article => {
+        articles.results.forEach(article => {
             const newSlide = document.createElement("div");
             newSlide.classList.add("slide");
             
             const articleImage = document.createElement("img")
             articleImage.setAttribute("class", "main-img")
             articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
-            articleImage.style.width = "200px";  
-            articleImage.style.height = "auto";
+            articleImage.style.width = "530px";  
+            articleImage.style.height = "250px";
+
 
             const newTitle = document.createElement("h5")
             newTitle.setAttribute("class", "main-title")
             newTitle.innerText = article.title
 
             newSlide.appendChild(articleImage)
-            newSlide.appendChild(newTitle)
+            // newSlide.appendChild(newTitle)
 
             sliderContainer.appendChild(newSlide)
 
             // 게시글 클릭시 
-            newSlide.addEventListener('click', () => {
+            articleImage.addEventListener('click', () => {
                 window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
             });
         });
-        // 슬라이더 초기화
+        //슬라이더 초기화
         var slider = tns({
             container: ".my-slider",
             items: 1,
@@ -62,8 +111,10 @@ async function loadMainArticles() {
             mouseDrag: true,
             autoplay: true,
             autoplayText: ["▶", "❚❚"],
-            controlsText: ["◀", "▶"]
-
+            controlsText: ["◀", "▶"],
+            controls: false,
+            nav : false,
+            autoplayTimeout : 2000,
         });
     } catch (error) {
       console.error("메인기사 로딩 실패", error);
@@ -71,42 +122,41 @@ async function loadMainArticles() {
 
 }
 
-
 // 게시글 불러와서 서브구역에 표시하기
+// 페이지네이션 10개까지
 async function loadSubArticles() {
     
     articles = await getArticles("sub");
     
-    console.log(articles.results)
-    
     const sub_article = document.getElementById("sub-article")
     
-    articles.results.results.forEach(article => {
+    articles.results.forEach(article => {
+        console.log(article.image)
         const newArticle = document.createElement("div");
         newArticle.setAttribute("class", "article")
         
         const articleImage = document.createElement("img")
         articleImage.setAttribute("class", "sub-img")
-        articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
-        articleImage.style.width = "200px";  
-        articleImage.style.height = "auto";
+        if (article.image) {
+            articleImage.setAttribute("src", `${backend_base_url}${article.image}`)
+        } else {
+            articleImage.setAttribute("src", "../static/image/nuri꾼logo2.png")
+        }
 
         const newTitle = document.createElement("h5")
         newTitle.setAttribute("class", "sub-title")
         newTitle.innerText = article.title
-
-        const newContent = document.createElement("p")
-        newContent.setAttribute("class", "sub-content")
-        newContent.innerText = article.content
-
-        newArticle.appendChild(articleImage)
+        
         newArticle.appendChild(newTitle)
-        newArticle.appendChild(newContent)
+        newArticle.appendChild(articleImage)
 
         sub_article.appendChild(newArticle)
 
         // 게시글 클릭시 
-        newArticle.addEventListener('click', () => {
+        articleImage.addEventListener('click', () => {
+            window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+        });
+        newTitle.addEventListener('click', () => {
             window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });
 })
@@ -125,49 +175,163 @@ async function loadToday() {
     todayElement.innerText = formattedDate
 }
 
-
 // back to top 버튼
-let debounceTimeout;
-let body = document.querySelector('body');
-let scrollingElement = document.scrollingElement;
+async function backToTop() {
+    let debounceTimeout;
+    let body = document.querySelector('body');
+    let scrollingElement = document.scrollingElement;
 
-setScrollClass();
+    setScrollClass();
 
-window.addEventListener('scroll', setScrollClass);
-window.addEventListener('resize', setScrollClass);
+    window.addEventListener('scroll', setScrollClass);
+    window.addEventListener('resize', setScrollClass);
 
-function setScrollClass() {
-  if (debounceTimeout) {
-    window.cancelAnimationFrame(debounceTimeout);
-  }
+    function setScrollClass() {
+    if (debounceTimeout) {
+        window.cancelAnimationFrame(debounceTimeout);
+    }
 
-  debounceTimeout = window.requestAnimationFrame(function () {
-    let scrollTop = scrollingElement.scrollTop;
-    let scrollHeight = scrollingElement.scrollHeight;
-    let innerHeight = window.innerHeight;
-    let scrollBottom = scrollHeight - innerHeight - scrollTop;
+    debounceTimeout = window.requestAnimationFrame(function () {
+        let scrollTop = scrollingElement.scrollTop;
+        let scrollHeight = scrollingElement.scrollHeight;
+        let innerHeight = window.innerHeight;
+        let scrollBottom = scrollHeight - innerHeight - scrollTop;
 
-    body.classList.toggle('at-top', scrollTop < 48);
-    body.classList.toggle('at-bottom', scrollBottom < 48);
-  });
+        body.classList.toggle('at-top', scrollTop < 48);
+        body.classList.toggle('at-bottom', scrollBottom < 48);
+    });
+    }
 }
 
-// async function getWeather() {
-//     try {
-//       const response = await fetch(' ', {
-//         headers: {
-//             Authorization: " "
-//           }
-//       });
-      
-//       if (response.ok) {
-//         const data = await response.json();
-//         // 날씨 데이터를 처리하는 로직 작성
-//         console.log(data);
-//       } else {
-//         console.error('날씨 API 요청에 실패했습니다.');
-//       }
-//     } catch (error) {
-//       console.error('날씨 API 요청 중 오류가 발생했습니다.', error);
-//     }
-//   }
+
+// 유저리스트 불러오기 
+async function getUserList() {
+    const response = await fetch(`${backend_base_url}/user/home/userlist/`, {
+    })
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert('유저리스트 로딩 실패')
+    }
+}
+
+// 유저리스트 불러와서 유저리스트 구역에 표시하기
+async function loadUserList() {
+    
+    users = await getUserList();
+
+    const userList = document.getElementById("user-list")
+    console.log(users)
+    users.forEach(user => {
+        
+        const newUserCard = document.createElement("div");
+        newUserCard.setAttribute("class", "user-card")
+
+        const newUserImage = document.createElement("img")
+        newUserImage.setAttribute("class", "user-img")
+        if (user.profile_img) {
+            profileImage = `${backend_base_url}${user.profile_img}`
+        } else {
+            profileImage = `${noProfileImage}`
+        }
+        newUserImage.setAttribute("src", `${profileImage} `)
+        newUserImage.setAttribute("alt", "프로필이미지")        
+
+        const newUserName = document.createElement("div")
+        newUserName.setAttribute("class", "user-name")
+        newUserName.innerText = user.nickname
+        
+        const newSubscribeButton = document.createElement("button")
+        newSubscribeButton.setAttribute("type", "button")
+        newSubscribeButton.setAttribute("class", "subscribe-button")
+        newSubscribeButton.setAttribute("id", `${user.pk}`)
+        newSubscribeButton.setAttribute("onclick", `postSubscribe(${user.pk})`)
+    
+        const newSubscribeText = document.createElement("span")
+        newSubscribeText.setAttribute("class", "subscribe-text")
+        newSubscribeText.innerText = "구독"
+
+        newSubscribeButton.appendChild(newSubscribeText)
+
+        newUserCard.appendChild(newUserImage)
+        newUserCard.appendChild(newUserName)
+        newUserCard.appendChild(newSubscribeButton)
+
+        userList.appendChild(newUserCard)
+
+        // 유저 프로필이미지 클릭시 -> 프로필로 이동
+        newUserImage.addEventListener('click', () => {
+            window.location.href = `${frontend_base_url}/user/profile_page.html?user_id=${user.pk}`; })
+    });
+}
+
+// 다이렉트 구독하기 & 취소하기
+async function postSubscribe(user_id) {
+    const response = await fetch(`${backend_base_url}/user/subscribe/${user_id}/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'POST',
+    })
+
+    if (payload) {
+        if (response.status == 200) {
+            alert("구독을 하였습니다.")
+            window.location.reload()
+        } else if (response.status == 205) {
+            alert("구독을 취소하였습니다.")
+            window.location.reload()
+        } else if (response.status == 403) {
+            alert("자신을 구독 할 수 없습니다.")
+        }
+    } else {
+        alert("로그인이 필요합니다.")
+    }
+}
+
+// 구독 체크해서 다르게 표시
+async function subscribeCheck() {
+    if (payload) {
+        const logined_id = parseInt(payload_parse.user_id)
+        const response = await fetch(`${backend_base_url}/user/subscribe/${logined_id}`, {
+        })
+        const response_json = await response.json()
+        const subscribedUsers = response_json.subscribe[0].subscribe
+        const subscribedUserIds = subscribedUsers.map(user => String(user.id))
+        const subscribeButtons = document.querySelectorAll(".subscribe-button")
+
+        subscribeButtons.forEach(subscribeButton => {
+            const buttonId = subscribeButton.getAttribute("id")
+            const buttonText = subscribeButton.querySelector("span")
+
+            if (subscribedUserIds.includes(buttonId)) {
+                buttonText.innerText = "구독중"
+                subscribeButton.classList.add("subscribed")
+            } else {
+                buttonText.innerText = "구독"
+                subscribeButton.classList.remove("subscribed")
+            }
+        })
+    } else { }
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 푸터를 삽입할 위치
+    const footer = document.querySelector("#footer");
+
+    if (footer) {
+        // footer.html 파일을 가져와서 푸터 위치에 삽입
+        fetch("/base/footer.html")
+            .then(response => response.text())
+            .then(data => {
+                footer.innerHTML = data;
+                // 푸터가 삽입된 후에 실행할 동작 추가 가능
+                // 예: 푸터 클릭 이벤트 등록 등
+                console.log("푸터가 삽입되었습니다!");
+            });
+    }
+});
