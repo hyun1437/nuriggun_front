@@ -3,7 +3,7 @@ console.log("index.js 연결 확인")
 window.addEventListener('load', function() {
     loadMainArticles();
     loadSubArticles();
-    // loadToday();
+    loadToday();
     loadUserList();
   });
 
@@ -39,13 +39,16 @@ async function loadMainArticles() {
             const articleImage = document.createElement("img")
             articleImage.setAttribute("class", "main-img")
             articleImage.setAttribute("src", `${backend_base_url}${article.image} `)
+            articleImage.style.width = "530px";  
+            articleImage.style.height = "250px";
+
 
             const newTitle = document.createElement("h5")
             newTitle.setAttribute("class", "main-title")
             newTitle.innerText = article.title
 
             newSlide.appendChild(articleImage)
-            newSlide.appendChild(newTitle)
+            // newSlide.appendChild(newTitle)
 
             sliderContainer.appendChild(newSlide)
 
@@ -63,9 +66,9 @@ async function loadMainArticles() {
             autoplay: true,
             autoplayText: ["▶", "❚❚"],
             controlsText: ["◀", "▶"],
-            nav: true,
-            autoplayTimeout: 2000,
-            
+            controls: false,
+            nav : false,
+            autoplayTimeout : 2000,
         });
     } catch (error) {
       console.error("메인기사 로딩 실패", error);
@@ -170,8 +173,9 @@ async function loadUserList() {
     users = await getUserList();
 
     const userList = document.getElementById("user-list")
-    
+    console.log(users)
     users.forEach(user => {
+        
         const newUserCard = document.createElement("div");
         newUserCard.setAttribute("class", "user-card")
 

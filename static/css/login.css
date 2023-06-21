@@ -1,13 +1,27 @@
 
 #kakao-login{
     background-color: white;
-	color: white;
+	color: rgb(80, 79, 79);
+    font-weight: bold;
 	border: none;
-    width: 100px;
-    height: 50px;
+    height: 40px;
+    
+    
+   
 }
 
-#google-login{
+
+/* 로그인 텍스트 css */
+#kakao-login span {
+    font-size: 15px;
+    position: relative;
+    bottom: 7px;
+    right: 12px;
+    
+  }
+
+
+/* #google-login{
     background-color: white;
 	color: white;
 	border: none;
@@ -21,58 +35,114 @@
 	border: none;
     width: 100px;
     height: 50px;
-}
+} */
 
 
 .login-container{
+    background-color: #ffffff;
+    width: 650px;
     margin: auto;
-    width: 100%;
-    border-radius: 5px;
+    position: relative;
     text-align: center;
-    padding: 20px;
-    padding-top: 65px;
+    border-radius: 10px;
+    margin-top: 100px;
     }
 
-.login-text{
-    text-align: center;
-    font-size: 30px;
-    
-}
 
+/* 로그인 버튼 인풋  css */
 .login-box{
     margin: auto;
     width: 50%;
     border-radius: 5px;
     text-align: center;
-    padding: 20px;
-    background-color:white; 
+    padding: 10px;
+    margin-top: 10px; 
+    
+    
 }
 
-input {
+/* input css */
+.input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;
+    margin-top: 5px;
+    border: 1px solid gray;
     /* border: none; */
 }
 
-#login-submit{
-    color: white;
-} 
 
-.login-button img {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
+/* 소셜로그인 이미지 */
+.social-login-button img {
+    width: 25px;
+    height: 25px;
+    margin-top: -2px;
+    position: relative;
+    right:90px; 
 }
 
 .social-buttons-container {
-    display: flex;
-    justify-content: flex-end;
+   width: 324px;
+   margin: auto;
+   border: 1px solid gray;
+   margin-top: 65px;
+   text-align: center;
+   border-radius: 5px;
+  
 }
 
-.login-button {
-    margin-left: 10px; /* 버튼 간격 조정 */
+.social-login-button{
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: all .15s linear;
+    border-radius: 5px;
     
 }
+
+.social-login-button#kakao-login:hover{
+    color:white;
+    background-color: #d7d7d7;
+}
+
+
+
+.login-button {
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    background-color: #464646;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: all .15s linear;
+
+    
+    
+}
+.login-button:hover{
+    color:white;
+    background-color: #212121;
+   
+    }
+
+.link {
+    color: gray;
+    text-decoration: underline;
+    margin-right: 10px;
+    font-size: 12px;
+    position: relative;
+    right: 40px;
+    text-decoration: none;
+    font-weight: bold;
+
+  }
+  
+  .link:hover {
+    color: #2136f4;
+  }
+  

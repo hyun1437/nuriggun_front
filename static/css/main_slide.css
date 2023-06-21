@@ -12,19 +12,21 @@ padding: 0 !important;
 display: none !important;
 }
 
-/* .tns-outer [aria-controls],
+.tns-outer [aria-controls],
 .tns-outer [data-action] {
 cursor: pointer;
-background-color: #000080;
-color: #ffffff;
-border-radius: 50%; 
+
+color: gray;
+border-radius: 50%;
+background-color: #ffffff;
+transform: translate(50%, -50%);
 width: 25px; 
 height: 25px; 
-display: flex; 
-justify-content: center; 
-align-items: center; 
+border: 1px solid #eeeeee;
 
-} */
+
+
+}
 
 
 
@@ -32,6 +34,7 @@ align-items: center;
 -webkit-transition: all 0s;
 -moz-transition: all 0s;
 transition: all 0s;
+display: flex;
 }
 
 .tns-slider > .tns-item {

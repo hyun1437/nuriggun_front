@@ -5,6 +5,7 @@
   margin: auto;
   height: 150px;
   background: #ffffff;
+ 
   
 }
 
@@ -76,7 +77,9 @@
   margin-top: -6.3px;
   margin-right: 3px;
   transition: background-color 0.3s, border 0.3s, color 0.3s;
+  
 }
+
 
 /* 글쓰기 간격 */
 #create-article {
@@ -136,6 +139,8 @@
 #profile_intro img {
  /* 로그인시 프로필 이미지 위치 조정 */
   transform: translateY(20%); 
+  border-radius: 100%;
+ 
 }
 
 
@@ -196,3 +201,10 @@
   margin-top: 7%;
   
 }
+
+/* today */
+/* .today-article{
+  width: 70px;
+  vertical-align: top;
+  transform: translate(10%);
+  } */

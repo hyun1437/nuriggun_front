@@ -1,64 +1,84 @@
-/* 날짜 */
-.today-container {
-  text-align: center;
-}
+
 /* main 기사 */
+
+
 .articles-container {
-  /* background-color: #ccc; */
-  display: flex;
-  justify-content: center;
+  
+ margin:auto;
+ position: relative;
+ display: flex;
+ justify-content: center; 
+
 }
 
-.main-article {
-  background-color: antiquewhite;
-  /* flex: 1; */
-  width: 450px;
-  margin-right: 20px;
+.main-article{
+  border-bottom: 1px solid #eeeeee;
+  height: 370px;
+  right: 0.5%;
+  width: 550px;
+  top: 20%;
+  position: relative;
+  
+  /* eeeeee */
 }
+
+.sub-article{
+  border-bottom: 1px solid #eeeeee;
+  width: 420px;
+  left:0%;
+  position: relative;
+
+}
+  
 
 .main-img {
   cursor: pointer;
+
+  width: 200px;
+  height: 100px;
+  margin-bottom: 10px;
+
   /* max-height:max-content;
   object-fit: cover; */
-  width: 500px;
+/*   width: 500px;
   height: 500px;
   display: flex;
-  justify-content: center;
+  justify-content: center; */
 }
 
 /* sub 기사 */
 
-.sub-article {
-  /* flex: 1; */
-  width: 450px;
-}
+
 
 .article {
-  background-color: antiquewhite;
+ background-color: #ffffff;
   margin: 0;
   padding: 10px 0 10px 10px;
-  border: 1px solid #c1c1c1;
+  border-top: 1px solid #eeeeee;
   text-align: center;
   width: 100%;
   height: 50px;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   align-items: center;
 }
 
 .article .sub-title {
-  width: 50%;
+  width: 60%;
   height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  
+
 }
 
 .article .sub-img {
-  width: 50%;
-  height: auto;
+  width: 30%;
+  height: 70px;
+ transform: translate(40%);
+  
   object-fit: cover;
-  object-position: center;
+  /* object-position: center; */
   cursor: pointer;
 }
 
@@ -88,28 +108,42 @@ html {
 }
 
 
+
+
 /* 기자리스트 부분 */
 .user-list-container {
   /* display: grid;
   grid-template-columns: repeat(2, 1fr); */
   /* background-color: aquamarine; */
-  text-align: center;
+
+ justify-content: center; 
+ margin:auto;
+ text-align: center;
+ 
+
+}
+
+.user-list-container h3{
+  right: -165px;
+  position: relative;
 }
 
 .user-list {
   /* background-color: antiquewhite; */
-  display: flex;
+
   flex-direction: row;
-  align-items: flex-start;
+  display: flex;
   flex-wrap: wrap;
-  border: 1px solid #c1c1c1;
+  border: 1px solid #eeeeee;
   margin: auto;
-  width: 450px;
+  width: 400px;
+  transform: translate(60%);
+  background-color: #ffffff;
 }
 
 .user-card{
   margin: 20px 0px 10px 32px;
-  /* background-color: antiquewhite; */
+  
   position: relative;
   display: inline-block;
 }
@@ -120,7 +154,7 @@ html {
   object-fit: cover;
   object-position: center;
   border-radius: 100%;
-  border: none;
+  border: 1px solid #eeeeee;
   margin-bottom: 5px;
   cursor: pointer;
 }
@@ -138,7 +172,7 @@ html {
   overflow: hidden;
   white-space: nowrap;
   border-radius: 10px;
-  border: none;
+  border: 1px solid #eeeeee;
   cursor: pointer;
 }
 
@@ -157,3 +191,28 @@ html {
   text-align: center;
   width: 50px;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.back-to-top {
+  bottom: 1em;
+  opacity: 0.9;
+  position: fixed;
+  right: 1em;
+  transition: opacity 200ms ease;
+  z-index: 1;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+.at-top .back-to-top,
+.at-bottom .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+}
+
+

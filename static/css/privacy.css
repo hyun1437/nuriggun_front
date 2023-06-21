@@ -1,7 +1,67 @@
 #form-container {
-    width: 400px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
     overflow-y: scroll;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 15px;
+    margin: auto;
+    margin-top: 50px;
+    
   }
+
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 120px;
+      
+    }
+
+    
+    h2 {
+      margin-top: 30px;
+      
+    }
+
+    p {
+      margin-bottom: 10px;
+      
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      position: relative;
+      text-align: center;
+      
+      
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+      margin: auto;
+      position: relative;
+     
+    }
+
+    button[type="submit"] {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #464646;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: auto;
+      transition: all .15s linear;
+    }
+    button[type="submit"]:hover {
+      background-color: #212121;
+      color: #fff;
+      transition: background-color 0.3s, color 0.3s;
+    }
