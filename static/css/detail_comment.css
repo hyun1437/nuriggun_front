@@ -1,0 +1,217 @@
+.comment-section {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment-box {
+    width: 90%;
+    height: 200px;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+}
+
+#logined-profile-img {
+    width: 25px;
+    float: left;
+    border-radius: 50%;
+    margin: 5px 0 5px 2.5%;
+}
+
+#logined-nickname {
+    width: 90%;
+    text-align: left;
+    float: left;
+    margin: 5px 0 5px 5px;
+}
+
+#comment {
+    border: none;
+    width: 95%;
+    height: 50%;
+}
+
+#commentButton {
+    border: none;
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 15px;
+}
+
+#commentButton:hover {
+    background-color: rgb(223, 226, 255);
+}
+
+.pagination-container {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.pagination-container a {
+    color: rgb(223, 226, 255);
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.pagination-container a.active {
+    background-color: rgb(223, 226, 255);
+    color: black
+}
+
+
+.comment-save-button {
+    margin-right: 5px;
+}
+
+.comment-container {
+    margin-bottom: 10px;
+}
+
+.comment_profile_image {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+
+    float: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-user-profile-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+
+    float: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment-list {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 3% auto 3% auto;
+}
+
+#comment-user-profile-img {
+    width: 20%;
+    float: left;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+/* comment 크기 설정 */
+#comment-container-md {
+    margin: auto;
+    position: relative;
+    max-width: 90%;
+
+    border-bottom: 1px solid gainsboro;
+    text-align: left;
+
+
+
+}
+
+
+
+/* 수정,삭제 버튼 */
+#deletebutton,
+#editbutton {
+    text-decoration: none;
+    font-weight: bold;
+    color: gray;
+    position: relative;
+    top: 17px;
+    left: 70px;
+    cursor: pointer;
+    z-index: 1;
+
+
+
+}
+
+#deletebutton:hover,
+#editbutton:hover {
+
+    color: #2136f4;
+}
+
+/* 댓글 상태 버튼 */
+#comment-info a {
+    border-bottom: none;
+    position: relative;
+    text-decoration: none;
+    left: 345px;
+    top: 20px;
+    z-index: 1;
+
+}
+
+/* 댓글내용 */
+#comment-comment {
+
+    position: relative;
+    bottom: 20px;
+    width: 90%;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+
+
+}
+
+
+
+/* 작성자 */
+#comment-commentauthor {
+    text-decoration: none;
+    transform: translateY(70%);
+    right: 170px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+
+}
+
+/* 작성 일! */
+#comment-create-month {
+    position: relative;
+    bottom: 22px;
+    right: 30px;
+
+}
+
+
+/* comment 프로필 */
+#comment-info {
+    position: relative;
+    left: 400px;
+    bottom: 20px;
+}
+
+
+/* comment 수정 버튼폼 */
+.edit-textarea {
+    width: 500px;
+    height: 1000px;
+    margin: auto;
+}
+
+.comment-save-button {}
