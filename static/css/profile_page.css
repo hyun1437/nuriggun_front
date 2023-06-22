@@ -24,7 +24,7 @@
     justify-content: center;
 
     /* 이미지 원으로 표시 */
-    /* border-radius: 50%; */
+    border-radius: 50%;
 }
 
 .my-article-list-container {

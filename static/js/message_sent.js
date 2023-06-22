@@ -64,5 +64,5 @@ function goToCreateMessage() {
 }
 
 function goToMessage() {
-    window.location.href = '/user/message.html';
+    window.location.href = '/base/index.html';
 }
