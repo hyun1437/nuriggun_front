@@ -31,7 +31,7 @@ async function handleLogin() {
         localStorage.setItem("payload", jsonPayload);
 
         alert('로그인 되었습니다.')
-        window.location.replace(`${frontend_base_url}/base/index.html`);
+        window.location.replace(`${frontend_base_url}/index.html`);
     } else {
         alert("이메일 혹은 비밀번호가 틀렸습니다.")
     }
@@ -82,7 +82,7 @@ async function KakaoLoginApi(kakao_code) {
         );
         localStorage.setItem("payload", jsonPayload);
         history.replaceState(null, null, window.location.pathname);  // URL에서 code 파라미터를 제거
-        window.location.replace(`${frontend_base_url}/base/index.html`);
+        window.location.replace(`${frontend_base_url}/index.html`);
     } else { 
         const error = await response.json()  // 응답 본문을 JSON으로 파싱
         alert(error['error'])  // 에러 메시지를 알림

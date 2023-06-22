@@ -72,13 +72,14 @@
 }
 
 .article .sub-img {
-  width: 30%;
-  height: 70px;
+  width: 126px;
+  height: 67px;
   transform: translate(40%);
   
   object-fit: cover;
   /* object-position: center; */
   cursor: pointer;
+  margin-top: 22px;
 }
 
 /* 오늘의 베스트기사 부분 */
