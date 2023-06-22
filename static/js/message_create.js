@@ -4,19 +4,17 @@ window.onload = function () {
 };
 
 async function createMessage(event) {
-    event.preventDefault(); // Prevent the form from being submitted normally
+    event.preventDefault();
 
-    const form = document.getElementById('create-form'); // Select the form element
+    const form = document.getElementById('create-form');
 
     const formData = new FormData(form);
 
-    // Get form inputs
     const receiverInput = document.getElementById('receiver').value;
     const titleInput = document.getElementById('title').value;
     const contentInput = document.getElementById('content').value;
     const imageInput = document.getElementById('image').files[0];
 
-    // Create form data
     formData.append('receiver', receiverInput);
     formData.append('title', titleInput);
     formData.append('content', contentInput);
@@ -25,30 +23,19 @@ async function createMessage(event) {
         formData.append('image', imageInput);
     }
 
-    // Send request to create a message
     const response = await sendMessage(formData);
     if (response.status == 200) {
         const data = await response.json();
-        alert('Message sent successfully.');
-        // Redirect to the message detail page
-        const message_id = data.message_id; // Use 'data' instead of 'response.data'
+        alert('쪽지를 성공적으로 보냈습니다.');
+        const message_id = data.message_id;
         window.location.href = `/user/message_detail.html?message_id=${message_id}`;
     } else {
-        alert('Failed to send message. Please try again.');
+        alert('쪽지를 보내는 데에 실패했습니다. 다시 시도해주세요.');
     }
 }
 
 async function sendMessage(messageData) {
     const token = localStorage.getItem('access');
-
-    // if (imageInput) {
-    //     // Create a new FormData object to send image as binary
-    //     messageData.append('image', imageInput, imageInput.name);
-
-    //     // Set content type header for binary data
-    //     headers['Content-Type'] = 'multipart/form-data';
-    // }
-
     const response = await fetch(`${backend_base_url}/user/messages/create/`, {
         method: 'POST',
         headers: {
@@ -61,5 +48,5 @@ async function sendMessage(messageData) {
 }
 
 function cancelMessage() {
-    window.location.href = '/user/message.html';
+    window.location.href = '/base/index.html';
 }
