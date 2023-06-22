@@ -199,6 +199,7 @@
   border: 1px solid #eeeeee;
   background: #ffffff;
   height: 65px;
+  position: relative;
 }
 
 .form-control{
@@ -254,10 +255,23 @@
 
 }
 
+/* 실시간 기사 */
+/* .realtime {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
-/* today */
-/* .today-article{
-  width: 70px;
-  vertical-align: top;
-  transform: translate(10%);
-  } */
+.realtime-article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+} */

@@ -1,4 +1,6 @@
 .article-detail-container {
+  width: 900px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,54 +10,120 @@
 
 .article-button {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  float: right;
+  margin: 10px 5px 20px 0;
 }
 
-.article-button button {
-  margin-right: 5px;
+#article-print-button,
+#article-share-button,
+#article-scrap-button,
+#article-update-button,
+#article-delete-button {
+  border: none;
+  background-color: transparent;
+  border-radius: 30px;
+  font-size: 15px;
 }
 
-.comment_profile_image {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
+#article-print-button:hover {
+  background-color: rgb(223, 226, 255);
+}
 
+#article-share-button:hover {
+  background-color: rgb(223, 226, 255);
+}
+
+#article-scrap-button:hover {
+  background-color: rgb(223, 226, 255);
+}
+
+#article-update-button:hover {
+  background-color: rgb(223, 226, 255);
+}
+
+#article-delete-button:hover {
+  background-color: rgb(223, 226, 255);
+}
+
+.article-category {
+  width: 100%;
+  text-align: left;
+  margin: 10px 0px 15px 0;
   float: left;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  color: gray;
+  text-decoration: none;
 }
 
-.comment-user-profile-img {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
+.article-category:hover {
+  text-decoration: underline;
+}
 
+.article-title {
+  width: 100%;
+  text-align: left;
+}
+
+.article-user {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+#article-user-url {
+  text-decoration: none;
+}
+
+#article-user-url:hover {
+  text-decoration: underline;
+}
+
+.subscribeButton1 {
+  margin-left: 10px;
+  border: none;
+  border-radius: 30px;
+}
+
+.subscribeButton1:hover {
+  background-color: rgb(223, 226, 255);
+}
+
+.date-at {
+  width: 900px;
+  text-align: left;
+  margin: 5px 0px 10px 0;
   float: left;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  color: gray;
 }
 
-.comment-container {
-  margin-bottom: 10px;
+#article-image {
+  width: 80%;
+  margin: auto;
 }
 
-.comment-section {
-  margin-top: 10px;
+#article-image-info {
+  width: 80%;
+  margin: 10px auto 5% auto;
+  color: gray;
 }
 
-.comment-save-button {
-  margin-right: 5px;
+.article-content {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5%;
+}
+
+#article-user-email2 {
+  width: 100%;
+  text-align: left;
+  margin: 5% auto 5% auto;
 }
 
 .article-reaction {
   display: flex;
   justify-content: center;
   gap: 30px;
+  margin-top: 10px;
 }
 
 .article-reaction button {
@@ -66,38 +134,4 @@
 
 .article-reaction button:hover {
   transform: rotate(15deg);
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.article-update-button button {
-  margin-left: 10px;
-}
-
-.pagination-container {
-  background-color: rgb(255, 255, 255);
-  display: inline-block;
-  margin-top: 10px;
-  padding: 5px;
-}
-
-.pagination-container a {
-  color: rgb(150, 209, 255);
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 5px;
-  border-radius: 3px;
-}
-
-.pagination-container a.active {
-  background-color: rgb(150, 209, 255);
-  color: rgb(29, 44, 255);
 }

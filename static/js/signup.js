@@ -9,7 +9,6 @@ async function handleSignUp() {
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
     
-    console.log(email, nickname, password, password2)
     if (password === password2) {
         const response = await fetch(`${backend_base_url}/user/signup/`, {
             headers: {
