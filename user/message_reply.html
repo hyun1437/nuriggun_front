@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>누리꾼 | 쪽지 답장하기</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../static/css/message_create.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>쪽지 답장하기</h1>
+        <form id="reply-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="receiver">받는 사람: </label>
+                <input type="text" id="receiver" name="receiver" placeholder="abc@nuriggun.com" required>
+            </div>
+            <div class="form-group">
+                <label for="title">제목: </label>
+                <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." required>
+            </div>
+            <div class="form-group">
+                <label for="content">내용: </label>
+                <textarea id="content" name="content" placeholder="내용을 입력해주세요." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">이미지: </label>
+                <input type="file" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <button type="submit">보내기</button>
+                <button type="button" onclick="cancelMessage()">취소하기</button>
+            </div>
+        </form>
+    </div>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/message_reply.js"></script>
+</body>
+
+</html>
