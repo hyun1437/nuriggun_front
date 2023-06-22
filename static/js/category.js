@@ -28,39 +28,51 @@ async function getCategory(category) {
 
 async function viewCategory(category) {
     const articles = await getCategory(category);
-    const articlesContainer = document.querySelector('.articles-container');
+    const articleListElement = document.querySelector('#article-list');
 
-    // 기존에 있던것들을 지우기
-    articlesContainer.innerHTML = '';
+    // 새로운 articles-container 생성
+    const articlesContainer = document.createElement('div');
+    articlesContainer.className = 'articles-container';
+    articlesContainer.id = 'article-list';
+    articleListElement.appendChild(articlesContainer);
+
+    const ulElement = document.createElement('ul');
+    ulElement.className = 'article-list';
+    articlesContainer.appendChild(ulElement);
 
     articles.forEach(article => {
-        const articleElement = document.createElement('div');
-        articleElement.className = 'card';
-    
-        const cardBody = document.createElement('div');
-        cardBody.className = 'card-body';
-    
+        const liElement = document.createElement('li');
+        liElement.className = 'article-item';
+
+        const imgElement = document.createElement('img');
+        imgElement.src = `${backend_base_url}${article.image}`; 
+        imgElement.alt = article.title;
+        imgElement.className = 'article-img';
+        liElement.appendChild(imgElement);
+
         const titleElement = document.createElement('h5');
-        titleElement.className = 'card-title';
+        titleElement.className = 'article-title';
         titleElement.textContent = article.title;
-    
-        const contentElement = document.createElement('p');
-        contentElement.className = 'card-text';
-        contentElement.textContent = article.content;
-    
-        cardBody.appendChild(titleElement);
-        cardBody.appendChild(contentElement);
-        articleElement.appendChild(cardBody);
+        liElement.appendChild(titleElement);
+
+        const infoElement = document.createElement('div');
+        infoElement.className = 'article-info';
+
+        const nicknameElement = document.createElement('p');
+        nicknameElement.textContent = article.user.nickname; 
+        infoElement.appendChild(nicknameElement);
+
+        const dateElement = document.createElement('p');
+        dateElement.textContent = article.created_at; 
+        infoElement.appendChild(dateElement);
+
+        liElement.appendChild(infoElement);
     
         // 게시글 클릭시 
-        articleElement.addEventListener('click', () => {
+        liElement.addEventListener('click', () => {
             window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });
     
-        articlesContainer.prepend(articleElement);
+        ulElement.appendChild(liElement);
     });
 }
-
-
-
-// <img src='${backend_base_url}${article.image}' alt=""> 이 부분 잠시 뺌 (사진 사이즈가 너무 큼)

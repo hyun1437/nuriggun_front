@@ -13,6 +13,7 @@
 
 
     <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/article_list.css">
     <link rel="stylesheet" href="/static/css/nav.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/index.css">
@@ -20,65 +21,26 @@
     <script src="/static/js/nav.js"></script>
     <script src="/static/js/search.js"></script>
     <script src="/static/js/api.js"></script>
-    <script src="/static/js/category.js"></script>
+    <script src="/static/js/login.js"></script>
     <script src="/static/js/footer.js"></script>
-
-   
-
-
+    <script src="/static/js/message.js"></script>
 </head>
 
 
 
 <body>
+  <div id="viewport">
  <!-- 상단 네비게이션 바 -->
  <div id="navbar"></div>
 
- <!-- 사이드 바 -->
+ <div id="article-list">
 
- 
-<!-- 메인,서브 기사 -->
+</div>
 
-<div class="articles-container" id="feed-article">
-    <div class="main-article" >
-      <div class="article">
-        <h3>메인기사</h3>
-        <p>메인기사 내용..</p>
-        <p>메인기사 내용..</p>
-      </div>
-    </div>
-    
-    <div class="sub-articles">
-      <div class="article">
-        <h3>서브기사</h3>
-        <p>서브기사 내용</p>
-        <p>서브기사 내용</p>
-      </div>
-    </div>
+   <!-- 푸터 -->
+   <div id="footer"></div>
   </div>
-
-
-
-
-
-
-
- 
-
- 
- 
-
-  <!-- <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchKeyword = urlParams.get('search');
-    
-    if (searchKeyword) {
-      document.getElementById('article-search').value = searchKeyword;
-      searchFilter(); // search.js의 searchFilter() 함수 호출하여 검색 결과 표시
-    } 
-  });
-
-  </script> -->
+  <a class="back-to-top" href="#">▲</a>
+<script src="/static/js/category.js"></script>
 </body>
 </html>
