@@ -108,7 +108,7 @@ async function loadMainArticles() {
             newTitle.innerText = article.title
 
             newSlide.appendChild(articleImage)
-            // newSlide.appendChild(newTitle)
+            newSlide.appendChild(newTitle)
 
             sliderContainer.appendChild(newSlide)
 
