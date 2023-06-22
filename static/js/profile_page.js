@@ -35,7 +35,7 @@ async function Profile(user_id) {
             if (response_json.profile_img) {
                 profileImage.src = `${backend_base_url}${response_json.profile_img}`;
             } else {
-                profileImage.src = '../static/image/unknown.png'; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
+                profileImage.src = '../static/image/noprofileimage.jpg'; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
             }
         }
 
