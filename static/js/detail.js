@@ -270,7 +270,7 @@ async function loadComments() {
     console.log(comments)
 
     const commentList = document.getElementById('comment-list');
-    // commentList.innerHTML = ''; // 기존 댓글 목록 초기화
+    commentList.innerHTML = ''; // 기존 댓글 목록 초기화
 
     const startIndex = (currentPage - 1) * commentsPerPage;
     const endIndex = startIndex + commentsPerPage;
