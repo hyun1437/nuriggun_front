@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (navbar) {
         // base-nav.html 파일을 가져와서 네비게이션바 위치에 삽입
-        fetch("/base/nav.html")
+        fetch("/nav.html")
             .then(response => response.text())
             .then(data => {
                 navbar.innerHTML = data;
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (footer) {
         // base-footer.html 파일을 가져와서 푸터 위치에 삽입
-        fetch("/base/footer.html")
+        fetch("/footer.html")
             .then(response => response.text())
             .then(data => {
                 footer.innerHTML = data;

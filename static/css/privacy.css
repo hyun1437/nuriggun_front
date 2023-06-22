@@ -48,7 +48,7 @@
      
     }
 
-    button[type="submit"] {
+    button[type="button"] {
       display: block;
       margin-top: 20px;
       padding: 10px 20px;
@@ -60,7 +60,7 @@
       margin: auto;
       transition: all .15s linear;
     }
-    button[type="submit"]:hover {
+    button[type="button"]:hover {
       background-color: #212121;
       color: #fff;
       transition: background-color 0.3s, color 0.3s;

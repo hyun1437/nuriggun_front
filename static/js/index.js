@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
     loadToday();
     loadUserList();
     loadBestArticles()
-  });
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     backToTop();
@@ -21,52 +21,66 @@ async function getArticles(order) {
         const response_json = await response.json()
         return response_json
     } else {
+        const error_message = await response.text()
+        console.log(`게시글 로딩 실패: ${error_message}`)
         alert('게시글 로딩 실패')
-        console.log(response_json)
     }
 }
 
 async function loadBestArticles() {
-    
+
     articles = await getArticles("best");
-    article = articles.results[0]
     
     const bestArticle = document.getElementById("best-article")
-        
-    const newBestImage = document.createElement("img")
-    newBestImage.setAttribute("class", "best-img")
-    if (article.image) {
-        newBestImage.setAttribute("src", `${backend_base_url}${article.image}`)
+
+    if (articles.results) {
+        article = articles.results[0]    
+        const newBestImage = document.createElement("img")
+        newBestImage.setAttribute("class", "best-img")
+        if (article.image) {
+            newBestImage.setAttribute("src", `${backend_base_url}${article.image}`)
+        } else {
+            newBestImage.setAttribute("src", "../static/image/logo.png")
+        }
+
+        const newBestTextBox = document.createElement("div")
+        newBestTextBox.setAttribute("class", "best-textbox")
+
+        const newBestTitle = document.createElement("h5")
+        newBestTitle.setAttribute("class", "best-title")
+        newBestTitle.innerText = article.title
+
+        const newBestContent = document.createElement("p")
+        newBestContent.setAttribute("class", "best-content")
+        if (article.content.length > 150) {
+            newBestContent.innerText = article.content.substring(0, 150) + " ...더보기"
+        } else {
+            newBestContent.innerText = article.content
+        }
+
+        newBestTextBox.appendChild(newBestTitle)
+        newBestTextBox.appendChild(newBestContent)
+
+        bestArticle.appendChild(newBestImage)
+        bestArticle.appendChild(newBestTextBox)
+
+        // 게시글 클릭시 
+        bestArticle.addEventListener('click', () => {
+            window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+        });   
     } else {
-        newBestImage.setAttribute("src", "../static/image/nuri꾼logo2.png")
+        console.log("기사없음")
+        const newBestImage = document.createElement("img")
+        newBestImage.setAttribute("class", "best-img")
+        newBestImage.setAttribute("src", "../static/image/logo.png")
+
+        const newBestTitle = document.createElement("h5")
+        newBestTitle.setAttribute("class", "best-title")
+        newBestTitle.innerText = "오늘의 뉴스가 아직 없습니다."
+
+        bestArticle.appendChild(newBestImage)
+        bestArticle.appendChild(newBestTitle)
     }
-
-    const newBestTextBox = document.createElement("div")
-    newBestTextBox.setAttribute("class", "best-textbox")
-
-
-    const newBestTitle = document.createElement("h5")
-    newBestTitle.setAttribute("class", "best-title")
-    newBestTitle.innerText = article.title
-
-    const newBestContent = document.createElement("p")
-    newBestContent.setAttribute("class", "best-content")
-    if (article.content.length > 150) {
-        newBestContent.innerText = article.content.substring(0, 150) + " ...더보기"
-    } else {
-        newBestContent.innerText = article.content
-    }
-
-    newBestTextBox.appendChild(newBestTitle)
-    newBestTextBox.appendChild(newBestContent)
-
-    bestArticle.appendChild(newBestImage)
-    bestArticle.appendChild(newBestTextBox)
-
-    // 게시글 클릭시 
-    bestArticle.addEventListener('click', () => {
-        window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
-    });
 }
 
 
@@ -198,7 +212,6 @@ async function backToTop() {
         let scrollBottom = scrollHeight - innerHeight - scrollTop;
 
         body.classList.toggle('at-top', scrollTop < 48);
-        body.classList.toggle('at-bottom', scrollBottom < 48);
     });
     }
 }
