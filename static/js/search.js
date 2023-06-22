@@ -24,7 +24,7 @@ async function searchFilter() {
   
     response_json.forEach((result) => {
         const cardLink = document.createElement("a");
-        cardLink.setAttribute("href", `/article/detail.html?id=${result.id}`);
+        cardLink.setAttribute("href", `/article/detail.html?article_id=${result.id}`);
         cardLink.setAttribute("class", "card-link");
 
         const newCard = document.createElement("div");
