@@ -40,16 +40,24 @@
           개인정보 수집 및 이용에 동의합니다.
         </label>
         <br>
-        <button type="submit">동의</button>
-        </form>
-  </body>
-  </html>
+        <button type="button" onclick="privacyCheck()">동의</button>
+    </form>
 
-<body>
- 
+<script src="/static/js/api.js"></script>  
+<script>
+  async function privacyCheck() {
+    const checkbox = document.getElementById('consent-checkbox')
+    if (!checkbox.checked) {
+      alert('개인정보 수집 및 이용에 동의해야 합니다.')
+    } else {
+      console.log("동의완료")
+      window.location.href = `${frontend_base_url}/user/signup.html`;
+    }
+  }
+</script>
 
-  
- </body>
+</body>
+
 </html>
 
 
