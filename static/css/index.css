@@ -5,7 +5,7 @@
   margin:auto;
   position: relative;
   display: flex;
-  justify-content: center; */
+  justify-content: center; 
 }
 
 .main-article{
@@ -24,6 +24,7 @@
   width: 420px;
   left:0%;
   position: relative;
+ 
 
 }
 
@@ -54,6 +55,11 @@
   /* overflow: hidden; */
   display: flex;
   align-items: center;
+  margin-bottom: 21px;
+}
+
+.article h3{
+  margin-bottom: 0px;
 }
 
 .article .sub-title {
@@ -237,4 +243,35 @@ html {
   opacity: 0;
   pointer-events: none;
 }
+
+/* 좌우 사이드 영역 */
+#viewport{
+  margin: 0 auto;
+    max-width: 1000px;
+    border-right: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+    min-height: 100%;
+    background: #ffffff;
+}
+ #note-container {
+
+  position: relative;
+
+}
+
+.nav-note {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 200px;
+  transform: translateX(-60%);
+  display: none;
+
+}
+
+/* .articles-container {
+ 
+ position: relative;
+ top: 40px;
+}  */
 

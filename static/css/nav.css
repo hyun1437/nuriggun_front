@@ -198,7 +198,7 @@
   width: 1000px;
   border: 1px solid #eeeeee;
   background: #ffffff;
-  height: 50px;
+  height: 65px;
 }
 
 .form-control{
@@ -207,6 +207,53 @@
   margin-top: 7%;
   
 }
+
+.search {
+  position: relative;
+}
+
+.search input {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: width 0.2s ease-in-out;
+  transition: all .1s linear ease-in-out;
+}
+
+.search button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  
+}
+
+.search button i {
+  color: #999;
+  transition: color 0.3s ease-in-out;
+  font-size: 20px
+ 
+
+}
+
+.search input:focus {
+  width: 300px;
+}
+
+.search input:focus + button i {
+  color: #555;
+  position: relative;
+  top: 4px;
+
+}
+
 
 /* today */
 /* .today-article{

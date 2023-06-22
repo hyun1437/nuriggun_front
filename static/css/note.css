@@ -42,9 +42,11 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: all .15s linear;
   }
   
   button[type="submit"]:hover {
-    background-color: 0 2px 4px rgba(0, 0, 0, 0.4);
+    color:white;
+    background-color: #212121;
   }
   
