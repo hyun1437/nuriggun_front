@@ -48,5 +48,5 @@ async function sendMessage(messageData) {
 }
 
 function cancelMessage() {
-    window.location.href = '/base/index.html';
+    window.location.href = '/index.html';
 }

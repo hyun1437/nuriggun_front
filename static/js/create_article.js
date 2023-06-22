@@ -61,7 +61,7 @@ async function ArticlePost() {
 
     if (response.status == 201) {
         alert("글 작성 완료")
-        window.location.replace(`${frontend_base_url}/base/index.html`);
+        window.location.replace(`${frontend_base_url}/index.html`);
     } else if (title == '' || content == '' ||img =='' || category == '') {
         alert("빈칸을 입력해 주세요.")
     }

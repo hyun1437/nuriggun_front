@@ -91,7 +91,7 @@ async function deleteMessage() {
 
 // 돌아가기
 function backMessage() {
-    window.location.href = '/base/index.html';
+    window.location.href = '/index.html';
 }
 
 
