@@ -24,12 +24,13 @@
         <div class="timestamp" id="message-timestamp"></div>
         <hr>
         <div class="row row-cols-1 row-cols-mb-2" id="message">
+            <div class="buttons">
+                <button type="button" class="btn btn-primary" onclick="replyToMessage()">답장하기</button>
+                <button type="button" class="btn btn-secondary" onclick="backMessage()">돌아가기</button>
+                <button type="button" id="delete_button" class="btn btn-danger" onclick="removeMessage()">삭제하기</button>
+            </div>
             <div class="col image" id="message-image"></div>
             <div class="col content" id="message-content"></div>
-            <div class="buttons">
-                <button type="button" id="delete_button" class="btn btn-danger" onclick="removeMessage()">삭제하기</button>
-                <button type="button" class="btn btn-secondary" onclick="backMessage()">돌아가기</button>
-            </div>
         </div>
     </div><br>
     <script src="../static/js/api.js"></script>

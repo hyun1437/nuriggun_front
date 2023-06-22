@@ -1,47 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
 .container {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .message-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .message-table th,
 .message-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .message-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
 .button-container {
-    margin-top: 20px;
-    text-align: right;
+  margin-top: 20px;
+  text-align: right;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-left: 10px;
-    font-size: 14px;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  position: relative;
+
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #464646;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .15s linear;
+  left: 100px;
+
+
 }
 
-.btn-secondary {
-    background-color: #6c757d;
+.btn:hover {
+  color: white;
+  background-color: #212121; 
+
+}*/
+
+#send {
+  padding: 10px 20px;
+
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #464646;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .15s linear;
+  left: 100px;
+}
+
+#back {
+  background-color: #6c757d;
+  padding: 10px 20px;
+
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .15s linear;
+  left: 100px;
 }
 
 .page-title {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }

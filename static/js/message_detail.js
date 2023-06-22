@@ -91,5 +91,12 @@ async function deleteMessage() {
 
 // 돌아가기
 function backMessage() {
-    window.location.href = '/user/message.html';
+    window.location.href = '/base/index.html';
+}
+
+
+function replyToMessage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const messageID = urlParams.get('message_id');
+    window.location.href = `/user/message_reply.html?message_id=${messageID}`;
 }

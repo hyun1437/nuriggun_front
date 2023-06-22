@@ -23,13 +23,16 @@
     <script src="/static/js/login.js"></script>
     <script src="/static/js/index.js"></script>
     <script src="/static/js/main_slide.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/message.js"></script>
+    
 
 </head>
 
 <body>
+  <div id="viewport">
  <!-- 상단 네비게이션 바 -->
  <div id="navbar"></div>
-
 
 <!-- 메인,서브 기사 -->
  
@@ -39,54 +42,56 @@
 <div class="articles-container">
   <div class="main-article" id="main-article">
     <div class="slider-wrapper">
-      <h3>메인기사(댓글 많은 순)</h3>
+      <h3>Special Issue</h3>
       <div class="my-slider">
       </div>
     </div>
   </div>
-    
   <div class="sub-article" id="sub-article">
     <div class="article">
-      <h3>서브기사(최신 순)</h3>
+      <h3>방금 올라온 뉴스를 확인해보세요</h3>
     </div>
   </div>
 </div>
 
-<!-- 기자리스트 -->
-
-<div class="user-list-container">
-  <h3>기자를 구독해보세요.</h3>
-  <div class="user-list" id="user-list">
+<!-- 오늘의 베스트기사 -->
+<div class="second-container">
+  <div class="best-article-container">
+    <div class="today-container">
+      <h3>오늘의 HOT뉴스</h3>
+      <div class="today-article">
+        <h5 id="today"></h5>
+      </div>
     </div>
+    <div class="best-article" id="best-article">
+      <!-- <img src="../static/image/noprofileimage.jpg" class="best-img" alt="베스트기사 이미지">
+      <div class="best-textbox">
+        <h5 class="best-title">기사제목</h5>
+        <p class="best-content">기사내용 ...더보기</p>
+        <a href="#" class="best-profile">기자 프로필</a>
+      </div> -->
+    </div>
+    
+  </div>
+  <!-- 기자리스트 -->
+  <div class="user-list-container">
+    <h3>기자를 구독해보세요.</h3>
+    <div class="user-list" id="user-list">
+    </div>
+  </div>
+</div>
+
+
+   <!-- 푸터 -->
+   <div id="footer"></div>
   </div>
 
 
 
-<a class="back-to-top" href="#">Back to top</a>
+<a class="back-to-top" href="#">▲</a>
 
- <!-- 푸터 -->
- <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>누리꾼 설명</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque, mauris et ultricies tincidunt, mi ipsum consectetur metus, eget efficitur sapien quam et lectus.</p>
-        </div>
-        <div class="col-md-6">
-          <h3>팀원들</h3>
-          <ul>
-            <li>팀장: 임재훈</li>
-            <li>부팀장: 김경진 </li>
-            <li>팀원: 박영주</li>
-            <li>팀원: 배현아</li>
-            <li>팀원: 이정현</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  
+
+
 </body>
 
 </html>
