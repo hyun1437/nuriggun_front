@@ -15,14 +15,16 @@
 </head>
 
 <body>
+  
     <!-- 상단 네비게이션바 -->
     <nav class="navbar" >
         <div class="container">
+        
             <!-- 로고 홈화면 버튼 -->
             <div class="logo-container"><a href="/base/index.html">
             <img src="/static/image/nuri____1.png" alt="" style="width:170px;"></a>
             </div>
-
+          
             <ul id="navbar-right" class="navbar-nav mr-auto">
                 <!-- 로그인시 회원 로그인 정보를 보여줌 : 닉네임 누르면 마이페이지 -->
                 <li class="nav-item disable">
@@ -33,8 +35,19 @@
                 <li class="nav-item disable" >
                     <a href="#" onclick="OpenArticle()"><div id="create-article"style="display: none;">글쓰기</div></a>
                 </li>
-                <li class="nav-item disable" >
-                    <a href="#" onclick="OpenNote()"><div id="create-note"style="display: none;">쪽지</div></a>
+                <li class="nav-item disable" id="note-container">
+                  <a href="#" onclick="OpenNote()"><div id="create-note">쪽지</div></a>
+                  <ul class="nav-note" >
+                      <li class="articles-container">  
+                      <a href="/user/message_inbox.html">받은 쪽지함</a>
+                      </li>
+                      <li class="articles-container">
+                      <a href="/user/message_sent.html">보낸 쪽지함</a>
+                      </li>
+                      <li class="articles-container">
+                      <a href="/user/message_create.html">쪽지 보내기</a>
+                      </li>
+                  </ul>
                 </li>
 
                 <!-- 로그인과 회원가입 버튼 -->

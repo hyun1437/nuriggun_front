@@ -40,13 +40,15 @@ async function Profile(user_id) {
         }
 
         // 프로필 정보
-        const userNickName = document.getElementById('user-nickname');
+        const userNickName = document.getElementsByClassName('user-nickname'); // 값을 2번 사용하기 위해 Id 에서 ClassName으로 변경
+
+        for (let i = 0; i < userNickName.length; i++) {
+            const userNicknameElement = userNickName[i];
+            userNicknameElement.innerText = response_json.nickname;
+        }
+
         const userEmail = document.getElementById('user-email');
         const userInterest = document.getElementById('user-interest');
-
-        if (userNickName !== null) {
-            userNickName.innerText = response_json.nickname
-        }
 
         if (userEmail !== null) {
             userEmail.innerText = response_json.email
@@ -66,13 +68,11 @@ async function Profile(user_id) {
 
         // 해당 프로필 페이지가 로그인 한 유저의 페이지일 때 보이게 하기 - 회원 탈퇴, 비밀번호 변경, 수정하기
         if (user_id != logined_id) {
-            document.getElementById('my-scrap-article-list').style.display = "none";
             document.getElementById('user-edit').style.display = "none";
             document.getElementById('user-password-reset').style.display = "none";
             document.getElementById('user-delete').style.display = "none";
             document.getElementById('subscribeButton').style.display = "block";
         } else {
-            document.getElementById('my-scrap-article-list').style.display = "block";
             document.getElementById('user-edit').style.display = "block";
             document.getElementById('user-password-reset').style.display = "block";
             document.getElementById('user-delete').style.display = "block";
@@ -89,32 +89,67 @@ async function loadArticles(user_id) {
     });
 
     if (response.status == 200) {
-        const response_json = await response.json();
-        // console.log(response_json);
+        const articles = await response.json();
+        console.log(articles.length);
         // console.log(response_json[0].title);
+
+        // 작성한 게시글 개수
+        const articlesCount = document.getElementById('article-list-count');
+
+        if (articlesCount !== null) {
+            articlesCount.innerText = ` (${articles.length})`;
+        }
 
         // 작성한 게시글
         const articleList = document.getElementById('article-list');
+        articleList.innerHTML = ''; // 작성 게시글 목록 초기화
 
-        if (articleList !== null) {
-            for (let i = 0; i < response_json.length; i++) {
-                const article = response_json[i];
-                const listItem = document.createElement('li');
+        const startIndex = (currentPage - 1) * articlesPerPage;
+        const endIndex = startIndex + articlesPerPage;
+        const currentArticles = articles.slice(startIndex, endIndex);
+        console.log(currentArticles)
+
+        if (currentArticles !== null) {
+            for (let i = 0; i < currentArticles.length; i++) {
+                const article = currentArticles[i];
+                const listItem = document.createElement('a');
                 const articleContainer = document.createElement('div');
 
-                const link = document.createElement('a');
-                link.innerText = article.title;  // 글 제목
-                link.href = `../article/detail.html?article_id=${article.id}`  // 글 링크             
+                const articleId = document.createElement('a'); // 글 번호
+                articleId.innerText = article.id;
+                articleId.classList.add('articleId'); // articleId CSS 적용을 위해 클래스 추가
+
+                const category = document.createElement('a'); // 글 카테고리
+                category.innerText = article.category;
+                category.href = `../user/article_list.html?category=${article.category}`  // 카테고리 링크
+                category.classList.add('category'); // category CSS 적용을 위해 클래스 추가
+
+                const title = document.createElement('a'); // 글 제목
+                title.innerText = article.title;
+                console.log(title)
+                title.href = `../article/detail.html?article_id=${article.id}`  // 글 링크
+                title.classList.add('title'); // title CSS 적용을 위해 클래스 추가
 
                 const createAt = document.createElement('span'); // 글 작성일
                 createAt.innerText = article.created_at;
+                createAt.classList.add('createdAt'); // createdAt CSS 적용을 위해 클래스 추가
 
-                articleContainer.appendChild(link);
+                const reaction = document.createElement('span'); // 글 반응 5종
+                const totalReactions = Object.values(article.reaction).reduce((sum, value) => sum + value, 0);
+                reaction.innerText = `총 반응 수 ${totalReactions}`;
+                reaction.classList.add('reaction'); // reaction CSS 적용을 위해 클래스 추가
+
+                articleContainer.appendChild(articleId);
+                articleContainer.appendChild(category);
+                articleContainer.appendChild(title);
                 articleContainer.appendChild(createAt);
+                articleContainer.appendChild(reaction);
                 listItem.appendChild(articleContainer);
                 articleList.appendChild(listItem);
             }
         }
+        // 페이지네이션 생성
+        renderPagination(articles.length, articlesPerPage);
     }
 }
 
@@ -135,32 +170,65 @@ async function loadScraps() {
 
 
     if (response.status == 200) {
-        const response_json = await response.json();
-        console.log(response_json);
+        const scraps = await response.json();
+        console.log(scraps);
         // console.log(response_json[0].title);
 
-        // 스크랩한 게시글
-        const ScrapList = document.getElementById('scrap-article-list');
+        // 스크랩한 게시글 개수
+        const scrapsCount = document.getElementById('article-scrap-list-count');
 
-        if (ScrapList !== null) {
-            for (let i = 0; i < response_json.length; i++) {
-                const article = response_json[i];
-                const listItem = document.createElement('li');
+        if (scrapsCount !== null) {
+            scrapsCount.innerText = ` (${scraps.length})`;
+        }
+
+        // 스크랩한 게시글
+        const scrapList = document.getElementById('scrap-article-list');
+        scrapList.innerHTML = '';
+
+        const startIndex1 = (scrapCurrentPage - 1) * scrapsPerPage;
+        const endIndex1 = startIndex1 + scrapsPerPage;
+        const currentScraps = scraps.slice(startIndex1, endIndex1);
+        console.log(currentScraps)
+
+        if (currentScraps !== null) {
+            for (let i = 0; i < currentScraps.length; i++) {
+                const article = currentScraps[i];
+                const listItem = document.createElement('a');
                 const scrapArticleContainer = document.createElement('div');
 
-                const link = document.createElement('a');
-                link.innerText = article.title;  // 글 제목
-                link.href = `../article/detail.html?article_id=${article.id}`  // 글 링크             
+                const articleId = document.createElement('a'); // 글 번호
+                articleId.innerText = article.id;
+                articleId.classList.add('articleId'); // articleId CSS 적용을 위해 클래스 추가
+
+                const category = document.createElement('a'); // 글 카테고리
+                category.innerText = article.category;
+                category.href = `../user/article_list.html?category=${article.category}`
+                category.classList.add('category');
+
+                const title = document.createElement('a'); // 글 제목
+                title.innerText = article.title;
+                title.href = `../article/detail.html?article_id=${article.id}`
+                title.classList.add('title');
+
+                const author = document.createElement('a'); // 글 작성자
+                author.innerText = article.user.nickname;
+                author.href = `../user/profile_page.html?user_id=${article.user.pk}`
+                author.classList.add('author');
 
                 const createAt = document.createElement('span'); // 글 작성일
                 createAt.innerText = article.created_at;
+                createAt.classList.add('createdAt');
 
-                scrapArticleContainer.appendChild(link);
+                scrapArticleContainer.appendChild(articleId);
+                scrapArticleContainer.appendChild(category);
+                scrapArticleContainer.appendChild(title);
                 scrapArticleContainer.appendChild(createAt);
+                scrapArticleContainer.appendChild(author);
                 listItem.appendChild(scrapArticleContainer);
-                ScrapList.appendChild(listItem);
+                scrapList.appendChild(listItem);
             }
         }
+        renderScrapPagination(scraps.length, scrapsPerPage);
     }
 }
 
@@ -248,9 +316,9 @@ async function isSubscribed() {
         const isSubscribeExists = ids.includes(intsubscribe_id);
         // console.log(isSubscribeExists)
         if (isSubscribeExists) {
-            document.getElementById('subscribeButton').innerText = '구독 중'
+            document.getElementById('subscribeButton').innerText = '🌟 구독 중'
         } else {
-            document.getElementById('subscribeButton').innerText = '구독'
+            document.getElementById('subscribeButton').innerText = '⭐ 구독하기'
         }
     } else {
         console.error('Failed to load subscribes:', response.status);
