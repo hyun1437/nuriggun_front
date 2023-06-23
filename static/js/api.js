@@ -3,6 +3,7 @@ console.log("api.js 연결 확인")
 
 // 전체 적용 js 
 
+
 const frontend_base_url = "https://www.teamnuri.xyz"
 const backend_base_url = "https://www.nuriggun.xyz"
 
