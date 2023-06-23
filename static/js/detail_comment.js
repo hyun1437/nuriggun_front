@@ -53,41 +53,32 @@ async function loadComments() {
 
         commentList.insertAdjacentHTML('beforeend', `
         <div id="comment-container-${comment.id}" class="comment-container">
-        <div id="comment-container-md">
-        ${deletebutton} ${editbutton} 
-        
+            <div id="comment-container-md">
+                ${deletebutton} ${editbutton}         
 
-            <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
-            <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">    
-                <span class="profile-img" id="comment-user-profile-img">
-                    <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
-                        src="${backend_base_url}/media/${comment.user.profile_img}" alt="No Image"
-                        onerror="this.onerror=null; this.src='../static/image/noprofileimage.jpg'">
-                </span> <span id="comment-commentauthor">${comment.user.nickname}</span> 
-            </a>
-            <!-- 날자 / 작성일, 최종일 -->
-            <p id="comment-create-month"> ${comment.comment_created_at}</p>
-            
-            
-            
+                <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
+                <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">
+                    <span class="profile-img" id="comment-user-profile-img">
+                        <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
+                            src="${backend_base_url}${payload_parse.profile_img}" alt="No Image"
+                            onerror="this.onerror=null; this.src='${noProfileImage}'">
+                    </span> <span id="comment-commentauthor">${comment.user.nickname}</span>
+                </a>
 
-            <!-- 댓글 내용 -->
-            <a id="comment-comment">${comment.comment}</a>
+                <!-- 날짜 / 작성일, 최종일 -->
+                <p id="comment-create-month"> ${comment.comment_created_at}</p>          
 
-            <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
-            <div id="comment-info">
-                <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
-                <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
-                
-                
+                <!-- 댓글 내용 -->
+                <a id="comment-comment">${comment.comment}</a>
+
+                <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
+                <div id="comment-info">
+                    <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
+                    <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
+                </div>
             </div>
-            
-        </div>
-        </div>
-        </div>
-            `);
+        </div>`);
     });
-
     // <p>등록 ${comment.comment_created_at} | 수정 ${comment.comment_updated_at}</p>
 
     // 페이지네이션 생성
@@ -147,12 +138,6 @@ async function showEditForm(comment_id) {
     commentEditContainer.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
     commentEditContainer.style.fontSize = "14px";
     commentEditContainer.style.color = "#333";
-    
-
-
-
-
-
 
 
     // 기존 댓글 내용 가져오기
