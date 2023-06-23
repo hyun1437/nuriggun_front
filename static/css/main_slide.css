@@ -2,7 +2,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
+    margin-left: 10px;
 }
+
+.my-slider img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    
+  }
+
 
 .tns-outer {
 padding: 0 !important;
