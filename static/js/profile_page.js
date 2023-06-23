@@ -125,7 +125,8 @@ async function loadArticles(user_id) {
                 category.classList.add('category'); // category CSS 적용을 위해 클래스 추가
 
                 const title = document.createElement('a'); // 글 제목
-                title.innerText = article.title;
+                const titleSlice = article.title.length > 10 ? article.title.slice(0,20)+'...':article.title; // 20자 이상일 경우 뒷부분은 ...으로 표시
+                title.innerText = titleSlice;
                 console.log(title)
                 title.href = `../article/detail.html?article_id=${article.id}`  // 글 링크
                 title.classList.add('title'); // title CSS 적용을 위해 클래스 추가
@@ -206,7 +207,8 @@ async function loadScraps() {
                 category.classList.add('category');
 
                 const title = document.createElement('a'); // 글 제목
-                title.innerText = article.title;
+                const titleSlice = article.title.length > 10 ? article.title.slice(0,20)+'...':article.title;
+                title.innerText = titleSlice;
                 title.href = `../article/detail.html?article_id=${article.id}`
                 title.classList.add('title');
 

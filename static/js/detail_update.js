@@ -21,7 +21,7 @@ function articleUpdate() {
     const updateTitle = $('#article-update-title').val();
     const updateCategory = $('#article-update-category').val();
     const updateContent = $('#article-update-content').val();
-    const updateImage = $('#article-update-image').val();
+    const updateImage = $('#article-update-image')[0].files[0];
 
     const article_id = new URLSearchParams(window.location.search).get('article_id');
 
@@ -38,7 +38,7 @@ function articleUpdate() {
 
     // 이미지 데이터를 File 객체로 변환하여 추가
     if (updateImage) {
-        formData.append("uploaded_image", updateImage);
+        formData.append("image", updateImage);
     }
 
     $.ajax({

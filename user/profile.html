@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nuriggun 프로필 페이지</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/profile_page.css">
+
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="profile">
+
+        <!-- 프로필 페이지 부분 -->
+        <div class="profile-page">
+
+            <!-- 프로필 정보 -->
+            <div class="profile-page-container">
+
+                <!-- 구독 버튼 -->
+                <div>
+                    <button href="#" id="subscribeButton" onclick="postSubscribe()"
+                        style="text-decoration: none;">📘</a>
+                </div>
+
+                <!-- 프로필 수정하기 -->
+                <button id="user-edit" href="#" onclick="ProfileUpdate()">✏️ 편집</button>
+
+                <!-- 프로필 이미지 -->
+                <img id="user-profile-image" alt="프로필 이미지">
+
+                <div>
+                    <!-- 프로필 유저의 이메일 -->
+                    <p>기자 이메일: <span id="user-email"></span></p>
+
+                    <!-- 프로필 유저의 닉네임 -->
+                    <p>기자 이름: <span id="user-nickname" class="user-nickname"></span></p>
+
+                    <!-- 프로필 유저의 관심 분야 -->
+                    <p>관심 분야: <span id="user-interest"></span></p>
+                    <hr style="border-color: gainsboro; opacity: 0.5;">
+
+                    <div class="profile-page-button">
+                        <!-- 프로필 유저에게 제보하기 -->
+                        <p><a id="user-message" href="../user/message.html">제보하기</a></p>
+
+                        <!-- 프로필 유저가 구독한 기자 수 -->
+                        <p><a id="user-subscribe" href="#"></a></p>
+
+                        <!-- 프로필 비밀번호 변경 -->
+                        <p id="user-password-reset"><a id="user-password-reset" href="../user/password_change.html">비밀번호
+                                변경</a></p>
+
+                        <!-- 프로필 회원 탈퇴 -->
+                        <p id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
+                        <form id="delete-form" style="display:none" ;>
+                            <label for="password">비밀번호:</label>
+                            <input type="password" id="password" name="password">
+                            <button type="button" onclick="DeleteUser()">탈퇴</button>
+                            <button type="button" onclick="toggleDeleteForm()">취소</button>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/profile_page.js"></script>
+
+
+
+</body>
+
+</html>
