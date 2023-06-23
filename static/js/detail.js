@@ -22,9 +22,9 @@ if (loginedNickname !== null) {
 
 if (loginedProfileImg !== null) {
     if (payload_parse.profile_img) {
-        loginedProfileImg.src = `${backend_base_url}${response_json.profile_img}`;
+        loginedProfileImg.src = `${backend_base_url}${payload_parse.profile_img}`;
     } else {
-        loginedProfileImg.src = '../static/image/noprofileimage.jpg'; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
+        loginedProfileImg.src = `${noProfileImage}`; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
     }
 }
 
