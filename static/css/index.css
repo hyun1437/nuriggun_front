@@ -8,7 +8,7 @@
   justify-content: center; 
 }
 
-.main-article{
+.main-article {
   border-bottom: 1px solid #eeeeee;
   height: 370px;
   right: 0.5%;
@@ -17,6 +17,10 @@
   position: relative;
   
   /* eeeeee */
+}
+
+.main-title {
+  margin-top: 0;
 }
 
 .sub-article{
