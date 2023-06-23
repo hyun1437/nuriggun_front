@@ -1,11 +1,8 @@
 .article-detail-container {
   width: 900px;
-  margin: auto;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  margin: auto auto 2% auto;
 }
 
 .article-button {
