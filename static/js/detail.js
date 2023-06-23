@@ -120,7 +120,7 @@ async function articleDetail() {
             articleSubscribeButton1.style.display = 'block';
         }
 
-        const articleTitle = document.getElementById('article-title');
+        const articleTitle = document.getElementById('article-detail-title');
         const articleCategory = document.getElementById('article-category');
         const articleCreatedAt = document.getElementById('article-created-at');
         const articleUpdatedAt = document.getElementById('article-updated-at');
@@ -184,7 +184,7 @@ async function articleDetail() {
         sessionStorage.setItem('article-content', originalContent);
 
         const articleCategoryUrl = document.getElementById('article-category-url');
-        const articleCategoryLink = `../user/article_list.html?category=${response_json.category}`;
+        const articleCategoryLink = `../article/article_list.html?category=${response_json.category}`;
         articleCategoryUrl.href = articleCategoryLink
 
         const articleUserUrl = document.getElementById('article-user-url');
