@@ -1,8 +1,7 @@
 .profile-page {
     display: flex;
     width: 1000px;
-    margin: auto;
-    margin-top: 20px;
+    margin: 2% auto 2% auto;
 }
 
 .profile-page-container,
@@ -17,14 +16,13 @@
 }
 
 #user-profile-image {
-    width: 80%;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
     margin: auto;
-    margin-bottom: 50px;
     display: block;
     justify-content: center;
-
-    /* 이미지 원으로 표시 */
-    border-radius: 50%;
 }
 
 .my-article-list-container {
@@ -36,7 +34,7 @@
 .my-scrap-article-list {
     height: 47%;
     margin-bottom: 20px;
-    border: 1px solid rgb(212, 216, 255);
+    border: 1px solid gainsboro;
     border-radius: 10px;
 }
 
@@ -86,7 +84,7 @@
 
 .author {
     font-size: 14px;
-    margin-right: 10%;
+    margin-right: 7%;
     float: right;
     font-weight: bold;
 }
@@ -96,8 +94,7 @@
 }
 
 .createdAt {
-    font-weight: bold;
-    color: blue;
+    color: rgb(0, 0, 194);
     font-size: 14px;
     float: right;
     margin-right: 5%;
@@ -142,25 +139,25 @@ a {
 }
 
 #user-message:hover {
-    background-color: rgb(212, 216, 255);
+    background-color: rgb(223, 226, 255);
     padding: 10px 10% 10px 5px;
     border-radius: 10px;
 }
 
 #user-subscribe:hover {
-    background-color: rgb(212, 216, 255);
+    background-color: rgb(223, 226, 255);
     padding: 10px 10% 10px 5px;
     border-radius: 10px;
 }
 
 #user-password-reset :hover {
-    background-color: rgb(212, 216, 255);
+    background-color: rgb(223, 226, 255);
     padding: 10px 10% 10px 5px;
     border-radius: 10px;
 }
 
 #user-delete :hover {
-    background-color: rgb(212, 216, 255);
+    background-color: rgb(223, 226, 255);
     padding: 10px 10% 10px 5px;
     border-radius: 10px;
 }
@@ -176,7 +173,7 @@ a {
 
 #article-pagination a,
 #scrap-pagination a {
-    color: rgb(212, 216, 255);
+    color: rgb(223, 226, 255);
     padding: 2px 8px;
     text-decoration: none;
     margin-right: 5px;
@@ -185,6 +182,6 @@ a {
 
 #article-pagination a.active,
 #scrap-pagination a.scrap-active {
-    background-color: rgb(212, 216, 255);
-    color: rgb(29, 44, 255);
+    background-color: rgb(223, 226, 255);
+    color: black
 }

@@ -12,8 +12,11 @@ window.onload = () => {
 
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
 console.log(user_id)
-const logined_id = parseInt(payload_parse.user_id);
-console.log(logined_id)
+
+const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
+
+const logined_id = userInfo.user_id;
+console.log(logined_id);
 
 
 // user_id의 프로필 페이지
@@ -35,7 +38,7 @@ async function Profile(user_id) {
             if (response_json.profile_img) {
                 profileImage.src = `${backend_base_url}${response_json.profile_img}`;
             } else {
-                profileImage.src = '../static/image/noprofileimage.jpg'; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
+                profileImage.src = `${noProfileImage}`; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
             }
         }
 
@@ -67,16 +70,21 @@ async function Profile(user_id) {
         }
 
         // 해당 프로필 페이지가 로그인 한 유저의 페이지일 때 보이게 하기 - 회원 탈퇴, 비밀번호 변경, 수정하기
-        if (user_id != logined_id) {
+        if (logined_id === null) {
             document.getElementById('user-edit').style.display = "none";
             document.getElementById('user-password-reset').style.display = "none";
             document.getElementById('user-delete').style.display = "none";
-            document.getElementById('subscribeButton').style.display = "block";
+            document.getElementById('subscribe-button').style.display = "none";
+        } else if (user_id != logined_id) {
+            document.getElementById('user-edit').style.display = "none";
+            document.getElementById('user-password-reset').style.display = "none";
+            document.getElementById('user-delete').style.display = "none";
+            document.getElementById('subscribe-button').style.display = "block";
         } else {
             document.getElementById('user-edit').style.display = "block";
             document.getElementById('user-password-reset').style.display = "block";
             document.getElementById('user-delete').style.display = "block";
-            document.getElementById('subscribeButton').style.display = "none";
+            document.getElementById('subscribe-button').style.display = "none";
         }
     }
 }
@@ -125,7 +133,8 @@ async function loadArticles(user_id) {
                 category.classList.add('category'); // category CSS 적용을 위해 클래스 추가
 
                 const title = document.createElement('a'); // 글 제목
-                title.innerText = article.title;
+                const titleSlice = article.title.length > 10 ? article.title.slice(0, 15) + '...' : article.title; // 20자 이상일 경우 뒷부분은 ...으로 표시
+                title.innerText = titleSlice;
                 console.log(title)
                 title.href = `../article/detail.html?article_id=${article.id}`  // 글 링크
                 title.classList.add('title'); // title CSS 적용을 위해 클래스 추가
@@ -206,7 +215,8 @@ async function loadScraps() {
                 category.classList.add('category');
 
                 const title = document.createElement('a'); // 글 제목
-                title.innerText = article.title;
+                const titleSlice = article.title.length > 10 ? article.title.slice(0, 15) + '...' : article.title;
+                title.innerText = titleSlice;
                 title.href = `../article/detail.html?article_id=${article.id}`
                 title.classList.add('title');
 
@@ -279,7 +289,7 @@ function toggleDeleteForm() {
 
 // 구독 등록 및 취소
 async function postSubscribe() {
-    const button = document.getElementById("subscribeButton");
+    const button = document.getElementById("subscribe-button");
     const response = await fetch(`${backend_base_url}/user/subscribe/${user_id}/`, {
         headers: {
             'content-type': 'application/json',
@@ -316,9 +326,9 @@ async function isSubscribed() {
         const isSubscribeExists = ids.includes(intsubscribe_id);
         // console.log(isSubscribeExists)
         if (isSubscribeExists) {
-            document.getElementById('subscribeButton').innerText = '🌟 구독 중'
+            document.getElementById('subscribe-button').innerText = '🌟 구독 중'
         } else {
-            document.getElementById('subscribeButton').innerText = '⭐ 구독하기'
+            document.getElementById('subscribe-button').innerText = '⭐ 구독하기'
         }
     } else {
         console.error('Failed to load subscribes:', response.status);

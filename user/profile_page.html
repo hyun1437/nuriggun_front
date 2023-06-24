@@ -10,6 +10,9 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/static/css/nav.css">
   <link rel="stylesheet" href="/static/css/footer.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+
+  
 
   <link rel="stylesheet" href="/static/css/profile_page.css">
 
@@ -35,7 +38,7 @@
 
         <!-- 구독 버튼 -->
         <div>
-          <button href="#" id="subscribeButton" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
+          <button href="#" id="subscribe-button" onclick="postSubscribe()" style="text-decoration: none;">📘</a>
         </div>
 
         <!-- 프로필 수정하기 -->
@@ -53,7 +56,7 @@
 
           <!-- 프로필 유저의 관심 분야 -->
           <p>관심 분야: <span id="user-interest"></span></p>
-          <hr>
+          <hr style="border-color: gainsboro; opacity: 0.5;">
 
           <div class="profile-page-button">
             <!-- 프로필 유저에게 제보하기 -->
@@ -84,7 +87,7 @@
         <!-- 작성한 글들의 목록 -->
         <div class="my-article-list">
           <h3 class="h3color"><span class="user-nickname"></span> 기자의 게시글 목록<span id="article-list-count"></span></h3>
-          <hr style="border-color: rgba(212, 216, 255, 0.404);">
+          <hr style="border-color: gainsboro; opacity: 0.2;">
           <div id="article-pagination" class="article-pagination"></div>
           <a id="article-list"></a>
 
@@ -93,7 +96,7 @@
         <!-- 스크랩한 글들의 목록 -->
         <div class="my-scrap-article-list" id="my-scrap-article-list">
           <h3 class="h3color"><span class="user-nickname"></span> 기자의 스크랩 목록<span id="article-scrap-list-count"></span></h3>
-          <hr style="border-color: rgba(212, 216, 255, 0.404);">
+          <hr style="border-color: gainsboro; opacity: 0.2;">
           <div id="scrap-pagination" class="scrap-pagination"></div>
           <a id="scrap-article-list"></a>
         </div>
@@ -110,7 +113,7 @@
   <script src="../static/js/api.js"></script>
   <script src="/static/js/nav.js"></script>
   <script src="/static/js/search.js"></script>
-
+  <script src="/static/js/message.js"></script>
   <script src="../static/js/profile_page.js"></script>
   <script src="../static/js/profile_edit.js"></script>
   <script src="/static/js/pagination.js"></script>

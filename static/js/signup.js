@@ -1,7 +1,5 @@
-window.onload = () => {
-    console.log('회원가입 페이지 로딩확인')
-    console.log(backend_base_url)
-}
+
+console.log('회원가입 페이지 로딩확인')
 
 async function handleSignUp() {
     const email = document.getElementById("email").value
@@ -24,6 +22,7 @@ async function handleSignUp() {
         
         if (response.status == 201) {
             alert("이메일로 인증링크가 전송되었습니다")
+            window.location.replace(`${frontend_base_url}/index.html`);
         } else {
             const response_json = await response.json()
             let errorMessages = ''

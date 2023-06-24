@@ -11,7 +11,15 @@
 .article-img {
     width: 100px; 
     height:100px; 
+    object-fit: cover;
+    cursor: pointer;
+    transition: all .15s linear;
 }
+
+.article-img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
 
 .article-item {
     width: 800px;
@@ -26,6 +34,10 @@
     margin: 0;
     flex-grow: 1; /* 제목을 중앙에 배치 */
     text-align: center;
+    cursor: pointer;
+}
+.article-title:hover{
+    color: #2136f4;
 }
 
 .article-info { 
