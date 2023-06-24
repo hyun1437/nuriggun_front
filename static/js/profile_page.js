@@ -86,6 +86,10 @@ async function Profile(user_id) {
             document.getElementById('user-delete').style.display = "block";
             document.getElementById('subscribe-button').style.display = "none";
         }
+
+        // 제보하기 진행 시 프로필 유저의 이메일 가져오기 위한 설정
+        const profileUserEmail = response_json.email;
+        sessionStorage.setItem('user-email', profileUserEmail);
     }
 }
 
@@ -129,7 +133,7 @@ async function loadArticles(user_id) {
 
                 const category = document.createElement('a'); // 글 카테고리
                 category.innerText = article.category;
-                category.href = `../user/article_list.html?category=${article.category}`  // 카테고리 링크
+                category.href = `../article/article_list.html?category=${article.category}`  // 카테고리 링크
                 category.classList.add('category'); // category CSS 적용을 위해 클래스 추가
 
                 const title = document.createElement('a'); // 글 제목
@@ -211,7 +215,7 @@ async function loadScraps() {
 
                 const category = document.createElement('a'); // 글 카테고리
                 category.innerText = article.category;
-                category.href = `../user/article_list.html?category=${article.category}`
+                category.href = `../article/article_list.html?category=${article.category}`
                 category.classList.add('category');
 
                 const title = document.createElement('a'); // 글 제목
