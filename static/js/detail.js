@@ -10,18 +10,21 @@ window.onload = () => {
 
 const article_id = new URLSearchParams(window.location.search).get('article_id');
 console.log(article_id)
-const logined_id = parseInt(payload_parse.user_id);
-console.log(logined_id)
+
+const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
+
+const logined_id = userInfo.user_id;
+console.log(logined_id);
 
 const loginedNickname = document.getElementById('logined-nickname');
 const loginedProfileImg = document.getElementById('logined-profile-img');
 
 if (loginedNickname !== null) {
-    loginedNickname.innerText = payload_parse.nickname;
+    loginedNickname.innerText = userInfo.nickname;
 }
 
 if (loginedProfileImg !== null) {
-    if (payload_parse.profile_img) {
+    if (userInfo.profile_img) {
         loginedProfileImg.src = `${backend_base_url}${payload_parse.profile_img}`;
     } else {
         loginedProfileImg.src = `${noProfileImage}`; // 프로필 이미지 없을 시 기본 이미지로 보이게 설정
@@ -63,9 +66,12 @@ async function articleScrap() {
     } else if (response.status == 202) {
         alert("스크랩을 취소했습니다.")
         window.location.reload()
+    } else if (response.status == 401) {
+        alert("로그인 후 진행 바랍니다.")
     } else {
         alert("스크랩을 진행할 수 없습니다.")
     }
+
 }
 
 
@@ -103,62 +109,62 @@ async function articleDetail() {
         const response_json = await response.json();
         console.log(response_json)
         const article_user_id = response_json.user.pk;
-
         const articleUpdateButton = document.getElementById('article-update-button');
         const articleDeleteButton = document.getElementById('article-delete-button');
-        const articleSubscribeButton1 = document.getElementById('subscribeButton1');
+        const subscribeButton1 = document.getElementById('subscribe-button1');
+        const articleScrapButton = document.getElementById('article-scrap-button')
         isSubscribed(article_user_id);
 
         // 게시글 작성자가 로그인한 유저일 경우 수정, 삭제 버튼 보이게 함.(+ 작성자 구독 버튼 안보이게 진행)
         if (article_user_id === logined_id) {
             articleUpdateButton.style.display = 'block';
             articleDeleteButton.style.display = 'block';
-            articleSubscribeButton1.style.display = 'none';
+            subscribeButton1.style.display = 'none';
+        } else if (logined_id === null) {
+            articleUpdateButton.style.display = 'none';
+            articleDeleteButton.style.display = 'none';
+            subscribeButton1.style.display = 'none';
+            articleScrapButton.style.display = 'none';
         } else {
             articleUpdateButton.style.display = 'none';
             articleDeleteButton.style.display = 'none';
-            articleSubscribeButton1.style.display = 'block';
+            subscribeButton1.style.display = 'block';
         }
 
-        const articleTitle = document.getElementById('article-title');
+        const articleTitle = document.getElementById('article-detail-title');
         const articleCategory = document.getElementById('article-category');
         const articleCreatedAt = document.getElementById('article-created-at');
         const articleUpdatedAt = document.getElementById('article-updated-at');
         const articleImage = document.getElementById('article-image');
+        const articleImageContent = document.getElementById('article-image-content');
         const articleContent = document.getElementById('article-content');
-        const articleUser = document.getElementById('article-user');
+        const articleUserNickname = document.getElementsByClassName('article-user-nickname');
         const articleUserEmail = document.getElementsByClassName('article-user-email');
         const articleCommentsCount = document.getElementById('article-comments-count');
 
-        if (articleTitle !== null) {
-            articleTitle.innerText = response_json.title;
-        }
-        if (articleCategory !== null) {
-            articleCategory.innerText = response_json.category;
-        }
-        if (articleCreatedAt !== null) {
-            articleCreatedAt.innerText = response_json.created_at;
-        }
+        articleTitle.innerText = response_json.title;
+        articleCategory.innerText = response_json.category;
+        articleCreatedAt.innerText = response_json.created_at;
+
         if (articleUpdatedAt == articleCreatedAt) {
             articleUpdatedAt.innerText = ` | 수정 ${response_json.updated_at}`;
         }
-        if (articleImage !== null) {
-            articleImage.src = `${backend_base_url}${response_json.image}`;
+
+        articleImage.src = `${backend_base_url}${response_json.image}`;
+        articleContent.innerText = response_json.content;
+        articleImageContent.innerText = response_json.image_content;
+
+        for (let i = 0; i < articleUserNickname.length; i++) {
+            const articleUserNicknameElement = articleUserNickname[i];
+            articleUserNicknameElement.innerText = response_json.user.nickname;
         }
-        if (articleContent !== null) {
-            articleContent.innerText = response_json.content;
-        }
-        if (articleUser !== null) {
-            articleUser.innerText = response_json.user.nickname;
-        }
+
         for (let i = 0; i < articleUserEmail.length; i++) {
             const articleUserEmailElement = articleUserEmail[i];
             articleUserEmailElement.innerText = response_json.user.emial;
         }
-        if (articleCommentsCount !== null) {
-            articleCommentsCount.innerText = `(${response_json.comments_count})`;
-        }
 
+        articleCommentsCount.innerText = `(${response_json.comments_count})`;
 
         const reactionCounts = ['good', 'great', 'sad', 'angry', 'subsequent'];
 
@@ -176,15 +182,18 @@ async function articleDetail() {
         const originalTitle = response_json.title;
         const originalCategory = response_json.category;
         const originalImage = `${backend_base_url}${response_json.image}`;
+        const originalImageContent = response_json.image_content;
+
         const originalContent = response_json.content;
 
         sessionStorage.setItem('article-title', originalTitle);
         sessionStorage.setItem('article-category', originalCategory);
         sessionStorage.setItem('article-image', originalImage);
+        sessionStorage.setItem('article-image-content', originalImageContent);
         sessionStorage.setItem('article-content', originalContent);
 
         const articleCategoryUrl = document.getElementById('article-category-url');
-        const articleCategoryLink = `../user/article_list.html?category=${response_json.category}`;
+        const articleCategoryLink = `../article/article_list.html?category=${response_json.category}`;
         articleCategoryUrl.href = articleCategoryLink
 
         const articleUserUrl = document.getElementById('article-user-url');
@@ -234,9 +243,9 @@ async function isSubscribed(article_user_id) {
         const intsubscribe_id = parseInt(article_user_id)
         const isSubscribeExists = ids.includes(intsubscribe_id);
         if (isSubscribeExists) {
-            document.getElementById('subscribeButton1').innerText = '🌟 구독 중'
+            document.getElementById('subscribe-button1').innerText = '🌟 구독 중'
         } else {
-            document.getElementById('subscribeButton1').innerText = '⭐ 구독하기'
+            document.getElementById('subscribe-button1').innerText = '⭐ 구독하기'
         }
     } else {
         console.error('Failed to load subscribes:', response.status);
@@ -264,12 +273,12 @@ async function handleArticleReaction(reactionType) {
 
     if (response.status == 200) {
         alert(`${reactionType} 반응을 취소했습니다.`)
-
         window.location.reload()
     } else if (response.status == 201) {
         alert(`${reactionType} 반응을 눌렀습니다.`)
-
         window.location.reload()
+    } else if (response.status == 401) {
+        alert("로그인 후 진행 바랍니다.")
     } else {
         alert("다시 눌러보라구요 아시겠어요?!!?!.")
     }

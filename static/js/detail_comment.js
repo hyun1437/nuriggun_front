@@ -18,7 +18,9 @@ async function postComment() {
         alert("댓글을 등록하였습니다.")
         window.location.reload()
     } else if (comment == '') {
-        alert("댓글 내용을 입력해 주세요.")
+        alert("댓글 내용을 입력 바랍니다.")
+    } else if (response.status == 401) {
+        alert("로그인 후 입력 바랍니다.")
     }
 }
 
@@ -87,7 +89,7 @@ async function loadComments() {
                 <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">
                     <span class="profile-img" id="comment-user-profile-img">
                         <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
-                            src="${backend_base_url}${payload_parse.profile_img}" alt="No Image"
+                            src="${backend_base_url}${userInfo.profile_img}" alt="No Image"
                             onerror="this.onerror=null; this.src='${noProfileImage}'">
                     </span>
                 <span class="comment-commentauthor">${comment.user.nickname}</span>
@@ -265,6 +267,8 @@ async function commentLike(comment_id) {
     } else if (response.status == 201) {
         alert("댓글 비추천을 취고하고 댓글 추천을 눌렀습니다.")
         window.location.reload()
+    } else if (response.status == 401) {
+        alert("로그인 후 진행 바랍니다.")
     } else {
         alert("댓글 추천을 진행할 수 없습니다.")
     }
@@ -290,6 +294,8 @@ async function commentHate(comment_id) {
     } else if (response.status == 201) {
         alert("댓글 추천을 취고하고 댓글 비추천을 눌렀습니다.")
         window.location.reload()
+    } else if (response.status == 401) {
+        alert("로그인 후 진행 바랍니다.")
     } else {
         alert("댓글 비추천을 진행할 수 없습니다.")
     }

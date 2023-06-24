@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성</title>
 
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시글 작성</title>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
 
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/static/css/create_article.css">
-    <link rel="stylesheet" href="/static/css/message.css">
+  <link rel="stylesheet" href="/static/css/message.css">
+  <link rel="stylesheet" href="/static/css/footer.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
 
-    <!-- JS -->
-    <script src="/static/js/api.js"></script>
-    <script src="/static/js/create_article.js"></script>
-    
+
+  <link rel="stylesheet" href="/static/css/create_article.css">
 
 
 </head>
+
 <body>
-    
-        <div>
-          <h2>게시글 작성</h2>
-      
-          <div class="category-container">
-            <label for="category-select" class="input-group-text">카테고리</label>
-            <select id="category">
 
-              <option value="">분야 선택</option>
-              <option value="it">IT/과학</option>
-              <option value="경제">경제</option>
-              <option value="문화">생활/문화</option>
-              <option value="스포츠">스포츠</option>
-              <option value="날씨">날씨</option>
-              <option value="세계">세계</option>
-            </select>
-          </div>
-      
-          <div>
-            <input type="text" id="title" placeholder="기사 제목" required>
-          </div>
-          
-          <div>
-            <textarea id="content" rows="5" placeholder="기사 내용" required></textarea>
-          </div>
-      
-          <div>
-            <input type="file" id="img-file">
-          </div>
-      
-          <div>
-            <button id="articlepost" onclick="ArticlePost()">등록</button>
-          </div>
-        </div>
-      
+  <!-- 상단 네비게이션 바 -->
+  <div id="navbar"></div>
+  <div id="feed-article">
 
-      </body>
+    <!-- 게시글 작성 부분 -->
+    <div class="article-create-container">
 
+      <!-- 기사 카테고리 -->
+      <div>
+        <select id="category">
+          <option value="">분야 선택</option>
+          <option value="it">IT/과학</option>
+          <option value="경제">경제</option>
+          <option value="문화">생활/문화</option>
+          <option value="스포츠">스포츠</option>
+          <option value="날씨">날씨</option>
+          <option value="세계">세계</option>
+        </select>
+      </div>
+
+      <!-- 기사 제목 -->
+      <div>
+        <input type="text" id="title" placeholder="제목을 입력하세요" required>
+      </div>
+
+      <hr style="width: 100%; color: gainsboro; opacity: 0.5;">
+
+      <!-- 기사 내용 -->
+      <div>
+        <textarea id="content" placeholder="내용을 입력하세요" required></textarea>
+      </div>
+
+      <hr style="width: 100%; color: gainsboro; opacity: 0.5;">
+
+      <!-- 기사 사진 -->
+      <div>
+        <input type="file" id="img-file">
+        <textarea type="text" id="img-content" placeholder="사진 설명을 입력하세요"></textarea>
+      </div>
+
+      <hr style="width: 100%; color: gainsboro; opacity: 0.5;">
+
+      <!-- 등록/취소 버튼 -->
+      <div>
+        <button id="articlepost-cancle" onclick="history.back()">취소</button>
+        <button id="articlepost" onclick="ArticlePost()">등록</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- 푸터 -->
+  <div id="footer"></div>
+
+
+  <!-- JS -->
+  <script src="../static/js/api.js"></script>
+  <script src="/static/js/nav.js"></script>
+  <script src="/static/js/search.js"></script>
+
+  <script src="/static/js/create_article.js"></script>
+
+</body>
 
 
 </html>

@@ -1,11 +1,8 @@
 .article-detail-container {
   width: 900px;
-  margin: auto;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  margin: auto auto 2% auto;
 }
 
 .article-button {
@@ -58,7 +55,7 @@
   text-decoration: underline;
 }
 
-.article-title {
+.article-detail-title {
   width: 100%;
   text-align: left;
 }
@@ -78,13 +75,13 @@
   text-decoration: underline;
 }
 
-.subscribeButton1 {
+.subscribe-button1 {
   margin-left: 10px;
   border: none;
   border-radius: 30px;
 }
 
-.subscribeButton1:hover {
+.subscribe-button1:hover {
   background-color: rgb(223, 226, 255);
 }
 
@@ -101,7 +98,7 @@
   margin: auto;
 }
 
-#article-image-info {
+#article-image-content {
   width: 80%;
   margin: 10px auto 5% auto;
   color: gray;
@@ -113,10 +110,11 @@
   margin-bottom: 5%;
 }
 
+#article-user-nickname2,
 #article-user-email2 {
-  width: 100%;
-  text-align: left;
-  margin: 5% auto 5% auto;
+  float: left;
+  display: inline;
+  margin: auto 10px 5% auto
 }
 
 .article-reaction {
