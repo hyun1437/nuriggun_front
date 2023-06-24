@@ -39,6 +39,16 @@
     font-size: 1.3em;
 }
 
+#article-update-image-content{
+    width: 100%;
+    height: 100px;
+    outline: none;
+    border: none;
+    resize: none;
+    margin: 1% auto 2% auto;
+    font-size: 1.3em;
+}
+
 #article-update-image {
     margin: 2% auto 2% auto;
 }
