@@ -75,13 +75,13 @@
   text-decoration: underline;
 }
 
-.subscribeButton1 {
+.subscribe-button1 {
   margin-left: 10px;
   border: none;
   border-radius: 30px;
 }
 
-.subscribeButton1:hover {
+.subscribe-button1:hover {
   background-color: rgb(223, 226, 255);
 }
 
