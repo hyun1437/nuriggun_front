@@ -161,6 +161,7 @@ async function showEditForm(comment_id) {
     const index = comments.findIndex(comment => comment.id === comment_id);
 
     const commentEditContainer = document.getElementById(`comment-container-${comment_id}`);
+    commentEditContainer.classList.add("edit-comment-container"); // CSS 클래스 추가
     console.log(commentEditContainer)
     commentEditContainer.style.margin = "10px";
     commentEditContainer.style.padding = "20px";
