@@ -12,6 +12,9 @@ window.onload = () => {
     const originalImage = sessionStorage.getItem('article-image');
     document.getElementById('article-update-image').src = originalImage;
 
+    const originalImageContent = sessionStorage.getItem('article-image-content');
+    document.getElementById('article-update-image-content').value = originalImageContent;
+
     const originalContent = sessionStorage.getItem('article-content');
     document.getElementById('article-update-content').value = originalContent;
 }
@@ -22,6 +25,7 @@ function articleUpdate() {
     const updateCategory = $('#article-update-category').val();
     const updateContent = $('#article-update-content').val();
     const updateImage = $('#article-update-image')[0].files[0];
+    const updateImageContent = $('#article-update-image-content').val();
 
     const article_id = new URLSearchParams(window.location.search).get('article_id');
 
@@ -35,6 +39,12 @@ function articleUpdate() {
     formData.append("title", updateTitle);
     formData.append("category", updateCategory);
     formData.append("content", updateContent);
+
+    if (updateImageContent !== null) {
+        formData.append("image_content", updateImageContent);
+    } else {
+        formData.append("image_content", '');
+    }
 
     // 이미지 데이터를 File 객체로 변환하여 추가
     if (updateImage) {
