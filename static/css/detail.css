@@ -6,8 +6,9 @@
 }
 
 .article-button {
+  width: 100%;
   display: flex;
-  float: right;
+  justify-content: flex-end;
   margin: 10px 5px 20px 0;
 }
 

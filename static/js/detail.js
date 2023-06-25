@@ -146,8 +146,10 @@ async function articleDetail() {
         articleCategory.innerText = response_json.category;
         articleCreatedAt.innerText = response_json.created_at;
 
-        if (articleUpdatedAt == articleCreatedAt) {
+        if (response_json.updated_at !== response_json.created_at) {
             articleUpdatedAt.innerText = ` | 수정 ${response_json.updated_at}`;
+        } else {
+            articleUpdatedAt.innerText = "";
         }
 
         articleImage.src = `${backend_base_url}${response_json.image}`;
