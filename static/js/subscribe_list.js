@@ -6,11 +6,16 @@ window.onload = () => {
     Subscribe(urlParams);
 }
 
+const article_id = new URLSearchParams(window.location.search).get('article_id');
+console.log(article_id)
+
+const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
+
+const logined_id = userInfo.user_id;
+console.log(logined_id);
 
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
 console.log(user_id)
-const logined_id = parseInt(payload_parse.user_id);
-console.log(logined_id)
 
 
 // 프로필 페이지의 유저가 구독한 사람 목록
