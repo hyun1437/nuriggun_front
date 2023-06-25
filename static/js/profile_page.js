@@ -169,12 +169,8 @@ async function loadArticles(user_id) {
 
 // 프로필 페이지의 유저가 스크랩한 글 목록
 async function loadScraps() {
-    const response = await fetch(`${backend_base_url}/article/scrap/`, {
+    const response = await fetch(`${backend_base_url}/article/scrap/${user_id}`, {
         method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-            "Authorization": "Bearer " + localStorage.getItem("access")
-        },
     });
     // const response_json = await response.json();
 
@@ -226,7 +222,7 @@ async function loadScraps() {
 
                 const author = document.createElement('a'); // 글 작성자
                 author.innerText = article.user.nickname;
-                author.href = `../user/profile_page.html?user_id=${article.user.pk}`
+                author.href = `../user/profile_page.html?user_id=${article.user.id}`
                 author.classList.add('author');
 
                 const createAt = document.createElement('span'); // 글 작성일
