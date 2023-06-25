@@ -186,11 +186,7 @@ a {
     color: black
 }
 
-button[type="button"]:hover {
-    background-color: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-#delete_btn {
+#delete-btn {
     width: 25%;
     padding: 5px;
     margin-top: 20px;
@@ -203,7 +199,7 @@ button[type="button"]:hover {
     cursor: pointer;
 }
 
-#cancel_btn {
+#cancel-btn {
     width: 25%;
     padding: 5px;
     margin-top: 20px;
