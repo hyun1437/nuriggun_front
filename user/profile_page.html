@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/static/css/footer.css">
   <link rel="stylesheet" href="/static/css/index.css">
 
-  
+
 
   <link rel="stylesheet" href="/static/css/profile_page.css">
 
@@ -69,12 +69,12 @@
             <p id="user-password-reset"><a id="user-password-reset" href="../user/password_change.html">비밀번호 변경</a></p>
 
             <!-- 프로필 회원 탈퇴 -->
-            <p id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
+            <p id="user-delete"><a id="user-delete" onclick="toggleDeleteForm()">회원탈퇴</a>
             <form id="delete-form" style="display:none" ;>
               <label for="password">비밀번호:</label>
-              <input type="password" id="password" name="password">
-              <button type="button" onclick="DeleteUser()">탈퇴</button>
-              <button type="button" onclick="toggleDeleteForm()">취소</button>
+              <input type="password" id="password" name="password"><br>
+              <button type="button" id="delete_btn" onclick="DeleteUser()">탈퇴</button>
+              <button type="button" id="cancel_btn" onclick="toggleDeleteForm()">취소</button>
             </form>
             </p>
           </div>
@@ -95,7 +95,8 @@
 
         <!-- 스크랩한 글들의 목록 -->
         <div class="my-scrap-article-list" id="my-scrap-article-list">
-          <h3 class="h3color"><span class="user-nickname"></span> 기자의 스크랩 목록<span id="article-scrap-list-count"></span></h3>
+          <h3 class="h3color"><span class="user-nickname"></span> 기자의 스크랩 목록<span id="article-scrap-list-count"></span>
+          </h3>
           <hr style="border-color: gainsboro; opacity: 0.2;">
           <div id="scrap-pagination" class="scrap-pagination"></div>
           <a id="scrap-article-list"></a>
