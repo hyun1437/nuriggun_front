@@ -20,12 +20,14 @@
 
 .main-article h3 {
   margin-left: 30px;
+  color: rgb(54, 92, 188);
 }
 
 .main-title {
   margin-top: 0;
   font-size: 16px;
   margin-left: 10px;
+  
 }
 
 .sub-article{
@@ -44,7 +46,7 @@
 
 /* sub 기사 */
 .article {
- background-color: #ffffff;
+  background-color: #ffffff;
   margin: 0;
   padding: 10px 0 10px 10px;
   border-top: 1px solid #eeeeee;
@@ -59,6 +61,7 @@
 
 .article h3{
   margin-bottom: 0px;
+  color: rgb(54, 92, 188);
 }
 
 .article .sub-title {
@@ -71,6 +74,7 @@
   justify-content: center;
   cursor: pointer;
   font-size: 14px;
+  color: rgb(66, 66, 66);
 }
 
 .article .sub-img {
@@ -106,8 +110,12 @@
   /* border: 1px solid #eeeeee;
   border-radius: 3%; */
   margin-bottom: 30px;
-
 }
+
+.best-article-container h3 {
+  color: rgb(54, 92, 188);
+}
+
 
 .best-article {
   height: 400px;
@@ -142,6 +150,7 @@
 .user-list-container h3{
   /* right: -165px; */
   position: relative;
+  color: rgb(54, 92, 188);
 }
 
 .user-list {
@@ -257,30 +266,7 @@ html {
   pointer-events: none;
 }
 
-/* 좌우 사이드 영역 */
-#viewport{
-  margin: 0 auto;
-    max-width: 1000px;
-    border-right: 1px solid #eeeeee;
-    border-left: 1px solid #eeeeee;
-    min-height: 100%;
-    background: #ffffff;
-}
- #note-container {
 
-  position: relative;
-
-}
-
-.nav-note {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  width: 200px;
-  transform: translateX(-60%);
-  display: none;
-
-}
 
 /* .articles-container {
  

@@ -1,0 +1,15 @@
+#note-container {
+
+    position: relative;
+  
+  }
+  
+  .nav-note {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 200px;
+    transform: translateX(-60%);
+    display: none;
+  
+  }

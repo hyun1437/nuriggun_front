@@ -10,11 +10,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/static/css/nav.css">
   <link rel="stylesheet" href="/static/css/footer.css">
-  <link rel="stylesheet" href="/static/css/index.css">
-
-  
-
+  <link rel="stylesheet" href="/static/css/message.css">
   <link rel="stylesheet" href="/static/css/profile_page.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static/css/search.css">
 
 
   <!-- jQuery CDN -->
@@ -24,7 +23,7 @@
 </head>
 
 <body>
-
+  <div id="viewport">
   <!-- 상단 네비게이션 바 -->
   <div id="navbar"></div>
   <div id="feed-article">
@@ -60,7 +59,7 @@
 
           <div class="profile-page-button">
             <!-- 프로필 유저에게 제보하기 -->
-            <p><a id="user-message" href="../user/message.html">제보하기</a></p>
+            <p><a id="user-message" href="../user/message_profile_user_send.html">제보하기</a></p>
 
             <!-- 프로필 유저가 구독한 기자 수 -->
             <p><a id="user-subscribe" href="#"></a></p>
@@ -95,7 +94,8 @@
 
         <!-- 스크랩한 글들의 목록 -->
         <div class="my-scrap-article-list" id="my-scrap-article-list">
-          <h3 class="h3color"><span class="user-nickname"></span> 기자의 스크랩 목록<span id="article-scrap-list-count"></span></h3>
+          <h3 class="h3color"><span class="user-nickname"></span> 기자의 스크랩 목록<span id="article-scrap-list-count"></span>
+          </h3>
           <hr style="border-color: gainsboro; opacity: 0.2;">
           <div id="scrap-pagination" class="scrap-pagination"></div>
           <a id="scrap-article-list"></a>
@@ -107,6 +107,7 @@
 
   <!-- 푸터 -->
   <div id="footer"></div>
+</div>
 
 
   <!-- JS -->
