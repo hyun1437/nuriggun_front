@@ -10,11 +10,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/static/css/nav.css">
   <link rel="stylesheet" href="/static/css/footer.css">
-  <link rel="stylesheet" href="/static/css/index.css">
-
-
-
+  <link rel="stylesheet" href="/static/css/message.css">
   <link rel="stylesheet" href="/static/css/profile_page.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static/css/search.css">
 
 
   <!-- jQuery CDN -->
@@ -24,7 +23,7 @@
 </head>
 
 <body>
-
+  <div id="viewport">
   <!-- 상단 네비게이션 바 -->
   <div id="navbar"></div>
   <div id="feed-article">
@@ -60,7 +59,7 @@
 
           <div class="profile-page-button">
             <!-- 프로필 유저에게 제보하기 -->
-            <p><a id="user-message" href="../user/message.html">제보하기</a></p>
+            <p><a id="user-message" href="../user/message_profile_user_send.html">제보하기</a></p>
 
             <!-- 프로필 유저가 구독한 기자 수 -->
             <p><a id="user-subscribe" href="#"></a></p>
@@ -69,12 +68,12 @@
             <p id="user-password-reset"><a id="user-password-reset" href="../user/password_change.html">비밀번호 변경</a></p>
 
             <!-- 프로필 회원 탈퇴 -->
-            <p id="user-delete"><a id="user-delete" onclick="toggleDeleteForm()">회원탈퇴</a>
+            <p id="user-delete"><a id="user-delete" href="#" , onclick="toggleDeleteForm()">회원탈퇴</a>
             <form id="delete-form" style="display:none" ;>
               <label for="password">비밀번호:</label>
-              <input type="password" id="password" name="password"><br>
-              <button type="button" id="delete_btn" onclick="DeleteUser()">탈퇴</button>
-              <button type="button" id="cancel_btn" onclick="toggleDeleteForm()">취소</button>
+              <input type="password" id="password" name="password">
+              <button type="button" onclick="DeleteUser()">탈퇴</button>
+              <button type="button" onclick="toggleDeleteForm()">취소</button>
             </form>
             </p>
           </div>
@@ -108,6 +107,7 @@
 
   <!-- 푸터 -->
   <div id="footer"></div>
+</div>
 
 
   <!-- JS -->

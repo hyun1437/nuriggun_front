@@ -6,7 +6,7 @@
 //     const img = document.getElementById("myFile").files[0]
 //     const token = localStorage.getItem("access")
 
-    
+
 //     const formData = new FormData();
 //     formData.append("article_title", title);
 //     formData.append("article_content", content);
@@ -43,6 +43,7 @@ async function ArticlePost() {
     const content = document.getElementById("content").value
     const category = document.getElementById("category").value
     const img = document.getElementById("img-file").files[0]
+    const imgContent = document.getElementById("img-content").value
     const token = localStorage.getItem("access")
     const formData = new FormData();
 
@@ -50,11 +51,12 @@ async function ArticlePost() {
     formData.append("content", content);
     formData.append("category", category);
     formData.append("image", img);
+    formData.append("image_content", imgContent);
 
     const response = await fetch(`${backend_base_url}/article/`, {
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${token}` 
+            "Authorization": `Bearer ${token}`
         },
         body: formData,
     });
@@ -62,7 +64,7 @@ async function ArticlePost() {
     if (response.status == 201) {
         alert("글 작성 완료")
         window.location.replace(`${frontend_base_url}/index.html`);
-    } else if (title == '' || content == '' ||img =='' || category == '') {
+    } else if (title == '' || content == '' || img == '' || category == '') {
         alert("빈칸을 입력해 주세요.")
     }
 
@@ -94,4 +96,3 @@ async function ArticlePost() {
 
 
 
-  

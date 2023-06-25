@@ -71,7 +71,7 @@ async function articleScrap() {
     } else {
         alert("스크랩을 진행할 수 없습니다.")
     }
-    
+
 }
 
 
@@ -136,40 +136,37 @@ async function articleDetail() {
         const articleCreatedAt = document.getElementById('article-created-at');
         const articleUpdatedAt = document.getElementById('article-updated-at');
         const articleImage = document.getElementById('article-image');
+        const articleImageContent = document.getElementById('article-image-content');
         const articleContent = document.getElementById('article-content');
-        const articleUser = document.getElementById('article-user');
+        const articleUserNickname = document.getElementsByClassName('article-user-nickname');
         const articleUserEmail = document.getElementsByClassName('article-user-email');
         const articleCommentsCount = document.getElementById('article-comments-count');
 
-        if (articleTitle !== null) {
-            articleTitle.innerText = response_json.title;
-        }
-        if (articleCategory !== null) {
-            articleCategory.innerText = response_json.category;
-        }
-        if (articleCreatedAt !== null) {
-            articleCreatedAt.innerText = response_json.created_at;
-        }
-        if (articleUpdatedAt == articleCreatedAt) {
+        articleTitle.innerText = response_json.title;
+        articleCategory.innerText = response_json.category;
+        articleCreatedAt.innerText = response_json.created_at;
+
+        if (response_json.updated_at !== response_json.created_at) {
             articleUpdatedAt.innerText = ` | 수정 ${response_json.updated_at}`;
+        } else {
+            articleUpdatedAt.innerText = "";
         }
-        if (articleImage !== null) {
-            articleImage.src = `${backend_base_url}${response_json.image}`;
+
+        articleImage.src = `${backend_base_url}${response_json.image}`;
+        articleContent.innerText = response_json.content;
+        articleImageContent.innerText = response_json.image_content;
+
+        for (let i = 0; i < articleUserNickname.length; i++) {
+            const articleUserNicknameElement = articleUserNickname[i];
+            articleUserNicknameElement.innerText = response_json.user.nickname;
         }
-        if (articleContent !== null) {
-            articleContent.innerText = response_json.content;
-        }
-        if (articleUser !== null) {
-            articleUser.innerText = response_json.user.nickname;
-        }
+
         for (let i = 0; i < articleUserEmail.length; i++) {
             const articleUserEmailElement = articleUserEmail[i];
             articleUserEmailElement.innerText = response_json.user.emial;
         }
-        if (articleCommentsCount !== null) {
-            articleCommentsCount.innerText = `(${response_json.comments_count})`;
-        }
 
+        articleCommentsCount.innerText = `(${response_json.comments_count})`;
 
         const reactionCounts = ['good', 'great', 'sad', 'angry', 'subsequent'];
 
@@ -187,11 +184,14 @@ async function articleDetail() {
         const originalTitle = response_json.title;
         const originalCategory = response_json.category;
         const originalImage = `${backend_base_url}${response_json.image}`;
+        const originalImageContent = response_json.image_content;
+
         const originalContent = response_json.content;
 
         sessionStorage.setItem('article-title', originalTitle);
         sessionStorage.setItem('article-category', originalCategory);
         sessionStorage.setItem('article-image', originalImage);
+        sessionStorage.setItem('article-image-content', originalImageContent);
         sessionStorage.setItem('article-content', originalContent);
 
         const articleCategoryUrl = document.getElementById('article-category-url');

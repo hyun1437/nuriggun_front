@@ -53,66 +53,39 @@ async function loadComments() {
             ? `<a href="#" id="deletebutton" onclick="deleteComment(${comment.id})">삭제</a>`
             : '';
 
-        // commentList.insertAdjacentHTML('beforeend', `
-        // <div id="comment-container-${comment.id}" class="comment-container">
-        //         ${deletebutton} ${editbutton}        
-        //         <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
-        //         <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">
-        //             <span class="profile-img" id="comment-user-profile-img">
-        //                 <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
-        //                     src="${backend_base_url}${payload_parse.profile_img}" alt="No Image"
-        //                     onerror="this.onerror=null; this.src='${noProfileImage}'">
-        //             </span> <span id="comment-commentauthor">${comment.user.nickname}</span>
-        //         </a>
-
-        //         <!-- 날짜 / 작성일, 최종일 -->
-        //         <p id="comment-create-month"> ${comment.comment_created_at}</p>          
-
-        //         <!-- 댓글 내용 -->
-        //         <a id="comment-comment">${comment.comment}</a>
-
-        //         <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
-        //         <div id="comment-info">
-        //             <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
-        //             <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
-        //         </div>
-        //     </div>`);
-
-
         commentList.insertAdjacentHTML('beforeend', `
-    <div id="comment-container-${comment.id}" class="comment-container">
-        <div id="comment-container-md">
-            ${deletebutton} ${editbutton}         
+            <div id="comment-container-${comment.id}" class="comment-container">
+                <div id="comment-container-md">
+                    ${deletebutton} ${editbutton}         
 
-            <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
-            <div class="comment-author-container">
-                <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">
-                    <span class="profile-img" id="comment-user-profile-img">
-                        <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
-                            src="${backend_base_url}${userInfo.profile_img}" alt="No Image"
-                            onerror="this.onerror=null; this.src='${noProfileImage}'">
-                    </span>
-                <span class="comment-commentauthor">${comment.user.nickname}</span>
-                </a>
+                    <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
+                    <div class="comment-author-container">
+                        <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">
+                            <span class="profile-img" id="comment-user-profile-img">
+                                <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
+                                    src="${backend_base_url}/media/${comment.user.profile_img}" alt="No Image"
+                                    onerror="this.onerror=null; this.src='${noProfileImage}'">
+                            </span>
+                        <span class="comment-commentauthor">${comment.user.nickname}</span>
+                        </a>
+                    </div>
+
+                    <!-- 날짜 / 작성일, 최종일 -->
+                    <p id="comment-create-month"> ${comment.comment_created_at}</p>          
+
+                    <!-- 댓글 내용 -->
+                    <a id="comment-comment">${comment.comment}</a>
+
+                    <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
+                    <div id="comment-info">
+                        <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
+                        <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
+                    </div>
+                </div>
             </div>
-
-            <!-- 날짜 / 작성일, 최종일 -->
-            <p id="comment-create-month"> ${comment.comment_created_at}</p>          
-
-            <!-- 댓글 내용 -->
-            <a id="comment-comment">${comment.comment}</a>
-
-            <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
-            <div id="comment-info">
-                <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
-                <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
-            </div>
-        </div>
-    </div>
-`);
+        `);
     });
-    // <p>등록 ${comment.comment_created_at} | 수정 ${comment.comment_updated_at}</p>
-
+    
     // 페이지네이션 생성
     renderPagination(comments.length);
 }
@@ -161,6 +134,7 @@ async function showEditForm(comment_id) {
     const index = comments.findIndex(comment => comment.id === comment_id);
 
     const commentEditContainer = document.getElementById(`comment-container-${comment_id}`);
+    commentEditContainer.classList.add("edit-comment-container"); // CSS 클래스 추가
     console.log(commentEditContainer)
     commentEditContainer.style.margin = "10px";
     commentEditContainer.style.padding = "20px";
