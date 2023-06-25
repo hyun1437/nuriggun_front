@@ -76,7 +76,7 @@ async function Subscribe(user_id) {
                 // 구독 버튼 추가
                 const subscribeButton = document.createElement('button');
                 subscribeButton.innerText = '🌟 구독 중';
-                subscribeButton.classList.add('subscribe-button');
+                subscribeButton.classList.add('subscribe-button3');
 
                 // 버튼 클릭 시 구독 취소
                 subscribeButton.addEventListener('click', () => { postSubscribe(subscribeId); });

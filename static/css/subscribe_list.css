@@ -78,7 +78,7 @@ a {
     align-items: center;
 }
 
-.subscribe-button {
+.subscribe-button3 {
     border: none;
     border-radius: 30px;
     font-size: 15px;
@@ -87,6 +87,6 @@ a {
     margin-right: 5px;
 }
 
-.subscribe-button:hover {
+.subscribe-button3:hover {
     background-color: rgb(223, 226, 255);
 }
