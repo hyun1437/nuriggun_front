@@ -57,16 +57,16 @@ async function loadComments() {
         ${deletebutton} ${editbutton} 
         
 
-            <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
-            <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">    
-                <span class="profile-img" id="comment-user-profile-img">
-                    <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
-                        src="${backend_base_url}/media/${comment.user.profile_img}" alt="No Image"
-                        onerror="this.onerror=null; this.src='../static/image/noprofileimage.jpg'">
-                </span> <span id="comment-commentauthor">${comment.user.nickname}</span> 
-            </a>
-            <!-- 날자 / 작성일, 최종일 -->
-            <p id="comment-create-month"> ${comment.comment_created_at}</p>
+        <!-- 작성자 / 클릭 시 프로필 페이지로 이동 -->
+        <a class="comment-author" href="${frontend_base_url}/user/profile_page.html?user_id=${comment.user.pk}">    
+            <span class="profile-img" id="comment-user-profile-img">
+                <img style="width:50px; height:50px; margin-right:5px; border-radius: 50%;"
+                    src="${backend_base_url}${payload_parse.profile_img}" alt="No Image"
+                    onerror="this.onerror=null; this.src='${noProfileImage}'">
+            </span> <span id="comment-commentauthor">${comment.user.nickname}</span> 
+        </a>
+        <!-- 날자 / 작성일, 최종일 -->
+        <p id="comment-create-month"> ${comment.comment_created_at}</p>
             
             
             
