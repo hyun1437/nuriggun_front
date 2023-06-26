@@ -6,15 +6,28 @@ window.onload = () => {
     Subscribe(urlParams);
 }
 
+const article_id = new URLSearchParams(window.location.search).get('article_id');
+console.log(article_id)
+
+const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
+
+const logined_id = userInfo.user_id;
+console.log(logined_id);
 
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
 console.log(user_id)
-const logined_id = parseInt(payload_parse.user_id);
-console.log(logined_id)
 
 
 // 프로필 페이지의 유저가 구독한 사람 목록
 async function Subscribe(user_id) {
+    // 프로필 페이지의 유저 정보 가져오기
+    const profile = await fetch(`${backend_base_url}/user/profile/${user_id}`);
+    const profileUser = await profile.json();
+
+    const profileUserNickname = document.getElementById('profile-page-user')
+    profileUserNickname.innerText = `${profileUser.nickname} 기자의 구독자 목록`;
+
+    // 프로필 페이지의 구독 정보 가져오기
     const response = await fetch(`${backend_base_url}/user/subscribe/${user_id}`, {
         method: 'GET',
     });
@@ -67,7 +80,8 @@ async function Subscribe(user_id) {
 
                 // 구독 버튼 추가
                 const subscribeButton = document.createElement('button');
-                subscribeButton.innerText = '구독 취소하기';
+                subscribeButton.innerText = '🌟 구독 중';
+                subscribeButton.classList.add('subscribe-button3');
 
                 // 버튼 클릭 시 구독 취소
                 subscribeButton.addEventListener('click', () => { postSubscribe(subscribeId); });
@@ -95,22 +109,24 @@ async function Subscribe(user_id) {
 
 // 구독 취소 기능
 async function postSubscribe(subscribeId) {
-    const button = document.getElementById("subscribeButton");
-    const response = await fetch(`${backend_base_url}/user/subscribe/${subscribeId}/`, {
-        headers: {
-            'content-type': 'application/json',
-            "Authorization": "Bearer " + localStorage.getItem("access")
-        },
-        method: 'POST',
-    })
+    if (confirm("구독을 취소하시겠습니까?")) {
+        const button = document.getElementById("subscribeButton");
+        const response = await fetch(`${backend_base_url}/user/subscribe/${subscribeId}/`, {
+            headers: {
+                'content-type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem("access")
+            },
+            method: 'POST',
+        })
 
-    if (response.status == 200) {
-        alert("구독을 하였습니다.")
-        window.location.reload()
-    } else if (response.status == 205) {
-        alert("구독을 취소하였습니다.")
-        window.location.reload()
-    } else if (response.status == 403) {
-        alert("자신을 구독 할 수 없습니다.")
+        if (response.status == 200) {
+            alert("구독을 하였습니다.")
+            window.location.reload()
+        } else if (response.status == 205) {
+            alert("구독을 취소하였습니다.")
+            window.location.reload()
+        } else if (response.status == 403) {
+            alert("자신을 구독 할 수 없습니다.")
+        }
     }
 }

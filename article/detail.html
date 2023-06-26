@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/nav.css">
     <link rel="stylesheet" href="/static/css/article_list.css">
-
+    <link rel="stylesheet" href="/static/css/message.css">
     <link rel="stylesheet" href="/static/css/detail.css">
     <link rel="stylesheet" href="/static/css/detail_comment.css">
+    <link rel="stylesheet" href="/static/css/search.css">
 
 
     <!-- jQuery CDN -->
@@ -24,7 +25,7 @@
 </head>
 
 <body>
-
+    <div id="viewport">
     <!-- 상단 네비게이션 바 -->
     <div id="navbar"></div>
     <div id="feed-article">
@@ -39,13 +40,13 @@
 
                 <!-- 기자 카테고리, 제목 -->
                 <a class="article-category" id="article-category-url"><span id="article-category"></span> ></a>
-                <h1 class="article-title" id="article-title"></h1>
+                <h1 class="article-detail-title" id="article-detail-title"></h1>
 
                 <!-- 기자 정보, 구독 버튼 -->
                 <p class="article-user">
-                    <a id="article-user-url" href="#"><span id="article-user"></span> 기자(<span
+                    <a id="article-user-url" href="#"><span class="article-user-nickname"></span> 기자(<span
                             class="article-user-email"></span>)</a>
-                    <button class="subscribeButton1" href="#" id="subscribeButton1" onclick="postSubscribe()"
+                    <button class="subscribe-button1" href="#" id="subscribe-button1" onclick="postSubscribe()"
                         style="text-decoration: none;"></button>
                 </p>
 
@@ -67,8 +68,9 @@
                 <!-- 게시글 사진, 사진 설명, 내용(+기자 이메일 추가) -->
                 <div class="article-image">
                     <img id="article-image">
-                    <p class="article-image-info" id="article-image-info">사진 설명</p>
+                    <p class="article-image-content" id="article-image-content"></p>
                     <p class="article-content"><span id="article-content"></span></p>
+                    <p class="article-user-nickname" id="article-user-nickname2"></p>
                     <p class="article-user-email" id="article-user-email2"></p>
                 </div>
             </div>
@@ -149,12 +151,15 @@
 
         <!-- 푸터 -->
         <div id="footer"></div>
+    </div>
+    </div>
 
 
         <!-- JS -->
         <script src="../static/js/api.js"></script>
         <script src="/static/js/nav.js"></script>
         <script src="/static/js/search.js"></script>
+        <script src="/static/js/message.js"></script>
 
         <script src="../static/js/detail.js"></script>
         <script src="../static/js/detail_comment.js"></script>
