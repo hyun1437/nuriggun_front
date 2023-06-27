@@ -90,7 +90,7 @@ async function articleDelete() {
 
         if (response.status == 204) {
             alert("게시글을 삭제하였습니다.")
-            window.location.replace(`${frontend_base_url}/base/index.html`);
+            window.location.replace(`${frontend_base_url}/index.html`);
         } else {
             alert("게시글 작성자만 삭제할 수 있습니다.")
         }
