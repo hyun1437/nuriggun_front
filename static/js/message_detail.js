@@ -7,8 +7,13 @@ window.onload = async function () {
 
 // 쪽지 상세보기 api
 async function getMessage(message_id) {
+    let token = localStorage.getItem("access")
     const response = await fetch(`${backend_base_url}/user/messages/${message_id}/`,
-    )
+        {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
 
     if (response.status == 200) {
         response_json = await response.json()
