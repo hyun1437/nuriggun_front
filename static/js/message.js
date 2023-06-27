@@ -1,8 +1,11 @@
 function OpenNote() {
-    console.log("click")
-    var noteContainer = document.querySelector(".nav-note");
-    noteContainer.style.display = noteContainer.style.display === "none" ? "block" : "none";
+  var noteContainer = document.querySelector(".nav-note");
+  if (noteContainer.style.display === "block") {
+    noteContainer.style.display = "none";
+  } else {
+    noteContainer.style.display = "block";
   }
+}
 
 
 
