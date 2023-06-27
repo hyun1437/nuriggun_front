@@ -71,6 +71,10 @@ function goToCreateMessage() {
     window.location.href = '/user/message_create.html';
 }
 
+function goToSentMessage() {
+    window.location.href = '/user/message_sent.html';
+}
+
 function goToMessage() {
     window.location.href = '/index.html';
 }

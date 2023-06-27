@@ -73,7 +73,7 @@ function toggleReceiver() {
 async function removeMessage() {
     await deleteMessage(message_id)
     alert("삭제되었습니다.")
-    window.location.replace(`${frontend_base_url}/user/message.html`);
+    location.href = document.referrer;
 }
 
 // 게시글 삭제 api
@@ -96,7 +96,7 @@ async function deleteMessage() {
 
 // 돌아가기
 function backMessage() {
-    window.location.href = '/index.html';
+    window.location.href = '/user/message_inbox.html';
 }
 
 

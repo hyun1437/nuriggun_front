@@ -63,6 +63,10 @@ function goToCreateMessage() {
     window.location.href = '/user/message_create.html';
 }
 
+function goToInboxMessage() {
+    window.location.href = '/user/message_inbox.html';
+}
+
 function goToMessage() {
     window.location.href = '/index.html';
 }
