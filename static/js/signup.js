@@ -1,5 +1,5 @@
 
-console.log('회원가입 페이지 로딩확인')
+// console.log('회원가입 페이지 로딩확인')
 
 async function handleSignUp() {
     const email = document.getElementById("email").value

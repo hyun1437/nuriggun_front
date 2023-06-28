@@ -1,4 +1,4 @@
-console.log("api.js 연결 확인")
+// console.log("api.js 연결 확인")
 
 
 // 전체 적용 js 
