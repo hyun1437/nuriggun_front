@@ -91,6 +91,7 @@ async function ProfileUpdate() {
       },
       method: "PATCH",
       body: formData,
+      credentials: 'include'
     });
 
     if (response.status === 200) {
