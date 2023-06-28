@@ -6,7 +6,8 @@ window.onload = () => {
     articleDetail();
     loadComments();
 }
-
+const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
+console.log(user_id)
 
 const article_id = new URLSearchParams(window.location.search).get('article_id');
 
@@ -189,10 +190,12 @@ async function articleDetail() {
         const articleCategoryUrl = document.getElementById('article-category-url');
         const articleCategoryLink = `../article/article_list.html?category=${response_json.category}`;
         articleCategoryUrl.href = articleCategoryLink
-
+        
         const articleUserUrl = document.getElementById('article-user-url');
         const articleUserLink = `../user/profile_page.html?user_id=${article_user_id}`;
         articleUserUrl.href = articleUserLink
+        articleUserUrl.className = article_user_id
+        
     }
 }
 
@@ -281,3 +284,9 @@ reactionButtons.forEach(reaction => {
         handleArticleReaction(reaction);
     });
 });
+
+
+
+
+  
+
