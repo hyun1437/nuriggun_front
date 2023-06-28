@@ -285,3 +285,9 @@
     min-height: 100%;
     background: #ffffff;
 }
+
+/* 새쪽지 알림 */
+#new-message-count{
+  color: red;
+  font-weight: bold;
+}

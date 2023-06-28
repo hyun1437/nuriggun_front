@@ -1,5 +1,3 @@
-
-
 // 상단 네비바, 푸터 가져오기
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -19,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // nav.html이 로드된 후에 profile_intro 태그와 기타 작업을 수행
                 const payload = localStorage.getItem("payload")
                 const payload_parse = JSON.parse(payload)
-                console.log(payload_parse)
+                // console.log(payload_parse)
                 const profile_intro = document.getElementById("profile_intro");
 
                 if (profile_intro) {
@@ -44,8 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     logoutBtn.setAttribute("onclick", "confirmLogout()");
 
-
-
                     newLi.appendChild(logoutBtn);
 
                     navbarRight.appendChild(newLi);
@@ -62,7 +58,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     createnotebtn.style.display = "block";
                 }
 
+
+                // 새로운 받은 쪽지 수 알림
+                const token = localStorage.getItem("access");
+                const newMessagesURL = `${backend_base_url}/user/messages/inbox/`;
+                fetch(newMessagesURL, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const newMessageCount = data.unread_count;
+
+                        if (newMessageCount !== 0) {
+                            const messageCountElement = document.getElementById("new-message-count");
+                            messageCountElement.innerText = `New ${newMessageCount}`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("새로운 받은 쪽지 수 알림", error);
+                    });
             })
+
             .catch(error => {
                 console.error("Error fetching navigation bar:", error);
             });
@@ -99,10 +118,4 @@ async function handleLogout() {
 // 글 작성열기
 function OpenArticle() {
     window.location.href = "/article/create_article.html";
-}
-
-
-// 쪽지 보내기
-function OpenNote() {
-    window.location.href = "/user/message.html";
 }

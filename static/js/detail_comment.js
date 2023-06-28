@@ -12,7 +12,6 @@ async function postComment() {
         }),
         method: 'POST',
     });
-    console.log(response)
 
     if (response.status == 201) {
         alert("댓글을 등록하였습니다.")
@@ -28,9 +27,7 @@ async function postComment() {
 // 댓글 불러오기
 async function loadComments() {
     const response = await fetch(`${backend_base_url}/article/${article_id}/comment`);
-    console.log(response)
     const comments = await response.json();
-    console.log(comments)
 
     const commentList = document.getElementById('comment-list');
     commentList.innerHTML = ''; // 기존 댓글 목록 초기화
@@ -135,7 +132,6 @@ async function showEditForm(comment_id) {
 
     const commentEditContainer = document.getElementById(`comment-container-${comment_id}`);
     commentEditContainer.classList.add("edit-comment-container"); // CSS 클래스 추가
-    console.log(commentEditContainer)
     commentEditContainer.style.margin = "10px";
     commentEditContainer.style.padding = "20px";
     commentEditContainer.style.backgroundColor = "#f1f1f1";
@@ -148,7 +144,6 @@ async function showEditForm(comment_id) {
 
     // 기존 댓글 내용 가져오기
     const originalComment = comments[index].comment;
-    console.log(originalComment)
 
     // 텍스트 박스 생성
     const editTextarea = document.createElement('textarea');
@@ -209,7 +204,6 @@ async function deleteComment(comment_id) {
             },
             method: 'DELETE',
         });
-        console.log(response)
 
         if (response.status == 200) {
             alert("댓글을 삭제하였습니다.")
