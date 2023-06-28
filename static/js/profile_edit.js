@@ -70,9 +70,7 @@ async function ProfileUpdate() {
     const updatedImageInput = document.getElementById("updated-image");
     const updatedImage = updatedImageInput.files[0];
     const updatedNickname = document.getElementById("updated-nickname").value;
-    console.log(updatedNickname)
     const updatedInterest = document.getElementById("updated-interest").value;
-    console.log(updatedInterest)
 
     // navbar 업데이트를 위한 코드 추가
     const payload = localStorage.getItem("payload");
