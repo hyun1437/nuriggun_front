@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     backToTop();
-    setTimeout(subscribeCheck, 200);
+    setTimeout(subscribeCheck, 400);
 });
 
 // 게시글 불러오기 
@@ -33,7 +33,7 @@ async function loadBestArticles() {
     
     const bestArticle = document.getElementById("best-article")
 
-    if (articles.results) {
+    if (articles.results.length > 0) {
         article = articles.results[0]    
         const newBestImage = document.createElement("img")
         newBestImage.setAttribute("class", "best-img")

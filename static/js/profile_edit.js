@@ -74,6 +74,12 @@ async function ProfileUpdate() {
     const updatedInterest = document.getElementById("updated-interest").value;
     console.log(updatedInterest)
 
+    // navbar 업데이트를 위한 코드 추가
+    const payload = localStorage.getItem("payload");
+    const payload_parse = JSON.parse(payload);
+    payload_parse.nickname = updatedNickname;
+    localStorage.setItem("payload", JSON.stringify(payload_parse));
+
     const formData = new FormData();
     if (updatedImage) {
       formData.append("profile_img", updatedImage);
@@ -87,6 +93,7 @@ async function ProfileUpdate() {
       },
       method: "PATCH",
       body: formData,
+      credentials: 'include'
     });
 
     if (response.status === 200) {
