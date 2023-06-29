@@ -4,25 +4,25 @@
 // search.js
 
 async function searchFilter() {
-  // console.log("searchFilter 함수 실행됨")
+  console.log("searchFilter 함수 실행됨")
     const input_value = document.getElementById("article-search").value;
-    // console.log(input_value)
+    console.log(input_value)
     const response = await fetch(`${backend_base_url}/article/search/?search=${input_value}`, {
       method: 'GET'
     });
   
     const response_json = await response.json();
-    // console.log(response_json);
+    console.log(response_json);
     
     
     
     const cardsBox = document.getElementById("feed-article");
-    // console.log(cardsBox)
+    console.log(cardsBox)
     if (!cardsBox) {
       console.error("feed-article 요소를 찾을 수 없습니다.");
       return;
     }
-    // console.log("검색성공")
+    console.log("검색성공")
     cardsBox.innerHTML = '';
   
     response_json.forEach((result) => {
