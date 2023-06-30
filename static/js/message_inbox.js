@@ -20,12 +20,18 @@ async function loadInboxMessages() {
     const inboxMessagesElement = document.getElementById("inbox-messages");
     inboxMessagesElement.innerHTML = "";
 
+    const messageCountElement = document.getElementById("message-count");
+    messageCountElement.innerText = messages.message_count;
+
+    const unreadCountElement = document.getElementById("unread-count");
+    unreadCountElement.innerText = messages.unread_count;
+
     if (messages.length == 0) {
         const noMessagesElement = document.createElement("tr");
         noMessagesElement.innerHTML = "<td colspan='3'>받은 쪽지가 없습니다.</td>";
         inboxMessagesElement.appendChild(noMessagesElement);
     } else {
-        messages.forEach(message => {
+        messages.messages.forEach(message => {
             const messageElement = createMessageElement(message);
             inboxMessagesElement.appendChild(messageElement);
         });
@@ -33,8 +39,10 @@ async function loadInboxMessages() {
 }
 
 function createMessageElement(message) {
+    const isReadText = message.is_read ? "💌" : "✉";
     const messageElement = document.createElement("tr");
     messageElement.innerHTML = `
+        <td>${isReadText}</td>
         <td>${message.sender}</td>
         <td>${message.title}</td>
         <td>${formatDateTime(new Date(message.timestamp))}</td>
@@ -61,6 +69,10 @@ function formatDateTime(dateTime) {
 
 function goToCreateMessage() {
     window.location.href = '/user/message_create.html';
+}
+
+function goToSentMessage() {
+    window.location.href = '/user/message_sent.html';
 }
 
 function goToMessage() {

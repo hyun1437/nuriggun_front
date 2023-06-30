@@ -20,7 +20,7 @@ async function handleLogin() {
         // 로컬 스토리지에 jwt 토큰 저장하기
         localStorage.setItem("access", response_json.access);
         localStorage.setItem("refresh", response_json.refresh);
-        console.log(response_json);
+        // console.log(response_json);
 
         // payload로 저장하기 
         const base64Url = response_json.access.split('.')[1];
@@ -40,7 +40,7 @@ async function handleLogin() {
 // 카카오 버튼 클릭시 카카오 로그인 API를 호출하는 함수
 function kakaoLogin(){
     const kakao_api ='b4640364ec9206e20fd092f6967d430c'
-    const redirect_uri = "https://teamnuri.xyz/user/kakaocode.html"  // 카카오에 등록된 리다이렉트 URI 배포때 변경해야됨
+    const redirect_uri = "https://www.teamnuri.xyz/user/kakaocode.html"  // 카카오에 등록된 리다이렉트 URI 배포때 변경해야됨
     // 사용자를 카카오 인증 페이지로 리다이렉트
     window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${kakao_api}&redirect_uri=${redirect_uri}&response_type=code`
 }

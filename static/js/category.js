@@ -21,7 +21,7 @@ async function getCategory(category) {
     });
     
     const response_json = await response.json();
-    console.log(response_json)
+    // console.log(response_json)
     
     return response_json;
 }
@@ -73,6 +73,6 @@ async function viewCategory(category) {
             window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });
     
-        ulElement.appendChild(liElement);
+        ulElement.insertBefore(liElement, ulElement.firstChild);
     });
 }

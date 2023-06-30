@@ -1,5 +1,5 @@
 // 최종 테스트 후 console.log 지우기
-console.log('프로필 페이지 연결 확인')
+// console.log('프로필 페이지 연결 확인')
 
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('user_id');
@@ -11,12 +11,10 @@ window.onload = () => {
 
 
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
-console.log(user_id)
 
 const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
 
 const logined_id = userInfo.user_id;
-console.log(logined_id);
 
 
 // user_id의 프로필 페이지
@@ -24,13 +22,9 @@ async function Profile(user_id) {
     const response = await fetch(`${backend_base_url}/user/profile/${user_id}`, {
         method: 'GET',
     });
-    console.log(response)
 
     if (response.status == 200) {
         const response_json = await response.json();
-        console.log(response_json);
-        console.log(response_json.profile_img);
-
 
         // 프로필 이미지
         const profileImage = document.getElementById('user-profile-image');
@@ -102,8 +96,6 @@ async function loadArticles(user_id) {
 
     if (response.status == 200) {
         const articles = await response.json();
-        console.log(articles.length);
-        // console.log(response_json[0].title);
 
         // 작성한 게시글 개수
         const articlesCount = document.getElementById('article-list-count');
@@ -119,7 +111,6 @@ async function loadArticles(user_id) {
         const startIndex = (currentPage - 1) * articlesPerPage;
         const endIndex = startIndex + articlesPerPage;
         const currentArticles = articles.slice(startIndex, endIndex);
-        console.log(currentArticles)
 
         if (currentArticles !== null) {
             for (let i = 0; i < currentArticles.length; i++) {
@@ -139,7 +130,6 @@ async function loadArticles(user_id) {
                 const title = document.createElement('a'); // 글 제목
                 const titleSlice = article.title.length > 10 ? article.title.slice(0, 15) + '...' : article.title; // 20자 이상일 경우 뒷부분은 ...으로 표시
                 title.innerText = titleSlice;
-                console.log(title)
                 title.href = `../article/detail.html?article_id=${article.id}`  // 글 링크
                 title.classList.add('title'); // title CSS 적용을 위해 클래스 추가
 
@@ -172,16 +162,9 @@ async function loadScraps() {
     const response = await fetch(`${backend_base_url}/article/scrap/${user_id}`, {
         method: 'GET',
     });
-    // const response_json = await response.json();
-
-    console.log(response)
-    // console.log(response_json);
-
 
     if (response.status == 200) {
         const scraps = await response.json();
-        console.log(scraps);
-        // console.log(response_json[0].title);
 
         // 스크랩한 게시글 개수
         const scrapsCount = document.getElementById('article-scrap-list-count');
@@ -197,7 +180,6 @@ async function loadScraps() {
         const startIndex1 = (scrapCurrentPage - 1) * scrapsPerPage;
         const endIndex1 = startIndex1 + scrapsPerPage;
         const currentScraps = scraps.slice(startIndex1, endIndex1);
-        console.log(currentScraps)
 
         if (currentScraps !== null) {
             for (let i = 0; i < currentScraps.length; i++) {
@@ -317,14 +299,9 @@ async function isSubscribed() {
 
     if (response.ok) {
         const subscribes = await response.json();
-        // console.log(subscribes.subscribe[0].subscribe)
-        // console.log(subscribes.subscribe[0].subscribe[0].id)
         const ids = subscribes.subscribe[0].subscribe.map(subscribe => parseInt(subscribe.id));
-        // console.log(ids)
         const intsubscribe_id = parseInt(user_id)
-        // console.log(intsubscribe_id)
         const isSubscribeExists = ids.includes(intsubscribe_id);
-        // console.log(isSubscribeExists)
         if (isSubscribeExists) {
             document.getElementById('subscribe-button').innerText = '🌟 구독 중'
         } else {
