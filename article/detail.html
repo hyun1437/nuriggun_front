@@ -26,35 +26,35 @@
 
 <body>
     <div id="viewport">
-    <!-- 상단 네비게이션 바 -->
-    <div id="navbar"></div>
-    <div id="feed-article">
+        <!-- 상단 네비게이션 바 -->
+        <div id="navbar"></div>
+        <div id="feed-article">
 
 
-        <!-- 게시글 상세페이지 부분 -->
-        <div class="article-detail-container">
+            <!-- 게시글 상세페이지 부분 -->
+            <div class="article-detail-container">
 
 
-            <!-- 게시글 내용 -->
-            <div id="article-section" class="article-section">
+                <!-- 게시글 내용 -->
+                <div id="article-section" class="article-section">
 
-                <!-- 기자 카테고리, 제목 -->
-                <a class="article-category" id="article-category-url"><span id="article-category"></span> ></a>
-                <h1 class="article-detail-title" id="article-detail-title"></h1>
+                    <!-- 기자 카테고리, 제목 -->
+                    <a class="article-category" id="article-category-url"><span id="article-category"></span> ></a>
+                    <h1 class="article-detail-title" id="article-detail-title"></h1>
 
-                <!-- 기자 정보, 구독 버튼 -->
-                <p class="article-user">
-                    <a id="article-user-url" href="#"><span class="article-user-nickname"></span> 기자(<span
-                            class="article-user-email"></span>)</a>
-                    <button class="subscribe-button1" href="#" id="subscribe-button1" onclick="postSubscribe()"
-                        style="text-decoration: none;"></button>
-                </p>
+                    <!-- 기자 정보, 구독 버튼 -->
+                    <p class="article-user">
+                        <a id="article-user-url" href="#"><span class="article-user-nickname"></span> 기자(<span
+                                class="article-user-email"></span>)</a>
+                        <button class="subscribe-button1" href="#" id="subscribe-button1" onclick="postSubscribe()"
+                            style="text-decoration: none;"></button>
+                    </p>
 
-                <!-- 기자 작성(수정)일 -->
-                <a class="date-at">작성 <span id="article-created-at"></span><span id="article-updated-at"></span></a>
-                <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
+                    <!-- 기자 작성(수정)일 -->
+                    <a class="date-at">작성 <span id="article-created-at"></span><span id="article-updated-at"></span></a>
+                    <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
 
-                <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩. -->
+                <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩 -->
                 <div class="article-button">
                     <button id="article-print-button" onclick="window.print()" type="button">🖨️ 인쇄</button>
                     <button id="article-share-button" onclick="articleShare()" type="button">🔗 URL 복사</button>
@@ -66,105 +66,106 @@
                     <button id="article-report-button" onclick="reportUser()" type="button">🚔 신고</button>
                 </div>
 
-                <!-- 게시글 사진, 사진 설명, 내용(+기자 이메일 추가) -->
-                <div class="article-image">
-                    <img id="article-image">
-                    <p class="article-image-content" id="article-image-content"></p>
-                    <p class="article-content"><span id="article-content"></span></p>
-                    <p class="article-user-nickname" id="article-user-nickname2"></p>
-                    <p class="article-user-email" id="article-user-email2"></p>
+                    <!-- 게시글 사진, 사진 설명, 내용(+기자 이메일 추가) -->
+                    <div class="article-image">
+                        <img id="article-image">
+                        <p class="article-image-content" id="article-image-content"></p>
+                        <p class="article-content"><span id="article-content"></span></p>
+                        <p class="article-user-nickname" id="article-user-nickname2"></p>
+                        <p class="article-user-email" id="article-user-email2"></p>
+                    </div>
+ 
+                </div>
+
+                <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
+
+                <!-- 게시글 반응 5종 -->
+                <h4 style="width: 100%; margin: 2% auto 3% auto; text-align: left;">기사에 대한 공감 버튼을 눌러주세요!
+                    <button style="border: none; background-color: transparent; font-size: 17px; margin-left: -10px;"
+                        onclick="window.location.reload()">🔄</button>
+                </h4>
+
+                <!-- 게시글 반응 5종 버튼 -->
+                <div class="article-reaction" id="article-reaction">
+
+                    <div>
+                        <button id="reaction-good-button" onclick="handleArticleReaction()" class="good"><img
+                                src="../static/image/good.png" style="width:50px;" alt="good"></button>
+                        <p style="margin-top: 10px; font-size: 15px;">좋아요</p>
+                        <p id="good-count" style="margin-top: -15px;"></p>
+                    </div>
+
+                    <div>
+                        <button id="reaction-great-button" onclick="handleArticleReaction()" class="great"><img
+                                src="../static/image/great.png" style="width:50px;" alt="great"></button>
+                        <p style="margin-top: 10px; font-size: 15px;">훌륭해요</p>
+                        <p id="great-count" style="margin-top: -15px;"></p>
+                    </div>
+
+                    <div>
+                        <button id="reaction-sad-button" onclick="handleArticleReaction()" class="sad"><img
+                                src="../static/image/sad.png" style="width:50px;" alt="sad"></button>
+                        <p style="margin-top: 10px; font-size: 15px;">슬퍼요</p>
+                        <p id="sad-count" style="margin-top: -15px;"></p>
+                    </div>
+
+                    <div>
+                        <button id="reaction-angry-button" onclick="handleArticleReaction()" class="angry"><img
+                                src="../static/image/angry.png" style="width:50px;" alt="angry"></button>
+                        <p style="margin-top: 10px; font-size: 15px;">화나요</p>
+                        <p id="angry-count" style="margin-top: -15px;"></p>
+                    </div>
+
+                    <div>
+                        <button id="reaction-subsequent-button" onclick="handleArticleReaction()"
+                            class="subsequent"><img src="../static/image/subsequent.png" style="width:50px;"
+                                alt="subsequent"></button>
+                        <p style="margin-top: 10px; font-size: 15px;">후속요청!</p>
+                        <p id="subsequent-count" style="margin-top: -15px;"></p>
+                    </div>
+                </div>
+
+                <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
+
+                <!-- 게시글 댓글 -->
+                <h4 style="width: 100%; margin: 2% auto 3% auto; text-align: left;">댓글<span
+                        id="article-comments-count"></span>
+                    <button style="border: none; background-color: transparent; font-size: 17px; margin-left: -10px;"
+                        onclick="window.location.reload()">🔄</button>
+                </h4>
+
+                <div class="comment-section">
+                    <!-- 댓글 작성 -->
+                    <div class="comment-box">
+                        <img id="logined-profile-img" alt="로그인 유저의 프로필 이미지">
+                        <span id="logined-nickname"></span>
+                        <hr style="width: 95%; margin-top: 10px; color: gainsboro; opacity: 0.5;">
+                        <textarea id="comment" placeholder="소중한 의견을 남겨주세요 "></textarea>
+                        <hr style="width: 95%; color: gainsboro; opacity: 0.5;">
+                        <button id="commentButton" onclick="postComment()">등록</button>
+                    </div>
+
+                    <!-- 댓글 목록 -->
+                    <div id="comment-list"></div>
+                    <div id="pagination" class="pagination-container"></div>
                 </div>
             </div>
 
-            <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
 
-            <!-- 게시글 반응 5종 -->
-            <h4 style="width: 100%; margin: 2% auto 3% auto; text-align: left;">기사에 대한 공감 버튼을 눌러주세요!
-                <button style="border: none; background-color: transparent; font-size: 17px; margin-left: -10px;"
-                    onclick="window.location.reload()">🔄</button>
-            </h4>
-
-            <!-- 게시글 반응 5종 버튼 -->
-            <div class="article-reaction" id="article-reaction">
-
-                <div>
-                    <button id="reaction-good-button" onclick="handleArticleReaction()" class="good"><img
-                            src="../static/image/good.png" style="width:50px;" alt="good"></button>
-                    <p style="margin-top: 10px; font-size: 15px;">좋아요</p>
-                    <p id="good-count" style="margin-top: -15px;"></p>
-                </div>
-
-                <div>
-                    <button id="reaction-great-button" onclick="handleArticleReaction()" class="great"><img
-                            src="../static/image/great.png" style="width:50px;" alt="great"></button>
-                    <p style="margin-top: 10px; font-size: 15px;">훌륭해요</p>
-                    <p id="great-count" style="margin-top: -15px;"></p>
-                </div>
-
-                <div>
-                    <button id="reaction-sad-button" onclick="handleArticleReaction()" class="sad"><img
-                            src="../static/image/sad.png" style="width:50px;" alt="sad"></button>
-                    <p style="margin-top: 10px; font-size: 15px;">슬퍼요</p>
-                    <p id="sad-count" style="margin-top: -15px;"></p>
-                </div>
-
-                <div>
-                    <button id="reaction-angry-button" onclick="handleArticleReaction()" class="angry"><img
-                            src="../static/image/angry.png" style="width:50px;" alt="angry"></button>
-                    <p style="margin-top: 10px; font-size: 15px;">화나요</p>
-                    <p id="angry-count" style="margin-top: -15px;"></p>
-                </div>
-
-                <div>
-                    <button id="reaction-subsequent-button" onclick="handleArticleReaction()" class="subsequent"><img
-                            src="../static/image/subsequent.png" style="width:50px;" alt="subsequent"></button>
-                    <p style="margin-top: 10px; font-size: 15px;">후속요청!</p>
-                    <p id="subsequent-count" style="margin-top: -15px;"></p>
-                </div>
-            </div>
-
-            <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
-
-            <!-- 게시글 댓글 -->
-            <h4 style="width: 100%; margin: 2% auto 3% auto; text-align: left;">댓글<span
-                    id="article-comments-count"></span>
-                <button style="border: none; background-color: transparent; font-size: 17px; margin-left: -10px;"
-                    onclick="window.location.reload()">🔄</button>
-            </h4>
-
-            <div class="comment-section">
-                <!-- 댓글 작성 -->
-                <div class="comment-box">
-                    <img id="logined-profile-img" alt="로그인 유저의 프로필 이미지">
-                    <span id="logined-nickname"></span>
-                    <hr style="width: 95%; margin-top: 10px; color: gainsboro; opacity: 0.5;">
-                    <textarea id="comment" placeholder="소중한 의견을 남겨주세요 "></textarea>
-                    <hr style="width: 95%; color: gainsboro; opacity: 0.5;">
-                    <button id="commentButton" onclick="postComment()">등록</button>
-                </div>
-
-                <!-- 댓글 목록 -->
-                <div id="comment-list"></div>
-                <div id="pagination" class="pagination-container"></div>
-            </div>
+            <!-- 푸터 -->
+            <div id="footer"></div>
         </div>
-
-
-        <!-- 푸터 -->
-        <div id="footer"></div>
-    </div>
     </div>
 
 
-        <!-- JS -->
-        <script src="/static/js/report.js"></script>
-        <script src="../static/js/api.js"></script>
-        <script src="/static/js/nav.js"></script>
-        <script src="/static/js/search.js"></script>
-        <script src="/static/js/message.js"></script>
-
-        <script src="../static/js/detail.js"></script>
-        <script src="../static/js/detail_comment.js"></script>
+    <!-- JS -->
+    <script src="/static/js/report.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/search.js"></script>
+    <script src="/static/js/message.js"></script>
+    <script src="../static/js/detail.js"></script>
+    <script src="../static/js/detail_comment.js"></script>
 
 
 </body>
