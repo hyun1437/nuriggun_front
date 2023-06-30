@@ -136,7 +136,9 @@ async function articleDetail() {
         const articleUserEmail = document.getElementsByClassName('article-user-email');
         const articleCommentsCount = document.getElementById('article-comments-count');
 
-        articleSummary.innerText = response_json.summary;
+        if (response_json.summary != '') {
+            articleSummary.innerText = "AI가 요약한 기사 내용:\n" + response_json.summary;
+        }
         articleTitle.innerText = response_json.title;
         articleCategory.innerText = response_json.category;
         articleCreatedAt.innerText = response_json.created_at;
@@ -176,7 +178,6 @@ async function articleDetail() {
         });
 
         // 게시글 수정 진행 시 기존 값 가져오기 위한 설정
-        const originalSummary = response_json.summary;
         const originalTitle = response_json.title;
         const originalCategory = response_json.category;
         const originalImage = `${backend_base_url}${response_json.image}`;
@@ -184,7 +185,6 @@ async function articleDetail() {
 
         const originalContent = response_json.content;
 
-        sessionStorage.setItem('article-content-summary', originalSummary);
         sessionStorage.setItem('article-title', originalTitle);
         sessionStorage.setItem('article-category', originalCategory);
         sessionStorage.setItem('article-image', originalImage);

@@ -139,3 +139,7 @@
 .article-reaction button:hover {
   transform: rotate(15deg);
 }
+
+.article-summary {
+  text-align: left;
+}
