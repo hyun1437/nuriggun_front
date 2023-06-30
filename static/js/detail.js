@@ -131,6 +131,7 @@ async function articleDetail() {
             subscribeButton1.style.display = 'block';
         }
 
+        const articleSummary = document.getElementById('article-content-summary');
         const articleTitle = document.getElementById('article-detail-title');
         const articleCategory = document.getElementById('article-category');
         const articleCreatedAt = document.getElementById('article-created-at');
@@ -142,6 +143,7 @@ async function articleDetail() {
         const articleUserEmail = document.getElementsByClassName('article-user-email');
         const articleCommentsCount = document.getElementById('article-comments-count');
 
+        articleSummary.innerText = response_json.summary;
         articleTitle.innerText = response_json.title;
         articleCategory.innerText = response_json.category;
         articleCreatedAt.innerText = response_json.created_at;
@@ -181,6 +183,7 @@ async function articleDetail() {
         });
 
         // 게시글 수정 진행 시 기존 값 가져오기 위한 설정
+        const originalSummary = response_json.summary;
         const originalTitle = response_json.title;
         const originalCategory = response_json.category;
         const originalImage = `${backend_base_url}${response_json.image}`;
@@ -188,6 +191,7 @@ async function articleDetail() {
 
         const originalContent = response_json.content;
 
+        sessionStorage.setItem('article-content-summary', originalSummary);
         sessionStorage.setItem('article-title', originalTitle);
         sessionStorage.setItem('article-category', originalCategory);
         sessionStorage.setItem('article-image', originalImage);
