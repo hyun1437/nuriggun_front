@@ -53,6 +53,12 @@ async function ArticlePost() {
     formData.append("image", img);
     formData.append("image_content", imgContent);
 
+
+    if (!img) {
+        alert("이미지를 넣어주시면 좋겠죠?!?!?.");
+        return;
+    }
+
     const response = await fetch(`${backend_base_url}/article/`, {
         method: "POST",
         headers: {
@@ -63,8 +69,8 @@ async function ArticlePost() {
 
     if (response.status == 201) {
         alert("글 작성 완료")
-        window.location.replace(`${frontend_base_url}/index.html`);
-    } else if (title == '' || content == '' || img == '' || category == '') {
+        window.location.replace(`${frontend_base_url}/article/article_list.html`);
+    } else if (title == '' || content == '' || category == '') {
         alert("빈칸을 입력해 주세요.")
     }
 
