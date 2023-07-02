@@ -157,6 +157,10 @@ a {
     border-radius: 10px;
 }
 
+#email-notification{
+    float: right;
+}
+
 #user-password-reset :hover {
     background-color: rgb(223, 226, 255);
     padding: 10px 10% 10px 5px;

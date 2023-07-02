@@ -7,6 +7,7 @@ window.onload = () => {
     loadArticles(urlParams);
     isSubscribed()
     loadScraps()
+    emailNotificationCheck()
 }
 
 
@@ -53,11 +54,11 @@ async function Profile(user_id) {
             userInterest.innerText = response_json.interest
         }
 
-        // 구독자 수
+        // 구독 수
         const userSubscribe = document.getElementById('user-subscribe');
 
         if (userSubscribe !== null) {
-            userSubscribe.innerText = `구독자 수: ${response_json.subscribe_count}`;
+            userSubscribe.innerText = `구독 수: ${response_json.subscribe_count}`;
             userSubscribe.href = `../user/subscribe_list.html?user_id=${user_id}`;
         }
 
@@ -67,21 +68,71 @@ async function Profile(user_id) {
             document.getElementById('user-password-reset').style.display = "none";
             document.getElementById('user-delete').style.display = "none";
             document.getElementById('subscribe-button').style.display = "none";
+            document.getElementById('email-notification').style.display = "none";
         } else if (user_id != logined_id) {
             document.getElementById('user-edit').style.display = "none";
             document.getElementById('user-password-reset').style.display = "none";
             document.getElementById('user-delete').style.display = "none";
             document.getElementById('subscribe-button').style.display = "block";
+            document.getElementById('email-notification').style.display = "none";
         } else {
             document.getElementById('user-edit').style.display = "block";
             document.getElementById('user-password-reset').style.display = "block";
             document.getElementById('user-delete').style.display = "block";
             document.getElementById('subscribe-button').style.display = "none";
+            document.getElementById('email-notification').style.display = "block";
         }
 
         // 제보하기 진행 시 프로필 유저의 이메일 가져오기 위한 설정
         const profileUserEmail = response_json.email;
         sessionStorage.setItem('user-email', profileUserEmail);
+    }
+}
+
+
+// 구독한 사람의 게시글 등록 알림 설정
+async function emailNotification() {
+    const response = await fetch(`${backend_base_url}/user/email/notification/`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+    });
+
+    if (response.status == 200) {
+        alert("이메일 알림에 동의하셨습니다.")
+        emailNotificationCheck()
+    } else if (response.status == 205) {
+        alert("이메일 알림을 취소하셨습니다.")
+        emailNotificationCheck()
+    } else if (response.status == 401) {
+        alert("로그인 후 진행 바랍니다.")
+    } else {
+        alert("알림 동의를 진행할 수 없습니다.")
+    }
+}
+
+// 알림 여부 확인
+async function emailNotificationCheck() {
+    const response = await fetch(`${backend_base_url}/user/email/notification/`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+    });
+
+    if (response.ok) {
+        const emailNotification = await response.json();
+
+        if (emailNotification[0].email_notification == false) {
+            document.getElementById('email-notification').innerText = '알림 설정: 🔕'
+        } else {
+            document.getElementById('email-notification').innerText = '알림 설정: 🔔'
+        }
+    } else {
+        console.error('정보를 불러올 수 없습니다.', response.status);
     }
 }
 
@@ -210,7 +261,7 @@ async function loadScraps() {
                 createAt.classList.add('createdAt');
 
                 const scrapcancle = document.createElement('a'); // 스크랩 삭제
-                scrapcancle.href ='#'
+                scrapcancle.href = '#'
                 scrapcancle.onclick = () => articleScrap(article.id);
                 scrapcancle.innerText = '❌'
                 scrapcancle.classList.add('scrapcancle');
