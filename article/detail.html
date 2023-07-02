@@ -63,6 +63,7 @@
                             onclick="location.href=`../article/detail_update.html?article_id=${article_id}`"
                             type="button">✏️ 수정</button>
                         <button id="article-delete-button" onclick="articleDelete()" type="button">🗑️ 삭제</button>
+                        <button id="article-report-button" onclick="reportUser()" type="button">🚔 신고</button>
                     </div>
 
                     <!-- 게시글 요약 -->
@@ -83,17 +84,6 @@
 
                 <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
 
-<<<<<<< HEAD
-                <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩 -->
-                <div class="article-button">
-                    <button id="article-print-button" onclick="window.print()" type="button">🖨️ 인쇄</button>
-                    <button id="article-share-button" onclick="articleShare()" type="button">🔗 URL 복사</button>
-                    <button id="article-scrap-button" onclick="articleScrap()" type="button">🏷️ 스크랩</button>
-                    <button id="article-update-button"
-                        onclick="location.href=`../article/detail_update.html?article_id=${article_id}`"
-                        type="button">✏️ 수정</button>
-                    <button id="article-delete-button" onclick="articleDelete()" type="button">🗑️ 삭제</button>
-=======
                 <!-- 게시글 반응 5종 -->
                 <h4 style="width: 100%; margin: 2% auto 3% auto; text-align: left;">기사에 대한 공감 버튼을 눌러주세요!
                     <button style="border: none; background-color: transparent; font-size: 17px; margin-left: -10px;"
@@ -138,7 +128,6 @@
                         <p style="margin-top: 10px; font-size: 15px;">후속요청!</p>
                         <p id="subsequent-count" style="margin-top: -15px;"></p>
                     </div>
->>>>>>> origin/dev
                 </div>
 
                 <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
@@ -174,16 +163,6 @@
     </div>
 
 
-<<<<<<< HEAD
-        <!-- JS -->
-        <script src="../static/js/api.js"></script>
-        <script src="/static/js/nav.js"></script>
-        <script src="/static/js/search.js"></script>
-        <script src="/static/js/message.js"></script>
-
-        <script src="../static/js/detail.js"></script>
-        <script src="../static/js/detail_comment.js"></script>
-=======
     <!-- JS -->
     <script src="/static/js/report.js"></script>
     <script src="../static/js/api.js"></script>
@@ -192,7 +171,6 @@
     <script src="/static/js/message.js"></script>
     <script src="../static/js/detail.js"></script>
     <script src="../static/js/detail_comment.js"></script>
->>>>>>> origin/dev
 
 
 </body>
