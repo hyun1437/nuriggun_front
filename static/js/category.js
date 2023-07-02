@@ -93,7 +93,7 @@ articles.forEach(article => {
     window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
     });
 
-    ulElement.appendChild(liElement);
+    ulElement.insertBefore(liElement, ulElement.firstChild);
 });
 }
 
