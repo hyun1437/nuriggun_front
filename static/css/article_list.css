@@ -36,6 +36,11 @@
     color: gray;
     text-align: center;
     margin: 0 2% 0 2%;
+    cursor: pointer;
+}
+
+.article-category:hover{
+    color: #2136f4;
 }
 
 .article-title {
