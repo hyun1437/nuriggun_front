@@ -154,7 +154,7 @@ async function loadArticles(user_id) {
         }
 
         // 작성한 게시글
-        const articleList = document.getElementById('article-list');
+        const articleList = document.getElementById('profile-article-list');
         articleList.innerHTML = ''; // 작성 게시글 목록 초기화
 
         const startIndex = (currentPage - 1) * articlesPerPage;
