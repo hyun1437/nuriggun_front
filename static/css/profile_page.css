@@ -97,7 +97,14 @@
     color: rgb(0, 0, 194);
     font-size: 14px;
     float: right;
+    margin-right: 3%;
+}
+
+.scrapcancle {
+    float: right;
     margin-right: 5%;
+    border: none;
+    background-color: transparent;
 }
 
 .h3color {
