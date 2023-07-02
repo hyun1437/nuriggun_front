@@ -64,6 +64,11 @@ articles.forEach(article => {
     const liElement = document.createElement('li');
     liElement.className = 'article-item';
 
+    const categoryElement = document.createElement('h5');
+    categoryElement.className = 'article-category';
+    categoryElement.textContent = article.category;
+    liElement.appendChild(categoryElement);
+
     const imgElement = document.createElement('img');
     imgElement.src = `${backend_base_url}${article.image}`;
     imgElement.alt = article.title;

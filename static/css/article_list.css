@@ -22,12 +22,20 @@
   }
 
 .article-item {
-    width: 800px;
+    width: 95%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ddd; /* 구분 선 */
     padding: 10px 0;
+}
+
+.article-category{
+    width: 50px;
+    color: gray;
+    text-align: center;
+    margin: 0 2% 0 2%;
 }
 
 .article-title {
