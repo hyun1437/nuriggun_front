@@ -1,4 +1,4 @@
-// console.log("index.js 연결 확인")
+console.log("index.js 연결 확인")
 
 window.addEventListener('load', function() {
     loadMainArticles();
@@ -69,7 +69,7 @@ async function loadBestArticles() {
             window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
         });   
     } else {
-        // console.log("기사없음")
+        console.log("기사없음")
         const newBestImage = document.createElement("img")
         newBestImage.setAttribute("class", "best-img")
         newBestImage.setAttribute("src", "../static/image/logo.png")
@@ -145,7 +145,7 @@ async function loadSubArticles() {
     const sub_article = document.getElementById("sub-article")
     
     articles.results.forEach(article => {
-        // console.log(article.image)
+        console.log(article.image)
         const newArticle = document.createElement("div");
         newArticle.setAttribute("class", "article")
         
@@ -235,7 +235,7 @@ async function loadUserList() {
     users = await getUserList();
 
     const userList = document.getElementById("user-list")
-    // console.log(users)
+    console.log(users)
     users.forEach(user => {
         
         const newUserCard = document.createElement("div");

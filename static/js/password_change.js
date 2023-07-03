@@ -1,4 +1,4 @@
-// console.log("password_change.js 연결")
+console.log("password_change.js 연결")
 
 
 // 비밀번호 변경 버튼
@@ -20,7 +20,7 @@ async function handlePasswordChange() {
     })
 
     const response_json = await response.json()
-    // console.log(response_json)
+    console.log(response_json)
     if (response.status == 200) {
         alert('비밀번호를 변경했습니다.')
         window.location.replace(`${frontend_base_url}/user/profile_page.html?user_id=${payload_parse.user_id}`);

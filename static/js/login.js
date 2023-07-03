@@ -20,7 +20,7 @@ async function handleLogin() {
         // 로컬 스토리지에 jwt 토큰 저장하기
         localStorage.setItem("access", response_json.access);
         localStorage.setItem("refresh", response_json.refresh);
-        // console.log(response_json);
+        console.log(response_json);
 
         // payload로 저장하기 
         const base64Url = response_json.access.split('.')[1];
