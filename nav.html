@@ -85,19 +85,23 @@
       </li>
     </ul>
 
-    <form class="d-flex" onsubmit="event.preventDefault(); searchFilter();">
+        <form class="d-flex" onsubmit="event.preventDefault(); searchFilter();">
+         <!-- <div class="realtime" id="realtime">
+          <div class="realtime-article">
+            실시간기사1
+          </div>
+          <div class="realtime-article">
+            실시간기사2
+          </div>
+        </div> -->
         <div class="search">
-            <input class="form-control me-sm-2" type="text" placeholder="검색" id="article-search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
+          <input class="form-control me-sm-2" type="text" placeholder="검색" id="article-search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
         </div>
     </form>
-        <!-- 푸터 -->
-        <div id="footer"></div>
-    </div>
-
-    <a class="back-to-top" href="#">▲</a>
+   
 
     <script src="/static/js/category.js"></script>
 </body>
