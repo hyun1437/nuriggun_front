@@ -1,4 +1,4 @@
-console.log("index.js 연결 확인")
+// console.log("index.js 연결 확인")
 
 window.addEventListener('load', function() {
     loadMainArticles();
