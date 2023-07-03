@@ -54,22 +54,7 @@
                     <a class="date-at">작성 <span id="article-created-at"></span><span id="article-updated-at"></span></a>
                     <hr style="width: 100%; margin-top: 5%; color: gainsboro; opacity: 0.5;">
 
-                    <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩 -->
-                    <div class="article-button">
-                        <button id="article-print-button" onclick="window.print()" type="button">🖨️ 인쇄</button>
-                        <button id="article-share-button" onclick="articleShare()" type="button">🔗 URL 복사</button>
-                        <button id="article-scrap-button" onclick="articleScrap()" type="button">🏷️ 스크랩</button>
-                        <button id="article-update-button"
-                            onclick="location.href=`../article/detail_update.html?article_id=${article_id}`"
-                            type="button">✏️ 수정</button>
-                        <button id="article-delete-button" onclick="articleDelete()" type="button">🗑️ 삭제</button>
-                    </div>
 
-                    <!-- 게시글 요약 -->
-                    <div class="article-summary">
-                        <img src="../static/image/original_neogul.jpg" style="width: 70px;"> 너굴맨이 3줄 요약 했으니 안심하라구~
-                        <p class="article-content-summary"><span id="article-content-summary"></span></p>
-                    </div>
                 <!-- 게시글 버튼 / 수정, 삭제, URL복사, 스크랩 -->
                 <div class="article-button">
                     <button id="article-print-button" onclick="window.print()" type="button">🖨️ 인쇄</button>
@@ -81,6 +66,11 @@
                     <button id="article-delete-button" onclick="articleDelete()" type="button">🗑️ 삭제</button>
                     <button id="article-report-button" onclick="reportUser()" type="button">🚔 신고</button>
                 </div>
+                    <!-- 게시글 요약 -->
+                    <div class="article-summary">
+                        <img src="../static/image/original_neogul.jpg" style="width: 70px;"> 너굴맨이 3줄 요약 했으니 안심하라구~
+                        <p class="article-content-summary"><span id="article-content-summary"></span></p>
+                    </div>
 
                     <!-- 게시글 사진, 사진 설명, 내용(+기자 이메일 추가) -->
                     <div class="article-image">
