@@ -1,16 +1,23 @@
 // 유저 ID 가져오기
 const userId = payload_parse.user_id;
 
-window.addEventListener('load', async function () {
+window.addEventListener('load', async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
-
-    if (category === 'moaview' && userId) {
+  
+    if (category === 'moaview') {
+      if (userId) {
         viewSubscribeArticle(userId); // 모아보기 기능
+      } else {
+        viewCategory('moaview'); // 모아보기 카테고리 기능
+      }
+    } else if (category) {
+      viewCategory(category); // 다른 카테고리
     } else {
-        viewCategory(category); // 카테고리별 보기 기능
+      viewCategory(''); // 전체보기
     }
-});
+  });
+
 
 async function getCategory(category) {
     let url;
