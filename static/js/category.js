@@ -24,7 +24,6 @@ const response = await fetch(url, {
 });
 
 const response_json = await response.json();
-console.log(response_json);
 
 return response_json;
 }
@@ -41,7 +40,6 @@ const response = await fetch(url, {
 });
 
 const response_json = await response.json();
-console.log(response_json);
 
 return response_json;
 }
@@ -63,6 +61,11 @@ articleListElement.appendChild(ulElement);
 articles.forEach(article => {
     const liElement = document.createElement('li');
     liElement.className = 'article-item';
+
+    const categoryElement = document.createElement('h5');
+    categoryElement.className = 'article-category';
+    categoryElement.textContent = article.category;
+    liElement.appendChild(categoryElement);
 
     const imgElement = document.createElement('img');
     imgElement.src = `${backend_base_url}${article.image}`;
@@ -91,6 +94,12 @@ articles.forEach(article => {
     // 게시글 클릭시
     liElement.addEventListener('click', () => {
     window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+    });
+
+    // 카테고리 클릭시
+    categoryElement.addEventListener('click', (event) => {
+        event.stopPropagation();
+        window.location.href = `../article/article_list.html?category=${article.category}`;
     });
 
     ulElement.insertBefore(liElement, ulElement.firstChild);
