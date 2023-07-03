@@ -1,6 +1,6 @@
 .profile-page {
     display: flex;
-    width: 950px;
+    width: 1000px;
     margin: 2% auto 2% auto;
 }
 
@@ -97,14 +97,7 @@
     color: rgb(0, 0, 194);
     font-size: 14px;
     float: right;
-    margin-right: 3%;
-}
-
-.scrapcancle {
-    float: right;
     margin-right: 5%;
-    border: none;
-    background-color: transparent;
 }
 
 .h3color {
@@ -155,10 +148,6 @@ a {
     background-color: rgb(223, 226, 255);
     padding: 10px 10% 10px 5px;
     border-radius: 10px;
-}
-
-#email-notification{
-    float: right;
 }
 
 #user-password-reset :hover {
