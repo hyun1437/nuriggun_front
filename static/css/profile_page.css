@@ -1,6 +1,6 @@
 .profile-page {
     display: flex;
-    width: 1000px;
+    width: 950px;
     margin: 2% auto 2% auto;
 }
 
@@ -97,7 +97,14 @@
     color: rgb(0, 0, 194);
     font-size: 14px;
     float: right;
+    margin-right: 3%;
+}
+
+.scrapcancle {
+    float: right;
     margin-right: 5%;
+    border: none;
+    background-color: transparent;
 }
 
 .h3color {
@@ -130,6 +137,10 @@
 
 #subscribe-button:hover {
     background-color: rgb(223, 226, 255);
+}
+
+#email-notification {
+    float: right;
 }
 
 .profile-page-button,

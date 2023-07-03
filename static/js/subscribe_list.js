@@ -1,21 +1,16 @@
 // 최종 테스트 후 console.log 지우기
-console.log('구독자 목록 페이지 연결 확인')
+// console.log('구독자 목록 페이지 연결 확인')
 
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('user_id');
     Subscribe(urlParams);
 }
 
+
 const article_id = new URLSearchParams(window.location.search).get('article_id');
-console.log(article_id)
-
 const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
-
 const logined_id = userInfo.user_id;
-console.log(logined_id);
-
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
-console.log(user_id)
 
 
 // 프로필 페이지의 유저가 구독한 사람 목록
@@ -25,32 +20,23 @@ async function Subscribe(user_id) {
     const profileUser = await profile.json();
 
     const profileUserNickname = document.getElementById('profile-page-user')
-    profileUserNickname.innerText = `${profileUser.nickname} 기자의 구독자 목록`;
+    profileUserNickname.innerText = `${profileUser.nickname} 기자의 구독 목록`;
 
     // 프로필 페이지의 구독 정보 가져오기
     const response = await fetch(`${backend_base_url}/user/subscribe/${user_id}`, {
         method: 'GET',
     });
-    console.log(response)
 
     if (response.status == 200) {
         const response_json = await response.json();
         const subscribeList = document.getElementById('subscribe-list');
         const subscribe = response_json.subscribe[0]?.subscribe;
 
-        console.log(response_json);
-        console.log(response_json.subscribe);
-
-
         if (subscribe && subscribe.length > 0) {
-            console.log(response_json.subscribe[0].subscribe[0].nickname);
             subscribe.forEach(subscribe => {
                 const subscribeProfileImage = subscribe.profile_image;
                 const subscribeNickname = subscribe.nickname;
                 const subscribeId = subscribe.id;
-                console.log(subscribeProfileImage);
-                console.log(subscribeNickname);
-                console.log(subscribeId);
 
                 const subscribeUser = document.createElement('div');
                 subscribeUser.classList.add('user_wrap');
@@ -76,7 +62,6 @@ async function Subscribe(user_id) {
                 const subscribeNicknameElement = document.createElement('div');
                 subscribeNicknameElement.classList.add('nickname');
                 subscribeNicknameElement.innerText = subscribeNickname;
-                console.log('subscribeNickname:', subscribeNickname);
 
                 // 구독 버튼 추가
                 const subscribeButton = document.createElement('button');
