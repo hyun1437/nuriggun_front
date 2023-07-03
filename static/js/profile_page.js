@@ -54,11 +54,11 @@ async function Profile(user_id) {
             userInterest.innerText = response_json.interest
         }
 
-        // 구독 수
+        // 구독한 수
         const userSubscribe = document.getElementById('user-subscribe');
 
         if (userSubscribe !== null) {
-            userSubscribe.innerText = `구독 수: ${response_json.subscribe_count}`;
+            userSubscribe.innerText = `구독 기자: ${response_json.subscribe_count}`;
             userSubscribe.href = `../user/subscribe_list.html?user_id=${user_id}`;
         }
 
