@@ -137,7 +137,7 @@ async function articleDetail() {
         const articleCommentsCount = document.getElementById('article-comments-count');
 
         if (response_json.summary != '') {
-            articleSummary.innerText = "AI가 요약한 기사 내용:\n" + response_json.summary;
+            articleSummary.innerText = response_json.summary;
         }
         articleTitle.innerText = response_json.title;
         articleCategory.innerText = response_json.category;
@@ -194,12 +194,12 @@ async function articleDetail() {
         const articleCategoryUrl = document.getElementById('article-category-url');
         const articleCategoryLink = `../article/article_list.html?category=${response_json.category}`;
         articleCategoryUrl.href = articleCategoryLink
-        
+
         const articleUserUrl = document.getElementById('article-user-url');
         const articleUserLink = `../user/profile_page.html?user_id=${article_user_id}`;
         articleUserUrl.href = articleUserLink
         articleUserUrl.className = article_user_id
-        
+
     }
 }
 
@@ -292,5 +292,5 @@ reactionButtons.forEach(reaction => {
 
 
 
-  
+
 
