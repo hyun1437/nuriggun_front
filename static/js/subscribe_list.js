@@ -7,11 +7,8 @@ window.onload = () => {
 }
 
 const article_id = new URLSearchParams(window.location.search).get('article_id');
-
 const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
-
 const logined_id = userInfo.user_id;
-
 const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
 
 
@@ -22,7 +19,7 @@ async function Subscribe(user_id) {
     const profileUser = await profile.json();
 
     const profileUserNickname = document.getElementById('profile-page-user')
-    profileUserNickname.innerText = `${profileUser.nickname} 기자의 구독자 목록`;
+    profileUserNickname.innerText = `${profileUser.nickname} 기자의 구독 목록`;
 
     // 프로필 페이지의 구독 정보 가져오기
     const response = await fetch(`${backend_base_url}/user/subscribe/${user_id}`, {

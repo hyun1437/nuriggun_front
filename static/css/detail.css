@@ -16,16 +16,11 @@
 #article-share-button,
 #article-scrap-button,
 #article-update-button,
-#article-delete-button,
-#article-report-button {
+#article-delete-button {
   border: none;
   background-color: transparent;
   border-radius: 30px;
   font-size: 15px;
-}
-
-#article-report-button:hover{
-  background-color: rgb(223, 226, 255);
 }
 
 #article-print-button:hover {

@@ -6,8 +6,7 @@ window.onload = () => {
     articleDetail();
     loadComments();
 }
-const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
-console.log(user_id)
+
 
 const article_id = new URLSearchParams(window.location.search).get('article_id');
 
@@ -40,9 +39,11 @@ function articleShare() {
     navigator.clipboard.writeText(currentUrl)
         .then(() => {
             alert("URL이 복사되었습니다.")
+            console.log('URL이 복사되었습니다.');
         })
         .catch((error) => {
             alert("URL 복사에 실패했습니다.")
+            console.error('URL 복사에 실패했습니다.', error);
         });
 }
 
@@ -194,12 +195,10 @@ async function articleDetail() {
         const articleCategoryUrl = document.getElementById('article-category-url');
         const articleCategoryLink = `../article/article_list.html?category=${response_json.category}`;
         articleCategoryUrl.href = articleCategoryLink
-        
+
         const articleUserUrl = document.getElementById('article-user-url');
         const articleUserLink = `../user/profile_page.html?user_id=${article_user_id}`;
         articleUserUrl.href = articleUserLink
-        articleUserUrl.className = article_user_id
-        
     }
 }
 
@@ -270,10 +269,10 @@ async function handleArticleReaction(reactionType) {
 
     if (response.status == 200) {
         alert(`${reactionType} 반응을 취소했습니다.`)
-        window.location.reload()
+        articleDetail()
     } else if (response.status == 201) {
         alert(`${reactionType} 반응을 눌렀습니다.`)
-        window.location.reload()
+        articleDetail()
     } else if (response.status == 401) {
         alert("로그인 후 진행 바랍니다.")
     } else {
@@ -284,13 +283,8 @@ async function handleArticleReaction(reactionType) {
 const reactionButtons = ['great', 'sad', 'angry', 'good', 'subsequent'];
 
 reactionButtons.forEach(reaction => {
-    document.getElementById(`reaction-${reaction}-button`).addEventListener('click', () => {
+    document.getElementById(`reaction-${reaction}-button`).addEventListener('click', (event) => {
+        event.preventDefault();
         handleArticleReaction(reaction);
     });
 });
-
-
-
-
-  
-

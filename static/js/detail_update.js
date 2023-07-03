@@ -1,5 +1,5 @@
 // 최종 테스트 후 console.log 지우기
-// console.log('게시글 수정 페이지 연결 확인')
+console.log('게시글 수정 페이지 연결 확인')
 
 window.onload = () => {
     // 현재 페이지에서 이전 페이지의 데이터 가져오기
