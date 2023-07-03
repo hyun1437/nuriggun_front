@@ -10,7 +10,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://www.teamnuri.xyz/static/image/nuri꾼logo.png" /> 
     <meta property="og:description" content="SNS형 인터넷 신문사 누리꾼" />
-    <title>Home</title>
+
+    <link rel="icon" href="/static/image/누리꾼_파비콘.png">
+    <title>누리꾼 | 홈</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/nav.css">
@@ -46,6 +48,11 @@
 <!-- 메인,서브 기사 -->
  
 <div id="feed-article"> 
+
+  <div class="weather-container" id="weather-container">
+    <button type=button class="weather-slide-button" id="weather-prev-button" onclick="prevSlide()">＜</button>
+    <button type=button class="weather-slide-button" id="weather-next-button" onclick="nextSlide()">＞</button>
+  </div>
 
 <!-- 메인, 서브기사 -->
 <div class="articles-container">
