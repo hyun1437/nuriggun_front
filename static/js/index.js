@@ -5,7 +5,8 @@ window.addEventListener('load', function() {
     loadSubArticles();
     loadToday();
     loadUserList();
-    loadBestArticles()
+    loadBestArticles();
+    loadWeather();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -330,5 +331,94 @@ async function subscribeCheck() {
     } else { }
 }
 
+// 날씨 api
+async function getWeather() {
+    const response = await fetch(`${backend_base_url}/weather/`, {
+    })
 
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert('날씨정보 가져오기 실패')
+    }
+}
+
+async function loadWeather() {
+
+    let weathers = await getWeather();
+    weathers = weathers.reverse();
+
+    const weatherList = document.getElementById("weather-container")
+
+    weathers.forEach(weather => {
+
+        const newWeatherCard = document.createElement("div")
+        newWeatherCard.setAttribute("class", "weather")  
+        let backgroundImage
+        if (weather.sky === 0) {
+            backgroundImage = '/static/image/weather/날씨-맑음.png'
+        } else if (weather.sky === 1) {
+            backgroundImage = '/static/image/weather/날씨-비.png'
+        } else if (weather.sky === 2) {
+            backgroundImage = '/static/image/weather/날씨-구름많음.png'
+        } else if (weather.sky === 3) {
+            backgroundImage = '/static/image/weather/날씨-눈.png'
+        } else if (weather.sky === 5) {
+            backgroundImage = '/static/image/weather/날씨-비.png'
+        } else if (weather.sky === 6) {
+            backgroundImage = '/static/image/weather/날씨-비.png'
+        } else if (weather.sky === 7) {
+            backgroundImage = '/static/image/weather/날씨-눈.png'
+        }
+        newWeatherCard.style.backgroundImage = `url(${backgroundImage})`
+
+        const newWeatherCity = document.createElement("div")
+        newWeatherCity.setAttribute("class", "weather-city")
+        newWeatherCity.innerText = weather.city
+
+        const newWeatherTemp = document.createElement("div")
+        newWeatherTemp.setAttribute("class", "weather-temp")
+        newWeatherTemp.innerText = "기온 " + weather.temp + "°C"
+
+        const newWeatherHumidity = document.createElement("div")
+        newWeatherHumidity.setAttribute("class", "weather-humidity")
+        newWeatherHumidity.innerText = "습도 " + weather.humidity + "%"
+
+        const newWeatherRain = document.createElement("div")
+        newWeatherRain.setAttribute("class", "weather-rain")
+        newWeatherRain.innerText = "강수량 " + weather.rain + "mm"
+
+        newWeatherCard.appendChild(newWeatherCity)
+        newWeatherCard.appendChild(newWeatherTemp)
+        newWeatherCard.appendChild(newWeatherHumidity)
+        newWeatherCard.appendChild(newWeatherRain)
+
+        weatherList.appendChild(newWeatherCard)
+
+    })
+}
+
+// 날씨 슬라이드
+let slideIndex = 0;
+
+function prevSlide() {
+    const slides = document.querySelectorAll('.weather');
+    slideIndex--;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    updateSlides(slides);
+}
+
+function nextSlide() {
+    const slides = document.querySelectorAll('.weather');
+    slideIndex++;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    updateSlides(slides);
+}
+
+function updateSlides(slides) {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.transform = `translateX(${-slideIndex * 100}%)`;
+    }
+}
 
