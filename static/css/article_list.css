@@ -4,13 +4,13 @@
 }
 
 .article-content {
-    font-size: 1em;  
+    font-size: 1em;
     margin: 0;
 }
 
 .article-img {
-    width: 100px; 
-    height:100px; 
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     cursor: pointer;
     transition: all .15s linear;
@@ -19,30 +19,46 @@
 .article-img:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
-  }
+}
 
 .article-item {
-    width: 800px;
+    width: 95%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ddd; /* 구분 선 */
+    border-bottom: 1px solid #ddd;
+    /* 구분 선 */
     padding: 10px 0;
+}
+
+.article-category {
+    width: 50px;
+    color: gray;
+    text-align: center;
+    margin: 0 2% 0 2%;
+    cursor: pointer;
+}
+
+.article-category:hover {
+    color: #2136f4;
 }
 
 .article-title {
     margin: 0;
-    flex-grow: 1; /* 제목을 중앙에 배치 */
+    flex-grow: 1;
+    /* 제목을 중앙에 배치 */
     text-align: center;
     cursor: pointer;
 }
-.article-title:hover{
+
+.article-title:hover {
     color: #2136f4;
 }
 
-.article-info { 
+.article-info {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
 }
