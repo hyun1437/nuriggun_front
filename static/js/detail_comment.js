@@ -15,7 +15,8 @@ async function postComment() {
 
     if (response.status == 201) {
         alert("댓글을 등록하였습니다.")
-        window.location.reload()
+        currentPage = 1;
+        loadComments();
     } else if (comment == '') {
         alert("댓글 내용을 입력 바랍니다.")
     } else if (response.status == 401) {
@@ -47,7 +48,7 @@ async function loadComments() {
 
         // 댓글 삭제 버튼 : 로그인한 유저 아이디와 댓글 작성한 유저 아이디가 같을 경우 보이게 진행
         const deletebutton = logined_id === comment.user.pk
-            ? `<a href="#" id="deletebutton" onclick="deleteComment(${comment.id})">삭제</a>`
+            ? `<a href="#" id="deletebutton" onclick="deleteComment(${comment.id}); event.preventDefault();">삭제</a>`
             : '';
 
         commentList.insertAdjacentHTML('beforeend', `
@@ -75,14 +76,14 @@ async function loadComments() {
 
                     <!-- 댓글 상태 버튼 / 추천, 비추천, 수정, 삭제  -->
                     <div id="comment-info">
-                        <a href="#" onclick="commentLike(${comment.id})">👍<span>${comment.like_count}</span></a>
-                        <a href="#" onclick="commentHate(${comment.id})">👎<span>${comment.hate_count}</span></a>
+                        <a href="#" onclick="commentLike(${comment.id}); event.preventDefault();">👍<span>${comment.like_count}</span></a>
+                        <a href="#" onclick="commentHate(${comment.id}); event.preventDefault();">👎<span>${comment.hate_count}</span></a>
                     </div>
                 </div>
             </div>
         `);
     });
-    
+
     // 페이지네이션 생성
     renderPagination(comments.length);
 }
@@ -111,7 +112,8 @@ function renderPagination(totalComments) {
         if (i === currentPage) {
             pageLink.classList.add('active');
         } else {
-            pageLink.addEventListener('click', () => {
+            pageLink.addEventListener('click', (event) => {
+                event.preventDefault();
                 currentPage = i;
                 loadComments();
             });
@@ -165,7 +167,7 @@ async function showEditForm(comment_id) {
     commentEditCancelButton.classList.add('comment-cancel-button');
     commentEditCancelButton.addEventListener('click', () => {
         commentEditContainer.innerText = originalComment;
-        location.reload();
+        loadComments();
     });
 
     commentEditContainer.innerText = '';
@@ -187,7 +189,7 @@ async function updateComment(comment_id, updatedComment) {
 
     if (response.status == 200) {
         alert("댓글을 수정했습니다.")
-        window.location.reload()
+        loadComments();
     } else {
         alert("댓글 작성자만 수정할 수 있습니다.")
     }
@@ -207,7 +209,7 @@ async function deleteComment(comment_id) {
 
         if (response.status == 200) {
             alert("댓글을 삭제하였습니다.")
-            window.location.reload()
+            loadComments();
         } else {
             alert("댓글 작성자만 삭제할 수 있습니다.")
         }
@@ -227,13 +229,13 @@ async function commentLike(comment_id) {
 
     if (response.status == 200) {
         alert("댓글 추천을 눌렀습니다.")
-        window.location.reload()
+        loadComments();
     } else if (response.status == 202) {
         alert("댓글 추천을 취소했습니다.")
-        window.location.reload()
+        loadComments();
     } else if (response.status == 201) {
         alert("댓글 비추천을 취고하고 댓글 추천을 눌렀습니다.")
-        window.location.reload()
+        loadComments();
     } else if (response.status == 401) {
         alert("로그인 후 진행 바랍니다.")
     } else {
@@ -254,13 +256,13 @@ async function commentHate(comment_id) {
 
     if (response.status == 200) {
         alert("댓글 비추천을 눌렀습니다.")
-        window.location.reload()
+        loadComments();
     } else if (response.status == 202) {
         alert("댓글 비추천을 취소했습니다.")
-        window.location.reload()
+        loadComments();
     } else if (response.status == 201) {
         alert("댓글 추천을 취고하고 댓글 비추천을 눌렀습니다.")
-        window.location.reload()
+        loadComments();
     } else if (response.status == 401) {
         alert("로그인 후 진행 바랍니다.")
     } else {
