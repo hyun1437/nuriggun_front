@@ -12,7 +12,7 @@
 
 
 
-    <!-- CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="/static/css/message.css">
   <link rel="stylesheet" href="/static/css/footer.css">
   <link rel="stylesheet" href="/static/css/index.css">
@@ -25,41 +25,43 @@
 
 <body>
   <div id="viewport">
-  <!-- 상단 네비게이션 바 -->
-  <div id="navbar"></div>
-  <div id="feed-article">
+    <!-- 상단 네비게이션 바 -->
+    <div id="navbar"></div>
+    <div id="feed-article">
 
-    <!-- 게시글 작성 부분 -->
-    <div class="article-create-container">
+      <!-- 게시글 작성 부분 -->
+      <div class="article-create-container">
 
-      <!-- 기사 카테고리 -->
-      <div>
-        <select id="category">
-          <option value="">분야 선택</option>
-          <option value="it">IT/과학</option>
-          <option value="경제">경제</option>
-          <option value="문화">생활/문화</option>
-          <option value="스포츠">스포츠</option>
-          <option value="날씨">날씨</option>
-          <option value="세계">세계</option>
-        </select>
-      </div>
+        <!-- 기사 카테고리 -->
+        <div>
+          <select id="category">
+            <option value="">분야 선택</option>
+            <option value="it">IT/과학</option>
+            <option value="경제">경제</option>
+            <option value="문화">생활/문화</option>
+            <option value="스포츠">스포츠</option>
+            <option value="날씨">날씨</option>
+            <option value="세계">세계</option>
+          </select>
+        </div>
 
-      <!-- 기사 제목 -->
-      <div>
-        <input type="text" id="title" placeholder="제목을 입력하세요" required>
-      </div>
+        <!-- 기사 제목 -->
+        <div>
+          <input type="text" id="title" placeholder="제목을 입력하세요" required>
+        </div>
 
-      <hr style="width: 100%; color: gainsboro; opacity: 0.5;">
+        <hr style="width: 100%; color: gainsboro; opacity: 0.5;">
 
-      <!-- 기사 내용 -->
-      <div>
-        <textarea id="content" placeholder="내용을 입력하세요" required></textarea>
-      </div>
-
+        <!-- 기사 내용 -->
+        <div>
+          <textarea id="content" placeholder="내용을 입력하세요" required></textarea>
+        </div>
+        
       <hr style="width: 100%; color: gainsboro; opacity: 0.5;">
 
       <!-- 기사 사진 -->
+      <p style="color: red;">*출처가 있다면 출처도 같이 입력해주세요*</p>
+      <p style="color: red;">*사진용량은 2MB까지 업로드 가능합니다*</p>
       <div>
         <input type="file" id="img-file">
         <textarea type="text" id="img-content" placeholder="사진 설명을 입력하세요"></textarea>
@@ -75,11 +77,9 @@
 
     </div>
 
-  </div>
 
-
-  <!-- 푸터 -->
-  <div id="footer"></div>
+    <!-- 푸터 -->
+    <div id="footer"></div>
   </div>
 
 

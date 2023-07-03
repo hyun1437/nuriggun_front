@@ -131,6 +131,7 @@ async function articleDetail() {
             subscribeButton1.style.display = 'block';
         }
 
+        const articleSummary = document.getElementById('article-content-summary');
         const articleTitle = document.getElementById('article-detail-title');
         const articleCategory = document.getElementById('article-category');
         const articleCreatedAt = document.getElementById('article-created-at');
@@ -142,6 +143,9 @@ async function articleDetail() {
         const articleUserEmail = document.getElementsByClassName('article-user-email');
         const articleCommentsCount = document.getElementById('article-comments-count');
 
+        if (response_json.summary != '') {
+            articleSummary.innerText = response_json.summary;
+        }
         articleTitle.innerText = response_json.title;
         articleCategory.innerText = response_json.category;
         articleCreatedAt.innerText = response_json.created_at;
@@ -201,6 +205,8 @@ async function articleDetail() {
         const articleUserUrl = document.getElementById('article-user-url');
         const articleUserLink = `../user/profile_page.html?user_id=${article_user_id}`;
         articleUserUrl.href = articleUserLink
+        articleUserUrl.className = article_user_id
+
     }
 }
 

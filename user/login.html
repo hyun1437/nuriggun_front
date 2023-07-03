@@ -20,12 +20,13 @@
         <div class="login-box">
             
             <div class="form-group">
+            <form onsubmit="event.preventDefault(); handleLogin();">
                 <input id="email" class="input mt-5" name="email" placeholder="이메일을 입력해주세요." type="email">
                 <input id="password" class="input mt-5" name="password" placeholder="비밀번호" type="password">
-                <button type="button" class="button mt-5 login-button" onclick="handleLogin()">로그인</button>
-            </div>
-            </div>
-       
+                <button type="submit" class="button mt-5 login-button">로그인</button>
+            </form>
+        </div>
+        </div>
 
         <a href="https://teamnuri.xyz/user/password_reset.html" class="link">비밀번호 찾기</a>
         <a href="https://teamnuri.xyz/user/signup.html" class="link">아직 회원이 아니시라면 ?</a>

@@ -7,8 +7,7 @@
     <title>네브바</title>
 
     <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         
@@ -81,6 +80,9 @@
         <li class="nav-category">
           <a class="nav-link btn me-2 btn_org" href="/article/article_list.html?category=스포츠">스포츠</a>
         </li>
+        <li class="nav-category">
+          <a class="nav-link btn me-2 btn_org" id="moaview-link" href="/article/article_list.html?category=moaview">모아보기</a>
+      </li>
     </ul>
 
         <form class="d-flex" onsubmit="event.preventDefault(); searchFilter();">
@@ -101,5 +103,6 @@
     </form>
    
 
+    <script src="/static/js/category.js"></script>
 </body>
 </html>
