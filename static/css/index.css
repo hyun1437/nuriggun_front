@@ -274,3 +274,74 @@ html {
  top: 40px;
 }  */
 
+
+/* 날씨 부분 */
+@font-face {
+  font-family: 'HANAMDAUM';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/HANAMDAUM.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.weather-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.weather {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+  align-items: center;
+  background-size: cover;  
+  background-position: center; 
+  font-family: 'HANAMDAUM', sans-serif;
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+  /* color: white; */
+}
+
+.weather > * {
+  /* margin-left: 10px; */
+  margin-right: 10px;
+}
+
+.weather .weather-city {
+  font-size: 25px;
+}
+
+.weather .weather-temp {
+  font-size: 15px;
+}
+
+.weather .weather-humidity {
+  font-size: 15px;
+}
+
+.weather .weather-rain {
+  margin-right: 60px;
+  font-size: 15px;
+}
+
+/* 날씨 버튼 */
+.weather-slide-button {
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  background: none;
+  border: none;
+  z-index: 2;
+  transform: translateY(-50%);
+  color: grey;
+  cursor: pointer;
+}
+
+#weather-prev-button {
+  left: 10px;
+}
+
+#weather-next-button {
+  right: 10px;
+}
