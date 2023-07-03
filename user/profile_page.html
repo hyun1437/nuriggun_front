@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nuriggun 프로필 페이지</title>
+  <title>누리꾼 | 프로필 페이지</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/static/css/nav.css">
@@ -59,13 +59,18 @@
 
             <div class="profile-page-button">
               <!-- 프로필 유저에게 제보하기 -->
-              <p><a id="user-message" href="../user/message_profile_user_send.html">제보하기</a></p>
+              <p><a id="user-message" href="../user/message_profile_user_send.html">쪽지/제보하기</a></p>
 
               <!-- 프로필 유저가 구독한 기자 수 -->
-              <p><a id="user-subscribe" href="#"></a></p>
+              <p>
+                <a id="user-subscribe" href="#"></a>
+                <a id="email-notification" href="#" onclick="emailNotification()"></a>
+              </p>
 
               <!-- 프로필 비밀번호 변경 -->
-              <p id="user-password-reset"><a id="user-password-reset" href="../user/password_change.html">비밀번호 변경</a></p>
+              <p id="user-password-reset">
+                <a id="user-password-reset" href="../user/password_change.html">비밀번호 변경</a>
+              </p>
 
               <!-- 프로필 회원 탈퇴 -->
               <p id="user-delete"><a id="user-delete" onclick="toggleDeleteForm()">회원탈퇴</a>
@@ -88,8 +93,7 @@
             <h3 class="h3color"><span class="user-nickname"></span> 기자의 게시글 목록<span id="article-list-count"></span></h3>
             <hr style="border-color: gainsboro; opacity: 0.2;">
             <div id="article-pagination" class="article-pagination"></div>
-            <a id="article-list"></a>
-
+            <a id="profile-article-list"></a>
           </div>
 
           <!-- 스크랩한 글들의 목록 -->
@@ -101,6 +105,7 @@
             <div id="scrap-pagination" class="scrap-pagination"></div>
             <a id="scrap-article-list"></a>
           </div>
+
         </div>
       </div>
     </div>

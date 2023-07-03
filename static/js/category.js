@@ -1,7 +1,7 @@
 // 유저 ID 가져오기
 const userId = payload_parse.user_id;
 
-window.addEventListener('load', async function() {
+window.addEventListener('load', async function () {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
 
@@ -13,37 +13,33 @@ window.addEventListener('load', async function() {
 });
 
 async function getCategory(category) {
-let url;
-if (category) {
-    url = `${backend_base_url}/article/${category}/`;
-} else {
-    url = `${backend_base_url}/article/`;
-}
-const response = await fetch(url, {
-    method: 'GET',
-});
+    let url;
+    if (category) {
+        url = `${backend_base_url}/article/${category}/`;
+    } else {
+        url = `${backend_base_url}/article/`;
+    }
+    const response = await fetch(url, {
+        method: 'GET',
+    });
 
-const response_json = await response.json();
-console.log(response_json);
-
-return response_json;
+    const response_json = await response.json();
+    return response_json;
 }
 
 async function viewCategory(category) {
-const articles = await getCategory(category);
-createArticleList(articles);
+    const articles = await getCategory(category);
+    createArticleList(articles);
 }
 
 async function getSubscribeArticle(userId) {
-const url = `${backend_base_url}/user/moaview/${userId}`;
-const response = await fetch(url, {
-    method: 'GET',
-});
+    const url = `${backend_base_url}/user/moaview/${userId}`;
+    const response = await fetch(url, {
+        method: 'GET',
+    });
 
-const response_json = await response.json();
-console.log(response_json);
-
-return response_json;
+    const response_json = await response.json();
+    return response_json;
 }
 
 async function viewSubscribeArticle(userId) {
@@ -53,48 +49,59 @@ async function viewSubscribeArticle(userId) {
 }
 
 function createArticleList(articles) {
-const articleListElement = document.querySelector('#article-list');
-articleListElement.innerHTML = '';
+    const articleListElement = document.querySelector('#article-list');
+    articleListElement.innerHTML = '';
 
-const ulElement = document.createElement('ul');
-ulElement.className = 'article-list';
-articleListElement.appendChild(ulElement);
+    const ulElement = document.createElement('ul');
+    ulElement.className = 'article-list';
+    articleListElement.appendChild(ulElement);
 
-articles.forEach(article => {
-    const liElement = document.createElement('li');
-    liElement.className = 'article-item';
+    articles.forEach(article => {
+        const liElement = document.createElement('li');
+        liElement.className = 'article-item';
 
-    const imgElement = document.createElement('img');
-    imgElement.src = `${backend_base_url}${article.image}`;
-    imgElement.alt = article.title;
-    imgElement.className = 'article-img';
-    liElement.appendChild(imgElement);
+        const categoryElement = document.createElement('h5');
+        categoryElement.className = 'article-category';
+        categoryElement.textContent = article.category;
+        liElement.appendChild(categoryElement);
 
-    const titleElement = document.createElement('h5');
-    titleElement.className = 'article-title';
-    titleElement.textContent = article.title;
-    liElement.appendChild(titleElement);
+        const imgElement = document.createElement('img');
+        imgElement.src = `${backend_base_url}${article.image}`;
+        imgElement.alt = article.title;
+        imgElement.className = 'article-img';
+        liElement.appendChild(imgElement);
 
-    const infoElement = document.createElement('div');
-    infoElement.className = 'article-info';
+        const titleElement = document.createElement('h5');
+        titleElement.className = 'article-title';
+        titleElement.textContent = article.title;
+        liElement.appendChild(titleElement);
 
-    const nicknameElement = document.createElement('p');
-    nicknameElement.textContent = article.user.nickname;
-    infoElement.appendChild(nicknameElement);
+        const infoElement = document.createElement('div');
+        infoElement.className = 'article-info';
 
-    const dateElement = document.createElement('p');
-    dateElement.textContent = article.created_at;
-    infoElement.appendChild(dateElement);
+        const nicknameElement = document.createElement('p');
+        nicknameElement.textContent = article.user.nickname;
+        infoElement.appendChild(nicknameElement);
 
-    liElement.appendChild(infoElement);
+        const dateElement = document.createElement('p');
+        dateElement.textContent = article.created_at;
+        infoElement.appendChild(dateElement);
 
-    // 게시글 클릭시
-    liElement.addEventListener('click', () => {
-    window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+        liElement.appendChild(infoElement);
+
+        // 카테고리 클릭시
+        categoryElement.addEventListener('click', (event) => {
+            event.stopPropagation();
+            window.location.href = `../article/article_list.html?category=${article.category}`;
+        });
+
+        // 게시글 클릭시
+        liElement.addEventListener('click', () => {
+            window.location.href = `${frontend_base_url}/article/detail.html?article_id=${article.id}`;
+        });
+
+        ulElement.insertBefore(liElement, ulElement.firstChild);
     });
-
-    ulElement.insertBefore(liElement, ulElement.firstChild);
-});
 }
 
 
