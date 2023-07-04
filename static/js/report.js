@@ -4,6 +4,12 @@
 async function reportUser() {
     const reportButton = document.getElementById("article-user-url");
     const user_id = parseInt(reportButton.className);
+
+    // Check if user is logged in
+  if (!localStorage.getItem('access')) {
+  alert('로그인 상태에서만 신고가 가능합니다.');
+  return;
+  }
   
     const response = await fetch(`${backend_base_url}/user/report/${user_id}/report/`, {
       headers: {
