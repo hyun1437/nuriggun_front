@@ -125,9 +125,9 @@ async function emailNotificationCheck() {
         if (emailNotification[0] == undefined) {
             document.getElementById('email-notification').innerText = ''
         } else if (emailNotification[0].email_notification == false) {
-            document.getElementById('email-notification').innerText = '새 글 알림 받기 🔕'
+            document.getElementById('email-notification').innerText = '알림 🔕'
         } else {
-            document.getElementById('email-notification').innerText = '새 글 알림 안받기 🔔'
+            document.getElementById('email-notification').innerText = '알림 🔔'
         }
 
     } else {
