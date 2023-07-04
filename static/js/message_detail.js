@@ -71,9 +71,13 @@ function toggleReceiver() {
 
 // 게시글 삭제
 async function removeMessage() {
-    await deleteMessage(message_id)
-    alert("삭제되었습니다.")
-    location.href = document.referrer;
+    if (confirm("정말 삭제하시겠습니까??") == true) {
+        await deleteMessage(message_id)
+        alert("삭제되었습니다.")
+        location.href = document.referrer;
+    } else {
+        return false;
+    }
 }
 
 // 게시글 삭제 api
