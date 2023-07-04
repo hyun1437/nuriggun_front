@@ -104,14 +104,11 @@ async function postSubscribe(subscribeId) {
             method: 'POST',
         })
 
-        if (response.status == 200) {
-            alert("구독을 하였습니다.")
-            window.location.reload()
-        } else if (response.status == 205) {
+        if (response.status == 205) {
             alert("구독을 취소하였습니다.")
             window.location.reload()
-        } else if (response.status == 403) {
-            alert("자신을 구독 할 수 없습니다.")
+        } else {
+            alert("구독을 진행 할 수 없습니다.")
         }
     }
 }

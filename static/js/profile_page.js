@@ -101,10 +101,8 @@ async function emailNotification() {
     });
 
     if (response.status == 200) {
-        alert("이메일 알림에 동의하셨습니다.")
         emailNotificationCheck()
     } else if (response.status == 205) {
-        alert("이메일 알림을 취소하셨습니다.")
         emailNotificationCheck()
     } else if (response.status == 401) {
         alert("로그인 후 진행 바랍니다.")
@@ -126,11 +124,14 @@ async function emailNotificationCheck() {
     if (response.ok) {
         const emailNotification = await response.json();
 
-        if (emailNotification[0].email_notification == false) {
-            document.getElementById('email-notification').innerText = '알림 설정: 🔕'
+        if (emailNotification[0] == undefined) {
+            document.getElementById('email-notification').innerText = ''
+        } else if (emailNotification[0].email_notification == false) {
+            document.getElementById('email-notification').innerText = '새 글 알림 받기 🔕'
         } else {
-            document.getElementById('email-notification').innerText = '알림 설정: 🔔'
+            document.getElementById('email-notification').innerText = '새 글 알림 안받기 🔔'
         }
+
     } else {
         console.error('정보를 불러올 수 없습니다.', response.status);
     }
@@ -269,9 +270,14 @@ async function loadScraps() {
                 scrapArticleContainer.appendChild(articleId);
                 scrapArticleContainer.appendChild(category);
                 scrapArticleContainer.appendChild(title);
-                scrapArticleContainer.appendChild(scrapcancle);
                 scrapArticleContainer.appendChild(createAt);
                 scrapArticleContainer.appendChild(author);
+
+                // 내 프로필 일 경우에만 표시
+                if (logined_id === user_id) {
+                    scrapArticleContainer.appendChild(scrapcancle);
+                }
+
                 listItem.appendChild(scrapArticleContainer);
                 scrapList.appendChild(listItem);
             }
@@ -365,10 +371,27 @@ async function postSubscribe() {
 
     if (response.status == 200) {
         alert("구독을 하였습니다.")
-        window.location.reload()
+        isSubscribed()
     } else if (response.status == 205) {
         alert("구독을 취소하였습니다.")
-        window.location.reload()
+        isSubscribed()
+    } else if (response.status == 202) {
+        const confirm = confirm("구독한 기자의 새 글 작성 시 이메일 알림을 받으시겠습니까?            받으시려면 확인/안받으시려면 취소를 눌러주세요.                         알림 설정은 프로필에서 변경 가능합니다.");
+        if (confirm) {
+            const emailResponse = await fetch(`${backend_base_url}/user/email/notification/`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    "Authorization": "Bearer " + localStorage.getItem("access")
+                },
+            });
+            if (emailResponse.status == 200) {
+                alert("이메일 알림에 동의하셨습니다.");
+                isSubscribed();
+            }
+        } else {
+            isSubscribed();
+        }
     } else if (response.status == 403) {
         alert("자신을 구독 할 수 없습니다.")
     }
