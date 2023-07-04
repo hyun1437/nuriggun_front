@@ -1,8 +1,3 @@
-window.onload = () => {
-    console.log('비밀번호 재설정 confirm 페이지 로딩확인')
-    console.log('로딩하면서 링크의 토큰 유효성을 검사') 
-}
-
 
 // 비밀번호 변경 버튼
 async function handlePasswordResetConfirm() {

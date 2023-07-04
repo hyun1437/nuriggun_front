@@ -1,5 +1,4 @@
-// 최종 테스트 후 console.log 지우기
-// console.log('게시글 상세 페이지 연결 확인')
+
 
 window.onload = () => {
     // const urlParams = new URLSearchParams(window.location.search).get('article_id');
@@ -37,11 +36,9 @@ function articleShare() {
     navigator.clipboard.writeText(currentUrl)
         .then(() => {
             alert("URL이 복사되었습니다.")
-            console.log('URL이 복사되었습니다.');
         })
         .catch((error) => {
             alert("URL 복사에 실패했습니다.")
-            console.error('URL 복사에 실패했습니다.', error);
         });
 }
 
