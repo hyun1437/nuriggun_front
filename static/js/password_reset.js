@@ -1,6 +1,3 @@
-window.onload = () => {
-    console.log('비밀번호 재설정 페이지 로딩확인')
-}
 
 async function handlePasswordReset() {
     const email = document.getElementById('email').value;
@@ -21,7 +18,6 @@ async function handlePasswordReset() {
         alert('이메일로 비밀번호 재설정 링크가 전송되었습니다.')
         // window.location.replace(`${frontend_base_url}/user/login.html`);
     } else {
-        console.log(response_json)
         alert("잘못된 이메일입니다. 다시 입력해주세요.")
     }
 }

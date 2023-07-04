@@ -1,5 +1,3 @@
-// 최종 테스트 후 console.log 지우기
-// console.log('구독자 목록 페이지 연결 확인')
 
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('user_id');
