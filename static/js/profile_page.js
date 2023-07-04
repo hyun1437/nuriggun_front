@@ -329,6 +329,9 @@ async function DeleteUser() {
         if (response.status == 200) {
             const data = await response.json();
             alert("탈퇴 완료!")
+            localStorage.removeItem("access")
+            localStorage.removeItem("refresh")
+            localStorage.removeItem("payload")
             location.assign('login.html')
 
         } else if (response.status == 400) {
