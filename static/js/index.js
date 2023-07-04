@@ -347,12 +347,9 @@ async function getWeather() {
 async function loadWeather() {
 
     let weathers = await getWeather();
-    weathers = weathers.reverse();
-
     const weatherList = document.getElementById("weather-container")
 
     weathers.forEach(weather => {
-
         const newWeatherCard = document.createElement("div")
         newWeatherCard.setAttribute("class", "weather")  
         let backgroundImage
