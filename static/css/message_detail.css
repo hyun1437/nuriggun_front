@@ -4,6 +4,7 @@
     border: 2px double #ccc;
     padding: 20px;
     font-family: Arial, sans-serif;
+    width: 80%;
 }
 
 .title {
@@ -34,7 +35,9 @@
 }
 
 .image {
+    margin-top: 50px;
     margin-bottom: 20px;
+    width: 70%;
 }
 
 .content {

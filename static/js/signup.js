@@ -1,5 +1,4 @@
 
-console.log('회원가입 페이지 로딩확인')
 
 async function handleSignUp() {
     const email = document.getElementById("email").value
@@ -36,8 +35,7 @@ async function handleSignUp() {
             if (response_json.nickname) {
                 errorMessages += response_json.nickname[0] + '\n'
             }
-            alert(errorMessages)
-            console.log(response.statusText)       
+            alert(errorMessages)  
         }
     } else {
         alert("비밀번호가 일치하지 않습니다")

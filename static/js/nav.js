@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // nav.html이 로드된 후에 profile_intro 태그와 기타 작업을 수행
                 const payload = localStorage.getItem("payload")
                 const payload_parse = JSON.parse(payload)
-                console.log(payload_parse)
                 const profile_intro = document.getElementById("profile_intro");
 
                 if (profile_intro) {

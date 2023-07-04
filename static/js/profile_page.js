@@ -1,5 +1,3 @@
-// 최종 테스트 후 console.log 지우기
-// console.log('프로필 페이지 연결 확인')
 
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search).get('user_id');
@@ -335,6 +333,9 @@ async function DeleteUser() {
         if (response.status == 200) {
             const data = await response.json();
             alert("탈퇴 완료!")
+            localStorage.removeItem("access")
+            localStorage.removeItem("refresh")
+            localStorage.removeItem("payload")
             location.assign('login.html')
 
         } else if (response.status == 400) {
