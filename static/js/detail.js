@@ -1,19 +1,20 @@
 // 최종 테스트 후 console.log 지우기
-// console.log('게시글 상세 페이지 연결 확인')
+console.log('게시글 상세 페이지 연결 확인')
 
 window.onload = () => {
     // const urlParams = new URLSearchParams(window.location.search).get('article_id');
     articleDetail();
     loadComments();
 }
-const user_id = parseInt(new URLSearchParams(window.location.search).get('user_id'));
-console.log(user_id)
+
 
 const article_id = new URLSearchParams(window.location.search).get('article_id');
+console.log(article_id)
 
 const userInfo = payload_parse || defaultUser; // 로그인하지 않았을 때 defaultUser 값 불러오기
 
 const logined_id = userInfo.user_id;
+console.log(logined_id);
 
 const loginedNickname = document.getElementById('logined-nickname');
 const loginedProfileImg = document.getElementById('logined-profile-img');
@@ -40,9 +41,11 @@ function articleShare() {
     navigator.clipboard.writeText(currentUrl)
         .then(() => {
             alert("URL이 복사되었습니다.")
+            console.log('URL이 복사되었습니다.');
         })
         .catch((error) => {
             alert("URL 복사에 실패했습니다.")
+            console.error('URL 복사에 실패했습니다.', error);
         });
 }
 
@@ -82,6 +85,8 @@ async function articleDelete() {
             },
             method: 'DELETE',
         });
+        console.log(response)
+        console.log(article_id)
 
         if (response.status == 204) {
             alert("게시글을 삭제하였습니다.")
@@ -98,9 +103,11 @@ async function articleDetail() {
     const response = await fetch(`${backend_base_url}/article/${article_id}`, {
         method: 'GET',
     });
+    console.log(response)
 
     if (response.status == 200) {
         const response_json = await response.json();
+        console.log(response_json)
         const article_user_id = response_json.user.pk;
         const articleUpdateButton = document.getElementById('article-update-button');
         const articleDeleteButton = document.getElementById('article-delete-button');
@@ -236,6 +243,7 @@ async function isSubscribed(article_user_id) {
     const response = await fetch(`${backend_base_url}/user/subscribe/${logined_id}`, {
         method: 'GET',
     });
+    console.log(response)
 
     if (response.ok) {
         const subscribes = await response.json();
@@ -256,8 +264,10 @@ async function isSubscribed(article_user_id) {
 // 게시글 반응 5종
 async function handleArticleReaction(reactionType) {
     const selectreaction = document.getElementById(`reaction-${reactionType}-button`).getAttribute('class');
+    console.log(selectreaction)
 
     const data = { "reaction": selectreaction };
+    console.log(data)
 
     const response = await fetch(`${backend_base_url}/article/${article_id}/reaction/`, {
         headers: {
@@ -267,6 +277,7 @@ async function handleArticleReaction(reactionType) {
         body: JSON.stringify(data),
         method: 'POST',
     })
+    console.log(response)
 
     if (response.status == 200) {
         alert(`${reactionType} 반응을 취소했습니다.`)
@@ -288,9 +299,3 @@ reactionButtons.forEach(reaction => {
         handleArticleReaction(reaction);
     });
 });
-
-
-
-
-
-
