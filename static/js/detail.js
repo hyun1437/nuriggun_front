@@ -222,6 +222,23 @@ async function postSubscribe() {
     } else if (response.status == 205) {
         alert("구독을 취소하였습니다.")
         window.location.reload()
+    } else if (response.status == 202) {
+        const confirm2 = confirm("구독한 기자의 새 글 작성 시 이메일 알림을 받으시겠습니까?            받으시려면 확인/안받으시려면 취소를 눌러주세요.                         알림 설정은 프로필에서 변경 가능합니다.");
+        if (confirm2) {
+            const emailResponse = await fetch(`${backend_base_url}/user/email/notification/`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    "Authorization": "Bearer " + localStorage.getItem("access")
+                },
+            });
+            if (emailResponse.status == 200) {
+                alert("이메일 알림에 동의하셨습니다.");
+                window.location.reload()
+            }
+        } else {
+            window.location.reload()
+        }
     } else if (response.status == 403) {
         alert("자신을 구독 할 수 없습니다.")
     }
