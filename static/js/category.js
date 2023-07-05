@@ -1,7 +1,11 @@
-// 유저 ID 가져오기
-const userId = payload_parse.user_id;
+let userId;
 
-window.addEventListener('load', async function () {
+try {
+    userId = payload_parse.user_id;
+} catch (e) {
+}
+
+window.addEventListener('load', async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
 
@@ -11,6 +15,7 @@ window.addEventListener('load', async function () {
         viewCategory(category); // 카테고리별 보기 기능
     }
 });
+
 
 async function getCategory(category) {
     let url;
