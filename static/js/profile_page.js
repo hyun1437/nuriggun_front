@@ -268,13 +268,14 @@ async function loadScraps() {
                 scrapArticleContainer.appendChild(articleId);
                 scrapArticleContainer.appendChild(category);
                 scrapArticleContainer.appendChild(title);
-                scrapArticleContainer.appendChild(createAt);
-                scrapArticleContainer.appendChild(author);
 
                 // 내 프로필 일 경우에만 표시
                 if (logined_id === user_id) {
                     scrapArticleContainer.appendChild(scrapcancle);
                 }
+
+                scrapArticleContainer.appendChild(createAt);
+                scrapArticleContainer.appendChild(author);                
 
                 listItem.appendChild(scrapArticleContainer);
                 scrapList.appendChild(listItem);
