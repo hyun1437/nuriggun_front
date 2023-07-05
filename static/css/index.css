@@ -144,7 +144,6 @@
 /* 기자리스트 부분 */
 .user-list-container {
   justify-content: center; 
-  text-align: center;
 }
 
 .user-list-container h3{
