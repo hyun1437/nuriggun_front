@@ -344,3 +344,26 @@ html {
 #weather-next-button {
   right: 10px;
 }
+
+
+.image-container{
+  position:relative;
+  
+}
+
+
+.image-links {
+  top: 420px;
+  float: left;
+  left: 120px;
+  position:relative;
+
+}
+.imagegood-links{
+  
+  top: 420px;
+  float: right;
+  position:relative;
+  right: 110px;
+  
+}
