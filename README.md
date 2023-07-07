@@ -215,7 +215,7 @@ https://www.erdcloud.com/d/3tcCZcvpMsZR3kF99
 
     - 계정 정지 문의는 채팅으로
 
-#### 사이트 관리자에게 문의 기능(채팅)
+#### 사이트 운영자에게 1:1채팅으로 문의하기(tawk.to)
 
     - tawk.to 서비스를 활용한 1:1 문의기능
 
