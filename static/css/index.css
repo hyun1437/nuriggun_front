@@ -367,3 +367,9 @@ html {
   right: 110px;
   
 }
+
+@media screen and (max-width: 1600px) {
+  .image-container {
+    display: none;
+  }
+}
